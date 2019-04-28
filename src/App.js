@@ -1,100 +1,25 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-// import GameLoader from "./containers/GameLoader";
-// import CarCreatorContainer from "./containers/CarCreatorContainer";
-// import GameContainer from "./containers/GameContainer";
-import './App.css';
+import SignUp from "./Login_SignupPages/SignUp";
+import Login from "./Login_SignupPages/Login";
+import LandingSearchPage from './LandingSearchPage/Containers/LandingSearchPage';
+import Favorites from './FavortiesPage/Containers/Favorites';
 
-function App() {
-	return (
-		<div className='App'>
-			<Login />
-			<SignUp />
-		</div>
-	);
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+
+
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path='/login' render={(props) => {return !localStorage.getItem('token') ? <Login {...props} /> : <Redirect to='/' /> }} />
+                    <Route exact path='/signup' render={(props) => {return !localStorage.getItem('token') ? <SignUp {...props} /> : <Redirect to='/' /> }} />
+                    <Route exact path='/' render={(props) => {return localStorage.getItem('token') ? <LandingSearchPage {...props} /> : <Redirect to='/login' /> }} />
+                    <Route exact path='/favorites' render={(props) => {return localStorage.getItem('token') ? <Favorites {...props} /> : <Redirect to='/login' /> }} />
+                </Switch>
+            </Router>
+        );
+    }
 }
 
 export default App;
-
-// import React, { Component } from "react";
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Redirect,
-//   Switch
-// } from "react-router-dom";
-// import Login from "./components/Login";
-// import SignUp from "./components/SignUp";
-// import GameLoader from "./containers/GameLoader";
-// import CarCreatorContainer from "./containers/CarCreatorContainer";
-// import GameContainer from "./containers/GameContainer";
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <Router>
-//         <Switch>
-//           <Route
-//             exact
-//             path="/login"
-//             render={props => {
-//               return !localStorage.getItem("token") ? (
-//                 <Login {...props} />
-//               ) : (
-//                 <Redirect to="/" />
-//               );
-//             }}
-//           />
-//           <Route
-//             exact
-//             path="/signup"
-//             render={props => {
-//               return !localStorage.getItem("token") ? (
-//                 <SignUp {...props} />
-//               ) : (
-//                 <Redirect to="/" />
-//               );
-//             }}
-//           />
-//           <Route
-//             exact
-//             path="/"
-//             render={props => {
-//               return localStorage.getItem("token") ? (
-//                 <GameLoader {...props} />
-//               ) : (
-//                 <Redirect to="/login" />
-//               );
-//             }}
-//           />
-//           <Route
-//             exact
-//             path="/create"
-//             render={props => {
-//               return localStorage.getItem("token") ? (
-//                 <CarCreatorContainer {...props} />
-//               ) : (
-//                 <Redirect to="/login" />
-//               );
-//             }}
-//           />
-//           <Route
-//             exact
-//             path="/game"
-//             render={props => {
-//               return localStorage.getItem("car") ? (
-//                 <GameContainer {...props} />
-//               ) : (
-//                 <Redirect to="/" />
-//               );
-//             }}
-//           />
-//         </Switch>
-//       </Router>
-//     );
-//   }
-// }
-
-// export default App;
