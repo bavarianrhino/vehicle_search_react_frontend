@@ -1,5 +1,5 @@
 import React from 'react';
-import CarsForSaleResultList from './';
+import CarsForSaleResultList from '../Components/CarsForSaleResultList';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
