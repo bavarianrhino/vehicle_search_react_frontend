@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectComponent from './';
+import CarsForSaleResultList from './';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -19,7 +19,7 @@ class CarsForSaleResultsContainer extends React.Component {
         return (
             <div>
                 {this.funcName}
-                <ProjectComponent />
+                <CarsForSaleResultList />
             </div>
         )
     }
