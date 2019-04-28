@@ -1,27 +1,27 @@
 
 // Redux Store
+// import cuid from 'cuid';
+// export const cuidFn = cuid;
 
-let initialState = {
-    currentUser: null,
-    carsForSale: [],
-    carSaleInfo: [],
-    favorites: [],
-    carValueInfo: []
-}
+export default function AllReducers (
+    state = {
+        currentUser: null,
+        carsForSale: [],
+        carSaleInfo: [],
+        favorites: [],
+        carValueInfo: []
+    }, action) {
 
-export default (state=initialState, action) => {
+        switch (action.type) {
 
-    switch (action.type) {
+            case 'SET_CURRENT_USER':
+                return {
+                    ...state,
+                    currentUser: action.data
+                }
 
-        case 'SET_CURRENT_USER':
-            return {
-                ...state,
-                currentUser: action.data
-            }
-
-        default:
-            return {
-                initialState
-            }
-    }
+            default:
+                return state
+                
+        }
 }

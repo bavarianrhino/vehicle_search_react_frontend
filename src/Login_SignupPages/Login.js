@@ -2,7 +2,7 @@ import React from 'react';
 import { getAuthToken } from '../Services/Fetches';
 import { setCurrentUser } from '../Actions/AllActions';
 
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 
@@ -13,7 +13,7 @@ class Login extends React.Component {
 	state = {
 		username: '',
         password: '',
-        errors: []
+        error: null
 	};
 
 	handleChange = (e) => {
@@ -26,18 +26,19 @@ class Login extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        getAuthToken({ username: this.state.username, password: this.state.password})
-            .then(payload => {
-                if(payload.error) {
-                    this.setState({ errors: payload.error })
-                } else {
+        getAuthToken({ user: { username: this.state.username, password: this.state.password } })
+			.then((payload) => {
+				console.log(payload)
+				if (payload.user) {
+					localStorage.setItem('token', payload.jwt);
+                    this.props.history.push('/');
                     this.props.setCurrentUser(payload.user.id);
-                    // localStorage.setItem('user', payload.user.id)
-                    localStorage.setItem('token', payload.jwt);
-                    this.props.history.push('/')
-                }
-            })
-
+                    // getFavorites()
+				} else {
+					this.setState({ error: payload.error });
+				}
+			})
+			// .then((res) => e.target.reset);
         e.target.reset();
     }
 
@@ -45,7 +46,7 @@ class Login extends React.Component {
         this.setState({
 			username: '',
 			password: '',
-			errors: []
+			error: []
 		});
     }
 
@@ -59,13 +60,11 @@ class Login extends React.Component {
 						</Header>
 
 						<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset} >
-							<Segment stacked>
-								<Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' name='username' onChange={this.handleChange} />
-								<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='username' onChange={this.handleChange} />
-								<Button color='teal' fluid size='large' type='submit'>Login</Button>
-							</Segment>
+                            <Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
+                            <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
+                            <Button color='teal' fluid size='large' type='submit'>Login</Button>
 						</Form>
-                        {this.state.errors ? (<Message attached error header="There were errors with your submission:" list={this.state.errors}/>) : null }
+                        {this.state.error ? (<Message attached error header="There was an error with your submission:" list={this.state.error}/>) : null }
 
 
 					</Grid.Column>
