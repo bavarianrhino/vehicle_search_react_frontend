@@ -3,12 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import manageCars from './reducers/manageCars';
+import AllReducers from './Reducers/AllReducers';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-const store = createStore(manageCars, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(AllReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
 	<Provider store={store}>
