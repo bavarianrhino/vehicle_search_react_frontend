@@ -1,11 +1,12 @@
 import React from 'react';
-import comp from './';
+import NavBar from '../NavBar/NavBar';
+import SearcherContainer from './Containers/SearcherContainer';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
 
 
-class NavBar extends React.Component {
+class LandingSearchPage extends React.Component {
 
     state = {
         attr: null
@@ -19,6 +20,8 @@ class NavBar extends React.Component {
         return (
             <div>
                 {this.funcName}
+                <NavBar />
+                <SearcherContainer />
             </div>
         )
     }
@@ -35,4 +38,4 @@ const mapDispatchToProps = (dispatch) => ({
     functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(LandingSearchPage);
