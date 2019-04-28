@@ -11,7 +11,7 @@ const CarForSaleCard = (props) => {
 			<p>Make</p>
 			<p>Model</p>
 			<p>Year</p>
-            <img src="https://via.placeholder.com/300.png/ff0000" />
+            <img src="https://via.placeholder.com/300.png/ff0000" alt='car' />
 		</div>
 	);
 }
