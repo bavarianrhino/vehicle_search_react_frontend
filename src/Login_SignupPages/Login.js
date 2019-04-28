@@ -11,12 +11,21 @@ class Login extends React.Component {
     
 	state = {
 		username: '',
-		password: ''
+        password: '',
+        errors: []
 	};
 
-	funcName = (e) => {
-		console.log(e.target.value);
-	};
+	handleChange = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    };
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+    }
 
 	render() {
 		return (
@@ -34,10 +43,12 @@ class Login extends React.Component {
 								<Button color='teal' fluid size='large' type='submit'>Login</Button>
 							</Segment>
 						</Form>
+                        {this.state.errors ? (<Message attached error header="There were erros with your submission:" list={this.state.errors}/>) : null }
 
 						<Message>
 							New to us? <a href='#'>Sign Up</a>
 						</Message>
+
 					</Grid.Column>
 				</Grid>
 			</div>
