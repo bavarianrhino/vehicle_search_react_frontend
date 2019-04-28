@@ -1,10 +1,10 @@
 
-export const searchCarsForSale = (data) => {
+export const setCurrentUser = (data) => {
     return {
-        type: 'SEARCH_CARS_FOR_SALE',
+        type: 'SET_CURRENT_USER',
         data
-	};
-}
+    };
+};
 
 export const searchCarValue = (data) => {
     return {

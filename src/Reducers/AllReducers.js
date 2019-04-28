@@ -2,6 +2,7 @@
 // Redux Store
 
 let initialState = {
+    currentUser: null,
     carsForSale: [],
     carSaleInfo: [],
     favorites: [],
@@ -12,10 +13,10 @@ export default (state=initialState, action) => {
 
     switch (action.type) {
 
-        case 'SEARCH_CARS_FOR_SALE':
+        case 'SET_CURRENT_USER':
             return {
                 ...state,
-                carsForSale: action.data
+                currentUser: action.data
             }
 
         default:

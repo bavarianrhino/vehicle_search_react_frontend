@@ -1,5 +1,6 @@
 import React from 'react';
-import ProjectComponent from './';
+import { getAuthToken } from '../Services/Fetches';
+import { setCurrentUser } from '../Actions/AllActions';
 
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 
@@ -25,6 +26,27 @@ class Login extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
+        getAuthToken({ username: this.state.username, password: this.state.password})
+            .then(payload => {
+                if(payload.error) {
+                    this.setState({ errors: payload.error })
+                } else {
+                    this.props.setCurrentUser(payload.user.id);
+                    // localStorage.setItem('user', payload.user.id)
+                    localStorage.setItem('token', payload.jwt);
+                    this.props.history.push('/')
+                }
+            })
+
+        e.target.reset();
+    }
+
+    handleReset = () => {
+        this.setState({
+			username: '',
+			password: '',
+			errors: []
+		});
     }
 
 	render() {
@@ -36,18 +58,15 @@ class Login extends React.Component {
 							<Image src='/logo.png' /> Log-in to your account
 						</Header>
 
-						<Form size='large' onSubmit={this.handleSubmit}>
+						<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset} >
 							<Segment stacked>
 								<Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' name='username' onChange={this.handleChange} />
 								<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='username' onChange={this.handleChange} />
 								<Button color='teal' fluid size='large' type='submit'>Login</Button>
 							</Segment>
 						</Form>
-                        {this.state.errors ? (<Message attached error header="There were erros with your submission:" list={this.state.errors}/>) : null }
+                        {this.state.errors ? (<Message attached error header="There were errors with your submission:" list={this.state.errors}/>) : null }
 
-						<Message>
-							New to us? <a href='#'>Sign Up</a>
-						</Message>
 
 					</Grid.Column>
 				</Grid>
@@ -56,15 +75,7 @@ class Login extends React.Component {
 	}
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        attr: state.attr
-    }
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-})
-
-    export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, {setCurrentUser})(Login);
+						// <Message>
+						// 	New to us? <a href='#'>Sign Up</a>
+						// </Message>
