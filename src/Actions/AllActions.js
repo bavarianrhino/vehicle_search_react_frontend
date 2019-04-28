@@ -6,9 +6,9 @@ export const setCurrentUser = (data) => {
     };
 };
 
-export const searchCarValue = (data) => {
+export const signUpNewUser = (data) => {
     return {
-        type: 'SEARCH_CAR_VALUE',
+        type: 'SIGN_UP_NEW_USER',
         data
 	};
 }

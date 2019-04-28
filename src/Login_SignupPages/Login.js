@@ -38,7 +38,6 @@ class Login extends React.Component {
 					this.setState({ error: payload.error });
 				}
 			})
-			// .then((res) => e.target.reset);
         e.target.reset();
     }
 
@@ -46,7 +45,7 @@ class Login extends React.Component {
         this.setState({
 			username: '',
 			password: '',
-			error: []
+			error: null
 		});
     }
 
@@ -64,7 +63,10 @@ class Login extends React.Component {
                             <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
                             <Button color='teal' fluid size='large' type='submit'>Login</Button>
 						</Form>
+
                         {this.state.error ? (<Message attached error header="There was an error with your submission:" list={this.state.error}/>) : null }
+
+                        <Message>Need An Account? <a href='/signup'>Sign Up</a></Message>
 
 
 					</Grid.Column>
@@ -75,6 +77,3 @@ class Login extends React.Component {
 }
 
 export default connect(null, {setCurrentUser})(Login);
-						// <Message>
-						// 	New to us? <a href='#'>Sign Up</a>
-						// </Message>
