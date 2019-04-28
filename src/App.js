@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SignUp from "./Login_SignupPages/SignUp";
 import Login from "./Login_SignupPages/Login";
 import LandingSearchPage from './LandingSearchPage/Containers/LandingSearchPage';
-import Favorites from './FavortiesPage/Containers/Favorites';
+import Favorites from './FavoritesPage/Containers/Favorites';
 
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 

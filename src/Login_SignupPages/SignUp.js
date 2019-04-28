@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectComponent from './';
+
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -21,7 +21,7 @@ class SignUp extends React.Component {
 		return (
 			<div>
 				{this.funcName}
-				<ProjectComponent />
+
 			</div>
 		);
 	}

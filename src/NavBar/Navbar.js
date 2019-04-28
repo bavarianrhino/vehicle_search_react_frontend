@@ -1,5 +1,5 @@
 import React from 'react';
-import comp from './';
+
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
