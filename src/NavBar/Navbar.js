@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
+import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react';
 
 
 class NavBar extends React.Component {
@@ -17,10 +17,24 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.funcName}
-            </div>
-        )
+			<div>
+				<Menu fixed='top' inverted>
+					<Container>
+						<Menu.Item as='a' header>
+							<Image size='tiny' src={require(`../Images/e34headericon.png`)} style={{ marginRight: '1.5em' }} />
+							Auto Woke
+						</Menu.Item>
+						<Menu.Item as='a'>Searcher</Menu.Item>
+						<Menu.Item as='a'>Values</Menu.Item>
+						<Menu.Item as='a'>Favorites</Menu.Item>
+
+						<Menu.Menu position='right'>
+							<Menu.Item as='a'>Logout</Menu.Item>
+						</Menu.Menu>
+					</Container>
+				</Menu>
+			</div>
+		);
     }
 }
 

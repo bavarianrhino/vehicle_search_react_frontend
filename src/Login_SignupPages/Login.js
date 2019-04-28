@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuthToken } from '../Services/Fetches';
+import { getAuthToken } from '../Services/APIFetchs';
 import { setCurrentUser } from '../Actions/AllActions';
 
 import { Button, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
