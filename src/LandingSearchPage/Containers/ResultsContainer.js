@@ -1,11 +1,12 @@
 import React from 'react';
-import ProjectComponent from '.';
+import CarsForSaleResultsContainer from './CarsForSaleResultsContainer';
+import CarValueResultsContainer from './CarValueResultsContainer';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
 
 
-class CarsForSaleSearchForm extends React.Component {
+class ResultsContainer extends React.Component {
 
     state = {
         attr: null
@@ -19,7 +20,8 @@ class CarsForSaleSearchForm extends React.Component {
         return (
             <div>
                 {this.funcName}
-                <ProjectComponent />
+                <CarsForSaleResultsContainer />
+                <CarValueResultsContainer />
             </div>
         )
     }
@@ -36,4 +38,4 @@ const mapDispatchToProps = (dispatch) => ({
     functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarsForSaleSearchForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsContainer);

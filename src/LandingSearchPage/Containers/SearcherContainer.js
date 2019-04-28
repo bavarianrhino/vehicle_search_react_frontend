@@ -1,6 +1,6 @@
 import React from 'react';
-import CarsForSaleSearchForm from './CarsForSaleSearchForm';
-import CarValueSearchForm from './CarValueSearchForm';
+import CarsForSaleSearchForm from '../Components/CarsForSaleSearchForm';
+import CarValueSearchForm from '../Components/CarValueSearchForm';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
