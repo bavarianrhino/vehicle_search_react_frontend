@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react';
 
@@ -21,7 +22,7 @@ class NavBar extends React.Component {
 				<Menu fixed='top' inverted>
 					<Container>
 						<Menu.Item as='a' header>
-							<Image size='tiny' src={require(`../Images/e34headericon.png`)} style={{ marginRight: '1.5em' }} />
+							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
 							Auto Woke
 						</Menu.Item>
 						<Menu.Item as='a'>Searcher</Menu.Item>
@@ -29,7 +30,9 @@ class NavBar extends React.Component {
 						<Menu.Item as='a'>Favorites</Menu.Item>
 
 						<Menu.Menu position='right'>
-							<Menu.Item as='a'>Logout</Menu.Item>
+							<Link to='/login' onClick={() => localStorage.clear()} style={{ display: 'flex' }}>
+								<Menu.Item as='a'>Log Out</Menu.Item>
+							</Link>
 						</Menu.Menu>
 					</Container>
 				</Menu>
@@ -50,3 +53,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+{/* <Image size='tiny' src={require(`../Images/e34headericon.png`)} style={{ marginRight: '1.5em' }} />; */}
