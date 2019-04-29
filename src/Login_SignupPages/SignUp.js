@@ -1,5 +1,5 @@
 import React from 'react';
-import { signUpNewUser } from '../Services/Fetches';
+import { signUpNewUser } from '../Services/APIFetchs';
 import { setCurrentUser } from '../Actions/AllActions';
 import { connect } from 'react-redux';
 
