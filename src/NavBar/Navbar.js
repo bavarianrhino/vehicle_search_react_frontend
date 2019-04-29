@@ -3,8 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react';
-
+import { Container, Image, Menu } from 'semantic-ui-react';
 class NavBar extends React.Component {
 	state = {
 		attr: null
@@ -53,6 +52,4 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(NavBar);
-{
-	/* <Image size='tiny' src={require(`../Images/e34headericon.png`)} style={{ marginRight: '1.5em' }} />; */
-}
+
