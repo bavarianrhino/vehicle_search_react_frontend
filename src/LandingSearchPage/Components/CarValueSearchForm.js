@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getCarValueByVIN } from '../../Services/APIFetchs';
-import { setCarValues } from '../../Actions/AllActions';
+// import { setCarValues } from '../../Actions/AllActions';
 // import { setCarValues, fetchCarValues } from '../../Actions/AllActions';
 import { connect } from 'react-redux';
 
@@ -21,7 +21,10 @@ class CarValueSearchForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-        getCarValueByVIN(this.state.vin)
+        getCarValueByVIN(this.state.vin).then((payload) => {
+            console.log(payload)
+            // setCarValues(payload)
+        })
         // fetchCarValues(this.state.vin).then((payload) => {
 		// getCarValueByVIN(this.state.vin).then((payload) => {
 		// 	console.log(payload);
@@ -51,5 +54,5 @@ class CarValueSearchForm extends React.Component {
 	}
 }
 
-export default connect(null, { setCarValues })(CarValueSearchForm);
+export default connect(null, { })(CarValueSearchForm);
 // export default connect(null, { setCarValues, fetchCarValues })(CarValueSearchForm);

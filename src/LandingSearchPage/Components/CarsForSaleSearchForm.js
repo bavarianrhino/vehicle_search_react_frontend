@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { carMakes } from '../../Data/CarModelData';
 import { carYear } from '../../Data/CarYearData';
-import { fetchCarsForSale } from '../../Services/APIFetchs';
-import { landCarsForSale } from '../../Actions/AllActions';
+// import { fetchCarsForSale } from '../../Services/APIFetchs';
+import { fetchCarsForSale } from '../../Actions/CarsActions';
+// import { landCarsForSale } from '../../Actions/AllActions';
 
-import { Form, Grid } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 const distanceOptions = [
 	{ key: '1', text: '50 Miles', value: '50' },
@@ -50,17 +51,20 @@ class CarsForSaleSearchForm extends React.Component {
 		this.setState({ ...this.state, zip: e.target.value });
 	};
 
-	handleSubmit1 = (e) => {
+    handleSubmit = (e) => {
 		e.preventDefault();
-		fetchCarsForSale(this.state).then((payload) => {
-            console.log(payload)
-			landCarsForSale(payload);
-		});
-		// fetchCarValues(this.state.vin).then((payload) => {
-		// getCarValueByVIN(this.state.vin).then((payload) => {
-		// });
+		this.props.fetchCarsForSale(this.state)
 		e.target.reset();
-	};
+    };
+    
+	// handleSubmit1 = (e) => {
+		// e.preventDefault();
+		// fetchCarsForSale(this.state).then((payload) => {
+            // console.log(payload)
+			// landCarsForSale(payload);
+		// });
+		// e.target.reset();
+	// };
 
 	handleReset = () => {
 		this.setState({
@@ -73,7 +77,7 @@ class CarsForSaleSearchForm extends React.Component {
 	render() {
 		return (
 			<div>
-				<Form onSubmit={this.handleSubmit1} onReset={this.handleReset}>
+				<Form onSubmit={this.handleSubmit} onReset={this.handleReset}>
 					<Form.Group widths='equal'>
 						<Form.Select onChange={this.handleChangeYear} options={carYear.years} label='Choose Year' placeholder='Choose Year' selection name='year' />
 						<Form.Select onChange={this.handleChangeMake} options={carMakes.makes} label='Choose Make' placeholder='Choose Make' selection name='make' />
@@ -83,19 +87,28 @@ class CarsForSaleSearchForm extends React.Component {
 					</Form.Group>
 					<Form.Button type='submit'>Submit</Form.Button>
 				</Form>
-				<Form onSubmit={this.handleSubmit}>
-					<Form.Group widths='equal'>
-						<Form.Input fluid label='Make' placeholder='Make' name='make' onChange={this.handleChange} />
-						<Form.Input fluid label='Model' placeholder='Model' name='model' onChange={this.handleChange} />
-						<Form.Select fluid label='Year' placeholder='Year' name='year' onChange={this.handleChange} />
-						<Form.Input fluid label='Zip Code' placeholder='Zip Code' name='zip' onChange={this.handleChange} />
-						<Form.Select fluid label='Distance' options={distanceOptions} placeholder='Distance' name='distance' onChange={this.handleChange} />
-					</Form.Group>
-					<Form.Button type='submit'>Submit</Form.Button>
-				</Form>
 			</div>
 		);
 	}
 }
 
-export default connect(null, {landCarsForSale})(CarsForSaleSearchForm);
+const mapDispatchToProps = dispatch => {
+    return {
+		fetchCarsForSale: (data) => fetchCarsForSale(data)(dispatch)
+		// openModal: (current) => dispatch(openModal(current))
+	};
+};
+
+export default connect(null, mapDispatchToProps)(CarsForSaleSearchForm);
+// export default connect(null, {landCarsForSale})(CarsForSaleSearchForm);
+
+/* <Form onSubmit={this.handleSubmit}>
+	<Form.Group widths='equal'>
+		<Form.Input fluid label='Make' placeholder='Make' name='make' onChange={this.handleChange} />
+		<Form.Input fluid label='Model' placeholder='Model' name='model' onChange={this.handleChange} />
+		<Form.Select fluid label='Year' placeholder='Year' name='year' onChange={this.handleChange} />
+		<Form.Input fluid label='Zip Code' placeholder='Zip Code' name='zip' onChange={this.handleChange} />
+		<Form.Select fluid label='Distance' options={distanceOptions} placeholder='Distance' name='distance' onChange={this.handleChange} />
+	</Form.Group>
+	<Form.Button type='submit'>Submit</Form.Button>
+</Form>; */

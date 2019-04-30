@@ -2,7 +2,7 @@ import React from 'react';
 import CarForSaleCard from './CarForSaleCard';
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 
 class CarsForSaleResultList extends React.Component {
@@ -11,24 +11,29 @@ class CarsForSaleResultList extends React.Component {
         attr: null
     }
 
-    funcName = (e) => {
-        console.log(e.target.value)
+    mapCars = (props) => {
+        return this.props.cars.map((c) => {
+            console.log(c)
+            return <CarForSaleCard car={c}/>
+        })
     }
 
     render() {
         return (
-            <div>
-                {this.funcName}
-                <CarForSaleCard />
-            </div>
-        )
+			<div>
+				<Card.Group textAlign='center' style={{ display: 'flow-root', margin: '3.125em auto' }}>
+					{this.props.cars ? this.mapCars() : null}
+				</Card.Group>
+			</div>
+		);
     }
 }
+/* <CarForSaleCard />; */
 
 
 const mapStateToProps = (state) => {
     return {
-        attr: state.attr
+        cars: state.cars.carsForSale.listings
     }
 }
 

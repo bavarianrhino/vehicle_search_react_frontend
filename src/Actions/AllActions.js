@@ -15,19 +15,19 @@ export const signUpNewUser = (data) => {
 	};
 }
 
-export const setCarValues = (data) => {
-    return {
-        type: 'SET_CAR_VALUES',
-        data
-	};
-}
+// export const setCarValues = (data) => {
+//     return {
+//         type: 'SET_CAR_VALUES',
+//         data
+// 	};
+// }
 
-export const landCarsForSale = (data) => {
-    return {
-        type: 'LAND_CARS_FOR_SALE',
-        data
-	};
-}
+// export const landCarsForSale = (data) => {
+//     return {
+//         type: 'LAND_CARS_FOR_SALE',
+//         data
+// 	};
+// }
 
 
 // export const fetchCarValues = (dispatch) =>{

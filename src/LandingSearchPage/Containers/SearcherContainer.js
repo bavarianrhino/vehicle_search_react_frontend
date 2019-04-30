@@ -1,6 +1,6 @@
 import React from 'react';
 import CarsForSaleSearchForm from '../Components/CarsForSaleSearchForm';
-import CarValueSearchForm from '../Components/CarValueSearchForm';
+// import CarValueSearchForm from '../Components/CarValueSearchForm';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -19,14 +19,13 @@ class Searcher extends React.Component {
     render() {
         return (
 			<div>
-				{this.funcName}
 				<CarsForSaleSearchForm />
-                <CarValueSearchForm />
+                
 			</div>
 		);
     }
 }
-
+/* <CarValueSearchForm />; */
 
 const mapStateToProps = (state) => {
     return {

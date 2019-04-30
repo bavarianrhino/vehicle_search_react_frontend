@@ -29,6 +29,5 @@ export const CarsReducer = (
     }
 };
 
-
 // case 'SET_CAR_VALUES':
 //     return { ...state, carValueInfo: action.data }
