@@ -1,4 +1,4 @@
-const carMakes = {
+export const carMakes = {
     "makes": [
         {
             "make_id": "2",

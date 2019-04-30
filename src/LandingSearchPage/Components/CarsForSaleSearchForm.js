@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { carMakes } from '../../Data/CarModelData';
+import { carYear } from '../../Data/CarYearData';
 
-import { Form } from 'semantic-ui-react';
+import { Form, Grid } from 'semantic-ui-react';
 
 const yearOptions = [{ key: '91', text: '1991', value: '1991' }, { key: '92', text: '1992', value: '1992' }];
 const distanceOptions = [{ key: '50', text: '50 Miles', value: '50' }, { key: '75', text: '75 Miles', value: '75' }];
@@ -10,7 +12,9 @@ const distanceOptions = [{ key: '50', text: '50 Miles', value: '50' }, { key: '7
 class CarsForSaleSearchForm extends React.Component {
 
     state = {
-        attr: null
+        year: null,
+        make: '',
+        model: ''
     }
 
     handleChange = (e) => {
@@ -22,6 +26,14 @@ class CarsForSaleSearchForm extends React.Component {
     render() {
         return (
 			<div>
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Group widths='equal'>
+						<Form.Select onChange={this.handleChange} options={carYear.years} label='Choose Year' placeholder='Choose Year' selection name='year' />
+						<Form.Select onChange={this.handleChange} options={carMakes.makes} label='Choose Make' placeholder='Choose Make' selection name='make' />
+						<Form.Select onChange={this.handleChange} options={distanceOptions} label='Choose Model' placeholder='Choose Models' selection name='model' />
+						<Form.Button type='submit'>Submit</Form.Button>
+					</Form.Group>
+				</Form>
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Group widths='equal'>
 						<Form.Input fluid label='Make' placeholder='Make' name='make' onChange={this.handleChange} />
