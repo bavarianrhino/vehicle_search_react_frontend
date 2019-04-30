@@ -40,7 +40,7 @@ class CarValueSearchForm extends React.Component {
 	render() {
 		return (
 			<div>
-				<Form onSubmit={this.handleSubmit}>
+				<Form onSubmit={this.handleSubmit} onReset={this.handleReset}>
 					<Form.Group widths='equal'>
 						<Form.Input fluid label='VIN' placeholder='VIN' type='text' name='vin' onChange={this.handleChange} />
 					</Form.Group>

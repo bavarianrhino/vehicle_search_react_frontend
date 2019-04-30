@@ -64,3 +64,16 @@ export const getCarValueByVIN = (VINData) => {
     	}
     ).then((res) => res.json()).then(console.log);
 };
+
+
+export const fetchCarsForSale = (data) => {
+    console.log(data);
+    return fetch(`https://marketcheck-prod.apigee.net/v1/search?api_key=${MARKETCHECKAPIKEY}&radius=${data.miles}&zip=${data.zip}&seller_type=dealer&year=${data.year}&make=${data.make}&model=${data.model}&rows=50&start=2&photo_links=true`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+    	}
+    ).then((res) => res.json()).then(console.log);
+};

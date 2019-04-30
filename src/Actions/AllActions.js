@@ -22,6 +22,14 @@ export const setCarValues = (data) => {
 	};
 }
 
+export const landCarsForSale = (data) => {
+    return {
+        type: 'LAND_CARS_FOR_SALE',
+        data
+	};
+}
+
+
 // export const fetchCarValues = (dispatch) =>{
 //     return getCarValueByVIN('url')
 // 		.then((resp) => resp.json())

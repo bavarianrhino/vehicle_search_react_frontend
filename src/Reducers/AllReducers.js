@@ -26,6 +26,12 @@ export default function AllReducers (
                     carValueInfo: action.data
                 }
 
+            case 'LAND_CARS_FOR_SALE':
+                return {
+                    ...state,
+                    carsForSale: action.data
+                }
+
             default:
                 return state
                 
