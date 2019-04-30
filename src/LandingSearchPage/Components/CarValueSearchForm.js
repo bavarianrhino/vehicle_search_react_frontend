@@ -1,39 +1,55 @@
 import React from 'react';
 
+import { getCarValueByVIN } from '../../Services/APIFetchs';
+import { setCarValues } from '../../Actions/AllActions';
+// import { setCarValues, fetchCarValues } from '../../Actions/AllActions';
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 
 class CarValueSearchForm extends React.Component {
+	state = {
+		vin: ''
+	};
 
-    state = {
-        attr: null
-    }
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
 
-    funcName = (e) => {
-        console.log(e.target.value)
-    }
+	handleSubmit = (e) => {
+		e.preventDefault();
+        getCarValueByVIN(this.state.vin)
+        // fetchCarValues(this.state.vin).then((payload) => {
+		// getCarValueByVIN(this.state.vin).then((payload) => {
+		// 	console.log(payload);
+		// });
+		e.target.reset();
+	};
 
-    render() {
-        return (
-            <div>
-                {this.funcName}
-                
-            </div>
-        )
-    }
+	handleReset = () => {
+		this.setState({
+			username: '',
+			password: '',
+			error: null
+		});
+	};
+
+	render() {
+		return (
+			<div>
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Group widths='equal'>
+						<Form.Input fluid label='VIN' placeholder='VIN' type='text' name='vin' onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Button type='submit'>Submit</Form.Button>
+				</Form>
+			</div>
+		);
+	}
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        attr: state.attr
-    }
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CarValueSearchForm);
+export default connect(null, { setCarValues })(CarValueSearchForm);
+// export default connect(null, { setCarValues, fetchCarValues })(CarValueSearchForm);

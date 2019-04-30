@@ -20,6 +20,12 @@ export default function AllReducers (
                     currentUser: action.data
                 }
 
+            case 'SET_CAR_VALUES':
+                return {
+                    ...state,
+                    carValueInfo: action.data
+                }
+
             default:
                 return state
                 

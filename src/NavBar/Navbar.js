@@ -3,21 +3,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Container, Divider, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react';
-
-
+import { Container, Image, Menu } from 'semantic-ui-react';
 class NavBar extends React.Component {
+	state = {
+		attr: null
+	};
 
-    state = {
-        attr: null
-    }
+	funcName = (e) => {
+		console.log(e.target.value);
+	};
 
-    funcName = (e) => {
-        console.log(e.target.value)
-    }
-
-    render() {
-        return (
+	render() {
+		return (
 			<div>
 				<Menu fixed='top' inverted>
 					<Container>
@@ -38,19 +35,21 @@ class NavBar extends React.Component {
 				</Menu>
 			</div>
 		);
-    }
+	}
 }
-
 
 const mapStateToProps = (state) => {
-    return {
-        attr: state.attr
-    }
-}
+	return {
+		attr: state.attr
+	};
+};
 
 const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-})
+	functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
-{/* <Image size='tiny' src={require(`../Images/e34headericon.png`)} style={{ marginRight: '1.5em' }} />; */}
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(NavBar);
+

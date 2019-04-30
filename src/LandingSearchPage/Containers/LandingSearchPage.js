@@ -4,8 +4,7 @@ import SearcherContainer from './SearcherContainer';
 import ResultsContainer from './ResultsContainer';
 import { connect } from 'react-redux';
 
-import { Container, Divider, Button, Icon, Dropdown, Grid, Header, Image, List, Menu, Segment } from 'semantic-ui-react';
-
+import { Container, Divider, Button, Icon, Grid, Header, Segment } from 'semantic-ui-react';
 class LandingSearchPage extends React.Component {
 
 	state = {

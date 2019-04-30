@@ -1,3 +1,5 @@
+// import { getCarValueByVIN } from '../Services/APIFetchs';
+
 
 export const setCurrentUser = (data) => {
     return {
@@ -12,3 +14,16 @@ export const signUpNewUser = (data) => {
         data
 	};
 }
+
+export const setCarValues = (data) => {
+    return {
+        type: 'SET_CAR_VALUES',
+        data
+	};
+}
+
+// export const fetchCarValues = (dispatch) =>{
+//     return getCarValueByVIN('url')
+// 		.then((resp) => resp.json())
+// 		.then((data) => dispatch({ type: 'SET_CAR_VALUES', data: data }));
+// }
