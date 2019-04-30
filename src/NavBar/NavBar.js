@@ -18,17 +18,17 @@ class NavBar extends React.Component {
 			<div>
 				<Menu fixed='top' inverted>
 					<Container>
-						<Menu.Item as='a' header>
+						<Menu.Item as='' header>
 							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
 							Auto Woke
 						</Menu.Item>
-						<Menu.Item as='a'>Searcher</Menu.Item>
-						<Menu.Item as='a'>Values</Menu.Item>
-						<Menu.Item as='a'>Favorites</Menu.Item>
+						<Menu.Item as=''>Searcher</Menu.Item>
+						<Menu.Item as=''>Values</Menu.Item>
+						<Menu.Item as=''>Favorites</Menu.Item>
 
 						<Menu.Menu position='right'>
 							<Link to='/login' onClick={() => localStorage.clear()} style={{ display: 'flex' }}>
-								<Menu.Item as='a'>Log Out</Menu.Item>
+								<Menu.Item as=''>Log Out</Menu.Item>
 							</Link>
 						</Menu.Menu>
 					</Container>
