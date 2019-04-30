@@ -1,15 +1,15 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 
 //=======LocalHost URL=======//
 const LOCALHOST = 'http://localhost:3000';
 
 //=======API KEYS FROM .ENV=======//
 const MARKETCHECKAPIKEY = `${process.env.REACT_APP_MARKETCHECK_API_KEY}`;
-console.log('API KEY', MARKETCHECKAPIKEY);
+// console.log('API KEY', MARKETCHECKAPIKEY);
 
 //=======Market Check EndPoints=======//
-const MARKETCHECK = 'https://marketcheck-prod.apigee.net/v1/sales?api_key='
-const VINPARAMS = '&car_type=used&vin='
+// const MARKETCHECK = 'https://marketcheck-prod.apigee.net/v1/sales?api_key='
+// const VINPARAMS = '&car_type=used&vin='
 
 export const getAuthToken = (loginData) => {
 	console.log(loginData);
