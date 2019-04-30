@@ -62,7 +62,7 @@ export const getCarValueByVIN = (VINData) => {
                 'Accept': 'application/json'
             }
     	}
-    ).then((res) => res.json()).then(console.log);
+    ).then((res) => res.json())
 };
 
 
@@ -75,5 +75,5 @@ export const fetchCarsForSale = (data) => {
                 'Accept': 'application/json'
             }
     	}
-    ).then((res) => res.json()).then(console.log);
+    ).then((res) => res.json())
 };
