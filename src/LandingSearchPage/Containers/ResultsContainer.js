@@ -1,6 +1,6 @@
 import React from 'react';
 import CarsForSaleResultsContainer from './CarsForSaleResultsContainer';
-import CarValueResultsContainer from './CarValueResultsContainer';
+// import CarValueResultsContainer from './CarValueResultsContainer';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -19,14 +19,13 @@ class ResultsContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.funcName}
                 <CarsForSaleResultsContainer />
-                <CarValueResultsContainer />
             </div>
         )
     }
 }
 
+/* <CarValueResultsContainer /> */
 
 const mapStateToProps = (state) => {
     return {

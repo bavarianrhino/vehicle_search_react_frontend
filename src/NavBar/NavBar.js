@@ -48,8 +48,4 @@ const mapDispatchToProps = (dispatch) => ({
 	functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 });
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(NavBar);
-
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

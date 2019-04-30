@@ -18,7 +18,6 @@ class CarsForSaleResultsContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.funcName}
                 <CarsForSaleResultList />
             </div>
         )
