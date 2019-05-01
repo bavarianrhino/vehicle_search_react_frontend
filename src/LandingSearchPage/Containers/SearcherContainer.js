@@ -26,6 +26,14 @@ class Searcher extends React.Component {
     }
 }
 /* <CarValueSearchForm />; */
+                //                 const panes = [
+                //   { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}>Tab 1 Content</Tab.Pane> },
+                //   { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
+                //   { menuItem: '', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
+                // ]
+                
+                // const TabExampleSecondaryPointing = () => (
+                //   <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
 
 const mapStateToProps = (state) => {
     return {
