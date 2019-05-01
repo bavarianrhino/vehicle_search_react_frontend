@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
 
 import { Card, Grid, Image, Label, Button, Icon } from 'semantic-ui-react';
-import '../../App.css';
+import '../../Stylesheets/CarForSaleCard.css';
 
 
 const CarForSaleCard = (props) => {
