@@ -26,7 +26,7 @@ const CarForSaleCard = (props) => {
         let emptyArr = cardObj.image.length
         const fallback = 'https://media-cf.assets-cdk.com/websites/5.0.4032-199/websitesEar/websitesWebApp/css/common/images/en_US/noImage_large.png'
         return cardObj.image.map((img) => {
-            return <div><img src={(emptyArr === 0) ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} /></div>
+            return <div><img alt='' src={(emptyArr === 0) ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} /></div>
         })
     }
 
