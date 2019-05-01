@@ -22,7 +22,7 @@ const CarForSaleCard = (props) => {
 
     const fallback = 'https://media-cf.assets-cdk.com/websites/5.0.4032-199/websitesEar/websitesWebApp/css/common/images/en_US/noImage_large.png'
 
-    let mapImages = () => {}
+    let mapImages = () => {
         let emptyArr = cardObj.image.length
         const fallback = 'https://media-cf.assets-cdk.com/websites/5.0.4032-199/websitesEar/websitesWebApp/css/common/images/en_US/noImage_large.png'
         return cardObj.image.map((img) => {
@@ -35,7 +35,7 @@ const CarForSaleCard = (props) => {
 			<Card className='car_card' fluid color='black' style={{ padding: '1.5em 1.5em', margin: '1em 0em' }}>
 				<Grid>
 					<Grid.Column width={5}>
-                        <Carousel showArrows={true} onChange={onChange} onClickItem={onClickItem} onClickThumb={onClickThumb}>
+                        <Carousel showArrows={true} >
                             {mapImages()}
                         </Carousel>
 					</Grid.Column>
