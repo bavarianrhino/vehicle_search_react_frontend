@@ -1,11 +1,25 @@
 
 const LOCAL = 'http://localhost:3000'
 
+export const fetchFavorites = () => {
+	return (dispatch) => {
+		dispatch({ type: 'LOADING_FAVORITES' });
+		return fetch(`${LOCAL}/profile`, {
+			method: 'GET',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+			.then((response) => response.json())
+			.then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
+	};
+};
+
 export const handleAddFavorite = (data) => {
     console.log(data);
     return dispatch => {
         dispatch({ type: 'SAVING_FAVORITE' });
-        return fetch(`http://localhost:3000/cars`, {
+        return fetch(`${LOCAL}/cars`, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -15,21 +29,20 @@ export const handleAddFavorite = (data) => {
 				make: data.make,
 				model: data.model,
 				year: data.id,
+				api_id: data.id,
+				url: data.vdp_url,
 				vin: data.vin,
 				user_id: data.user_id
 			})
-        })
-        .then((res) => res.json())
-        .then((payload) => {
-            dispatch({ type: 'LAND_FAVORITE_CAR', payload });
-		});
-			// if (payload.error) {
-			// 	console.error(payload.error);
-			// } else {
-            //     console.log(payload)
-			// 	dispatch({ type: "LAND_FAVORITE_CAR", payload })   
-            // }
-    // })
+		})
+			.then((res) => res.json())
+			.then((payload) => {
+				if (payload.error) {
+					console.error(payload.error);
+				} else {
+					dispatch({ type: 'LAND_FAVORITE_CAR', payload });
+				}
+			});
     }
 }
 // 		});
