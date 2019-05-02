@@ -24,7 +24,7 @@ class NavBar extends React.Component {
 						</Menu.Item>
 						<Menu.Item as=''>Searcher</Menu.Item>
 						<Menu.Item as=''>Values</Menu.Item>
-						<Menu.Item as=''>Favorites</Menu.Item>
+						<Link to='/login'><Menu.Item as=''>Favorites</Menu.Item></Link>
 
 						<Menu.Menu position='right'>
 							<Link to='/login' onClick={() => localStorage.clear()} style={{ display: 'flex' }}>
