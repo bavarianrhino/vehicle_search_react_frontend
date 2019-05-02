@@ -21,7 +21,7 @@ class CarsForSaleResultList extends React.Component {
     render() {
         return (
 			<div>
-				<Card.Group textAlign='center' style={{ display: 'flow-root', margin: '3.125em auto' }}>
+				<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
 					{this.props.cars ? this.mapCars() : null}
 				</Card.Group>
 			</div>
