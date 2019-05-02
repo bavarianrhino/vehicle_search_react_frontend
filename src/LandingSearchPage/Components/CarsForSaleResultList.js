@@ -12,7 +12,7 @@ class CarsForSaleResultList extends React.Component {
 	// };
 
 	mapCars = (props) => {
-		return this.props.cars.map((car) => {
+        return this.props.cars.map((car) => {
 			return <CarForSaleCard key={car.id} car={car} />;
 		});
 	};

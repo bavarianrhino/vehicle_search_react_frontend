@@ -1,32 +1,35 @@
 
 const LOCAL = 'http://localhost:3000'
 
-export const handleAddFavorite = (user, car) => {
-    console.log(user, car);
+export const handleAddFavorite = (data) => {
+    console.log(data);
     return dispatch => {
         dispatch({ type: 'SAVING_FAVORITE' });
-        return fetch(`${LOCAL}/cars`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({
-                make: car.make,
-                model: car.model,
-                year: car.id,
-                vin: car.vin,
-                user_id: user
-            })
+        return fetch(`http://localhost:3000/cars`, {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				make: data.make,
+				model: data.model,
+				year: data.id,
+				vin: data.vin,
+				user_id: data.user_id
+			})
         })
         .then((res) => res.json())
         .then((payload) => {
-			if (payload.error) {
-				console.error(payload.error);
-			} else {
-				dispatch({ type: "LAND_FAVORITE_CAR", payload })   
-            }
-        })
+            dispatch({ type: 'LAND_FAVORITE_CAR', payload });
+		});
+			// if (payload.error) {
+			// 	console.error(payload.error);
+			// } else {
+            //     console.log(payload)
+			// 	dispatch({ type: "LAND_FAVORITE_CAR", payload })   
+            // }
+    // })
     }
 }
 // 		});

@@ -11,7 +11,7 @@ export const FavoritesReducer = (
 				return { ...state, loading: true };
 
 			case 'LAND_FAVORITE_CAR':
-				return { ...state, loading: false, favorites: action.payload };
+				return { ...state, loading: false, favorites: [...state.favorites, action.payload] };
 
 			default:
 				return state;

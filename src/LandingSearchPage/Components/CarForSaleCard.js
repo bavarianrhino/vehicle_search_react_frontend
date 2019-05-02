@@ -17,11 +17,7 @@ class CarForSaleCard extends React.Component {
 	mapImages = () => {
 		const fallback = 'https://media-cf.assets-cdk.com/websites/5.0.4032-199/websitesEar/websitesWebApp/css/common/images/en_US/noImage_large.png';
 		return this.props.car.media.photo_links.map((img) => {
-			return (
-				<div>
-					<img alt='' src={this.props.car.media.photo_links === 0 ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} />
-				</div>
-			);
+			return (<div><img alt='' src={this.props.car.media.photo_links === 0 ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} /></div>);
 		});
 	};
 
@@ -33,22 +29,29 @@ class CarForSaleCard extends React.Component {
 
 	addFavorite = (buildCarObj) => {
         console.log('addFavorite');
-        handleAddFavorite(this.props.currentUser, buildCarObj);
+        console.log(this.props.currentUser)
+        console.log(buildCarObj);
+        this.props.handleAddFavorite(buildCarObj);
+        console.log('HIT')
 	};
 
 	render() {
+        
 		const buildCarObj = {
 			id: this.props.car.id,
+			user_id: this.props.currentUser,
 			heading: this.props.car.heading,
+			car_specs: this.props.car.build,
 			price: this.props.car.ref_price,
 			miles: this.props.car.miles,
 			dealerInfo: this.props.car.dealer,
 			distance: this.props.car.dist,
 			image: this.props.car.media.photo_links[0],
 			images: this.props.car.media.photo_links,
-			make: this.props.car.make,
-			model: this.props.car.model,
-			trim: this.props.car.trim,
+			make: this.props.car.build.make,
+			model: this.props.car.build.model,
+			trim: this.props.car.build.trim,
+			year: this.props.car.build.year,
 			vdp_url: this.props.car.vdp_url,
 			vin: this.props.car.vin
 		};
@@ -96,12 +99,18 @@ class CarForSaleCard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.currentUser,
-        favorites: state.favorites
-    }
+		currentUser: state.cars.currentUser,
+		favorites: state.favorites.favorites
+	};
 }
 
-export default connect(mapStateToProps, {handleAddFavorite})(CarForSaleCard);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		handleAddFavorite: (buildCarObj) => handleAddFavorite(buildCarObj)(dispatch)
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarForSaleCard);
 
 // import React from 'react';
 // import ViewCarSaleModal from './ViewCarSaleModal';
