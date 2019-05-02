@@ -3,7 +3,7 @@ import CarsForSaleSearchForm from '../Components/CarsForSaleSearchForm';
 // import CarValueSearchForm from '../Components/CarValueSearchForm';
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 
 
 class Searcher extends React.Component {
@@ -15,25 +15,25 @@ class Searcher extends React.Component {
     funcName = (e) => {
         console.log(e.target.value)
     }
-
+    
     render() {
+
+        const panes = [
+            { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}><CarsForSaleSearchForm /></Tab.Pane> },
+            { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
+            { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
+        ]
+
         return (
 			<div>
-				<CarsForSaleSearchForm />
-                
+                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} panes={panes} />
 			</div>
 		);
     }
 }
 /* <CarValueSearchForm />; */
-                //                 const panes = [
-                //   { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}>Tab 1 Content</Tab.Pane> },
-                //   { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
-                //   { menuItem: '', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
-                // ]
                 
                 // const TabExampleSecondaryPointing = () => (
-                //   <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
 
 const mapStateToProps = (state) => {
     return {
