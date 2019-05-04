@@ -12,16 +12,16 @@ export const FavoritesReducer = (
 				return { ...state, loading: true };
 
 			case 'LOADING_FAVORITES':
-				return { ...state, loading: !state.loading };
+				return { ...state, loading: true };
 
 			case 'FETCH_FAVORITES':
-				return { ...state, api_urls: action.payload, loading: !state.loading };
+				return { ...state, api_urls: action.payload, loading: false };
 
 			case 'LANDING_FAVORITES':
-				return { ...state, favorites: [...state.favorites, action.json], loading: !state.loading };
+				return { ...state, favorites: [...state.favorites, action.json], loading: false };
 
 			case 'LAND_FAVORITE_CAR':
-				return { ...state, loading: false, favorites: [...state.favorites, action.payload] };
+				return { ...state, favorites: [...state.favorites, action.payload], loading: false };
 
 			default:
 				return state;

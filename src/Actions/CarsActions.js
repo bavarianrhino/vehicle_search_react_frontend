@@ -33,3 +33,23 @@ export const fetchCarsForSale = (data) => {
         .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
     }
 };
+
+// export const getCarValueByVIN = (VINData) => {
+// 	console.log(VINData);
+// 	return fetch(`https://marketcheck-prod.apigee.net/v1/search?api_key=${MARKETCHECKAPIKEY}&vins=${VINData}`, {
+// 		method: 'GET',
+// 		headers: {
+// 			Accept: 'application/json'
+// 		}
+// 	}).then((res) => res.json());
+// };
+
+// export const getCarValueByVIN = (VINData) => {
+// 	console.log(VINData);
+// 	return fetch(`https://marketcheck-prod.apigee.net/v1/search?api_key=${MARKETCHECKAPIKEY}&vins=${VINData}`, {
+// 		method: 'GET',
+// 		headers: {
+// 			Accept: 'application/json'
+// 		}
+// 	}).then((res) => res.json());
+// };

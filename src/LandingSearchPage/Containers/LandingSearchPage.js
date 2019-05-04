@@ -5,23 +5,11 @@ import ResultsContainer from './ResultsContainer';
 import { connect } from 'react-redux';
 
 
-import { fetchFavorites } from '../../Actions/FavoritesActions';
-import { landFavorites } from '../../Actions/FavoritesActions';
+// import { fetchFavorites } from '../../Actions/FavoritesActions';
+// import { landFavorites } from '../../Actions/FavoritesActions';
 import { Container, Divider, Segment } from 'semantic-ui-react';
 
 class LandingSearchPage extends React.Component {
-	state = {
-		attr: null
-	};
-
-	componentDidMount() {
-		this.props.fetchFavorites().then(console.log);
-	}
-
-	componentDidUpdate() {
-		console.log(this.props.api_urls);
-		this.props.landFavorites(this.props.api_urls).then(console.log);
-	}
 
 	render() {
 		return (
@@ -39,24 +27,8 @@ class LandingSearchPage extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		api_urls: state.favorites.api_urls
-	};
-};
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		fetchFavorites: (data) => fetchFavorites(data)(dispatch),
-		landFavorites: (data) => landFavorites(data)(dispatch)
-		// openModal: (current) => dispatch(openModal(current))
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(LandingSearchPage);
+export default connect()(LandingSearchPage);
 
 /* <Header
 as='h1'
