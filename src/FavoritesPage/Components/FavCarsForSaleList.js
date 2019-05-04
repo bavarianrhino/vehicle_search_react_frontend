@@ -9,6 +9,7 @@ class FavCarsForSaleList extends React.Component {
 
     mapFavCars = (props) => {
         return this.props.favCars.map((car) => {
+            console.log(car)
             return <FavCarsForSaleCard key={car.id} car={car} />;
         })
     }
