@@ -13,10 +13,10 @@ class App extends Component {
             <div id='app-container'>
                 <Router>
                     <Switch>
-                        <Route exact path='/login' render={(props) => {return !localStorage.getItem('token') ? <Login {...props} /> : <Redirect to='/' /> }} />
-                        <Route exact path='/signup' render={(props) => {return !localStorage.getItem('token') ? <SignUp {...props} /> : <Redirect to='/' /> }} />
-                        <Route exact path='/' render={(props) => {return localStorage.getItem('token') ? <LandingSearchPage {...props} /> : <Redirect to='/login' /> }} />
-                        <Route exact path='/favorites' render={(props) => {return localStorage.getItem('token') ? <Favorites {...props} /> : <Redirect to='/login' /> }} />
+                        <Route exact path='/login' render={(props) => !localStorage.getItem('token') ? <Login {...props} /> : <Redirect to='/' /> } />
+                        <Route exact path='/signup' render={(props) => !localStorage.getItem('token') ? <SignUp {...props} /> : <Redirect to='/' /> } />
+                        <Route exact path='/' render={(props) => localStorage.getItem('token') ? <LandingSearchPage {...props} /> : <Redirect to='/login' /> } />
+                        <Route exact path='/favorites' render={(props) => localStorage.getItem('token') ? <Favorites {...props} /> : <Redirect to='/login' /> } />
                     </Switch>
                 </Router>
             </div>

@@ -22,9 +22,13 @@ class NavBar extends React.Component {
 							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
 							Auto Woke
 						</Menu.Item>
-						<Menu.Item as=''>Searcher</Menu.Item>
+						<Link to='/' style={{ display: 'flex' }}>
+							<Menu.Item>Search</Menu.Item>
+						</Link>
 						<Menu.Item as=''>Values</Menu.Item>
-						<Link to='/login'><Menu.Item as=''>Favorites</Menu.Item></Link>
+							<Link to='/favorites' style={{ display: 'flex' }}>
+								<Menu.Item style={{ display: 'flex' }}>Favorites</Menu.Item>
+                            </Link>
 
 						<Menu.Menu position='right'>
 							<Link to='/login' onClick={() => localStorage.clear()} style={{ display: 'flex' }}>
