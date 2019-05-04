@@ -18,7 +18,6 @@ class LandingSearchPage extends React.Component {
 				<Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<SearcherContainer />
-						<Divider inverted section />
 						<ResultsContainer />
 					</Container>
 				</Segment>

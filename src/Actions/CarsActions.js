@@ -21,7 +21,25 @@ export const fetchCarsForSale = (data) => {
     return dispatch => {
         dispatch({ type: 'LOADING_CARS' });
         return fetch(
-			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&seller_type=dealer${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_10}${PHOTOS}`,
+			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_10}${PHOTOS}`,
+			{
+				method: 'GET',
+				headers: {
+					Accept: 'application/json'
+				}
+			}
+		)
+        .then((res) => res.json())
+        .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
+    }
+};
+
+export const fetchUsedCarsForSale = (data) => {
+    console.log(data);
+    return dispatch => {
+        dispatch({ type: 'LOADING_CARS' });
+        return fetch(
+			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_10}${PHOTOS}`,
 			{
 				method: 'GET',
 				headers: {

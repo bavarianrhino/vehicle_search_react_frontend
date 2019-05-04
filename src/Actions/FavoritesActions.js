@@ -74,7 +74,7 @@ export const landFavorites = (urls) => {
                 dispatch({ type: 'LANDING_FAVORITES', json })
                 // (this.props.api_urls.map(({vin}) => vin).includes(json) ? dispatch({ type: 'LOADING_FAVORITES', json }) : dispatch({ type: 'LANDING_FAVORITES', json }))
 			})
-		)
+		).then((res) => res)
     }    
 }
 

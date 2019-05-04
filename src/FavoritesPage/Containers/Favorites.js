@@ -12,6 +12,7 @@ import { Segment, Container, Tab } from 'semantic-ui-react';
 
 
 class Favorites extends React.Component {
+
 	state = {
 		activeIndex: null,
 		loading: false
@@ -19,14 +20,18 @@ class Favorites extends React.Component {
 
 	handleTabChange = (e, data) => {
 		this.setState({ activeIndex: data.activeIndex, loading: !this.state.loading });
-		this.props.landFavorites(this.props.api_urls).then((res) => {
-			this.setState({ loading: !this.state.loading });
-		});
-	};
+        this.props.landFavorites(this.props.api_urls)
+        .then((res) => {this.setState({ loading: !this.state.loading })})
+        // .then((res) => {this.mapFavs(res)})
+        // this.setState({ loading: !this.state.loading })
+		}
 
 	// handleRangeChange = (e) => this.setState({ activeIndex: e.target.value, loading: !this.state.loading });
 
-	mapFavs = () => {
+	mapFavs = (res) => {
+        // this.props.favorites.map((res) => {
+        //     console.log(res)
+        // })
 		// this.props.landFavorites(this.props.api_urls)
 		// .then((res) => {this.setState({ loading: false})})
 		// .then((res) => {
@@ -54,7 +59,7 @@ class Favorites extends React.Component {
 			menuItem: 'Favorite Cars',
 			render: () => (
 				<Tab.Pane attached={false} loading={this.state.loading}>
-					<FavCarsForSaleContainer favCars={this.props.favorites} />
+					<FavCarsForSaleContainer />
 				</Tab.Pane>
 			)
 		},
@@ -121,7 +126,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchFavorites: (data) => fetchFavorites(data)(dispatch)
+        // fetchFavorites: (data) => fetchFavorites(data)(dispatch),
         landFavorites: (data) => landFavorites(data)(dispatch)
 		// openModal: (current) => dispatch(openModal(current))
 	};

@@ -12,21 +12,23 @@ const ViewCarSaleModal = (props) => {
     console.log(props.car)
     
     return (
-        <Modal open={props.open}>
-            <Modal.Header>{props.buildCarObj.heading}<span style={{ float: 'right' }}>${props.buildCarObj.price}.00</span></Modal.Header>
-            <Modal.Content>
-                <Modal.Description>
-                    <Carousel showArrows={true} showIndicators={false} showThumbs={true} width='98%'>
-                        {props.mapImages()}
-                    </Carousel>
-                </Modal.Description>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button inverted color='green' onClick={() => props.addFavorite(props.buildCarObj)} style={{ float: 'left' }}>Watch  <Icon name='like' /></Button>
-                <Button color='red' onClick={() => props.toggleModal()} >Close  <Icon name='close' /></Button>
-            </Modal.Actions>
-        </Modal>
-    );
+		<Modal open={props.open}>
+			<Modal.Header>
+				{props.buildCarObj.heading}
+				<span style={{ float: 'right' }}>${props.buildCarObj.price}.00</span>
+			</Modal.Header>
+			<Modal.Content>
+				<Modal.Description>
+					<Carousel showArrows={true} showIndicators={false} showThumbs={true} width='98%'>
+						{props.mapImages()}
+					</Carousel>
+				</Modal.Description>
+			</Modal.Content>
+			<Modal.Actions>
+				<Button icon color='red' labelPosition='right' onClick={() => props.toggleModal()}>Next<Icon name='right arrow' /></Button>
+			</Modal.Actions>
+		</Modal>
+	);
 }
 
 const mapStateToProps = (state) => {
