@@ -6,7 +6,7 @@ import FavCarValuesContainer from './FavCarValuesContainer';
 import { fetchFavorites } from '../../Actions/FavoritesActions'
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 
 
 class Favorites extends React.Component {
@@ -18,14 +18,18 @@ class Favorites extends React.Component {
     componentDidMount () {
         this.props.fetchFavorites().then(console.log)
     }
-
+    
     render() {
+
+        const panes = [
+            { menuItem: 'Favorite Cars', render: () => <Tab.Pane attached={false}><FavCarsForSaleContainer /></Tab.Pane> },
+            { menuItem: 'Saved Car Value Stats', render: () => <Tab.Pane attached={false}><FavCarValuesContainer /></Tab.Pane> }
+        ]
+
         return (
-			<div>
-				{this.funcName}
-				<NavBar />
-				<FavCarsForSaleContainer />
-                <FavCarValuesContainer />
+            <div>
+                <NavBar />
+                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} panes={panes} />
 			</div>
 		);
     }
