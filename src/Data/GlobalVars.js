@@ -12,6 +12,7 @@ console.log('API KEY', MCAPIKEY);
 export const COORS = 'https://cors-anywhere.herokuapp.com/';
 export const MCSALES = 'https://marketcheck-prod.apigee.net/v1/sales?api_key='
 export const MCSEARCH = 'https://marketcheck-prod.apigee.net/v1/search?api_key='
+export const MCLISTING = 'https://marketcheck-prod.apigee.net/v1/listing/'
 export const USED = '&car_type=used'
 export const NEW = '&car_type=new'
 export const YEAR = '&year='

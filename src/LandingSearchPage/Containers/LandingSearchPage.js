@@ -4,27 +4,34 @@ import SearcherContainer from './SearcherContainer';
 import ResultsContainer from './ResultsContainer';
 import { connect } from 'react-redux';
 
+
+import { fetchFavorites } from '../../Actions/FavoritesActions';
+import { landFavorites } from '../../Actions/FavoritesActions';
 import { Container, Divider, Segment } from 'semantic-ui-react';
 
 class LandingSearchPage extends React.Component {
-
 	state = {
 		attr: null
 	};
 
-	funcName = (e) => {
-		console.log(e.target.value);
-	};
+	componentDidMount() {
+		this.props.fetchFavorites().then(console.log);
+	}
+
+	componentDidUpdate() {
+		console.log(this.props.api_urls);
+		this.props.landFavorites(this.props.api_urls).then(console.log);
+	}
 
 	render() {
 		return (
 			<div>
 				<NavBar />
 				<Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
-					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', 'backgroundRepeat': 'no-repeat', 'backgroundSize': 'contain' }}>
-                                <SearcherContainer />
-                            <Divider inverted section />
-                                <ResultsContainer />
+					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
+						<SearcherContainer />
+						<Divider inverted section />
+						<ResultsContainer />
 					</Container>
 				</Segment>
 			</div>
@@ -34,13 +41,17 @@ class LandingSearchPage extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		attr: state.attr
+		api_urls: state.favorites.api_urls
 	};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchFavorites: (data) => fetchFavorites(data)(dispatch),
+		landFavorites: (data) => landFavorites(data)(dispatch)
+		// openModal: (current) => dispatch(openModal(current))
+	};
+};
 
 export default connect(
 	mapStateToProps,
