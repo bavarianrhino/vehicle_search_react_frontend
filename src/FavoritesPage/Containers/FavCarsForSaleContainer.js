@@ -9,9 +9,7 @@ class FavCarsForSaleContainer extends React.Component {
 
     render() {
         return (
-			<div>
-				<FavCarsForSaleList favCars={this.favCars} />
-			</div>
+            <FavCarsForSaleList favCars={this.favCars} />
 		);
     }
 }

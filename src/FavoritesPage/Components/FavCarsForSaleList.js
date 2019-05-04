@@ -9,17 +9,27 @@ class FavCarsForSaleList extends React.Component {
 
     mapFavCars = (props) => {
         return this.props.favCars.map((car) => {
-            return <FavCarsForSaleCard key={car.id} car={car}/>;
+            return <FavCarsForSaleCard key={car.id} car={car} />;
         })
     }
 
     render() {
         return (
-			<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
-				{this.props.favCars ? this.this.mapFavCars() : null}
+			<Card.Group textAlign='center' itemsPerRow={1} style={{ display: 'flex', margin: '0.125em auto' }}>
+				{this.props.favCars ? this.mapFavCars() : null}
 			</Card.Group>
 		);
     }
 }
 
-export default connect(null, null)(FavCarsForSaleList);
+const mapStateToProps = (state) => {
+    return {
+        favCars: state.favorites.favorites
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavCarsForSaleList);
