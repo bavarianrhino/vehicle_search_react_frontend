@@ -7,33 +7,13 @@ import { connect } from 'react-redux';
 
 class FavCarsForSaleContainer extends React.Component {
 
-    state = {
-        attr: null
-    }
-
-    funcName = (e) => {
-        console.log(e.target.value)
-    }
-
     render() {
         return (
-            <div>
-                {this.funcName}
-                <FavCarsForSaleList />
-            </div>
-        )
+			<div>
+				<FavCarsForSaleList favCars={this.favCars} />
+			</div>
+		);
     }
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        attr: state.attr
-    }
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(FavCarsForSaleContainer);
+export default connect(null, null)(FavCarsForSaleContainer);
