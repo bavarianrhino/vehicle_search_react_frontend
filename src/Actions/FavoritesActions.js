@@ -18,6 +18,7 @@ import { MCLISTING } from '../Data/GlobalVars';
 // import { PHOTOS } from '../Data/GlobalVars'
 
 
+
 // *********************************************************************** //
 // Initial fetch is located in getCurrentUser located in LoginSignUpAction //
 // *********************************************************************** //
@@ -36,6 +37,27 @@ import { MCLISTING } from '../Data/GlobalVars';
 // 	};
 // };
 
+// export const landFavorites = (urls) => {
+//     return (dispatch, getState) => {
+//         // const { items } = getState()
+//         console.log(getState().RootReducer);
+//         // console.log(items)
+// 		dispatch({ type: 'LOADING_FAVORITES' });
+//         return Promise.all(
+// 			urls.map(async (api) => {
+// 				const response = await fetch(`${COORS}${MCLISTING}${api.api_id}?api_key=${MCAPIKEY}`, {
+// 					method: 'GET',
+// 					headers: {
+// 						Accept: 'application/json'
+// 					}
+// 				})
+//                 const json = await response.json();
+//                 // (this.props.api_urls.map(({vin}) => vin).includes(json) ? dispatch({ type: 'LOADING_FAVORITES', json }) : dispatch({ type: 'LANDING_FAVORITES', json }))
+// 			})
+// 		)
+//     }    
+// }
+
 export const landFavorites = (urls) => {
     return (dispatch) => {
 		dispatch({ type: 'LOADING_FAVORITES' });
@@ -47,9 +69,10 @@ export const landFavorites = (urls) => {
 						Accept: 'application/json'
 					}
 				})
-				const json = await response.json();
-                console.log(json);
+                const json = await response.json();
+                console.log(json)
                 dispatch({ type: 'LANDING_FAVORITES', json })
+                // (this.props.api_urls.map(({vin}) => vin).includes(json) ? dispatch({ type: 'LOADING_FAVORITES', json }) : dispatch({ type: 'LANDING_FAVORITES', json }))
 			})
 		)
     }    
@@ -85,3 +108,16 @@ export const handleAddFavorite = (data) => {
 			});
     }
 }
+
+
+// const mapStateToProps = (state) => {
+//     return {
+//         api_urls: state.favorites.api_urls
+//     }
+// }
+
+// const mapDispatchToProps = (dispatch) => ({
+//     functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(FavCarsForSaleCard);
