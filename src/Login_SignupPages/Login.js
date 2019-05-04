@@ -1,10 +1,11 @@
 import React from 'react';
-import { getAuthToken } from '../Services/APIFetchs';
-import { setCurrentUser } from '../Actions/AllActions';
-
-import { Button, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
+import { getAuthToken } from '../Actions/LoginSignUpActions';
+import { setCurrentUser } from '../Actions/LoginSignUpActions';
+
+
+import { Segment, Container, Button, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
 
 
 
@@ -17,7 +18,7 @@ class Login extends React.Component {
 	};
 
 	handleChange = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -30,15 +31,17 @@ class Login extends React.Component {
 			.then((payload) => {
 				console.log(payload)
 				if (payload.user) {
-					localStorage.setItem('token', payload.jwt);
+                    localStorage.setItem('token', payload.jwt);
                     this.props.history.push('/');
-                    this.props.setCurrentUser(payload.user.id);
-                    // getFavorites()
+                    this.props.setCurrentUser(payload.user.id).then(console.log)
 				} else {
 					this.setState({ error: payload.error });
 				}
-			})
-        e.target.reset();
+            })
+            // Use below dispatch if above setCurrentUser gets bugs
+            // .then((res) => {this.props.fetchFavorites(res).then(console.log)})
+            
+        e.target.reset()
     }
 
     handleReset = () => {
@@ -52,28 +55,44 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-					<Grid.Column style={{ maxWidth: 450 }}>
-						<Header as='h2' color='teal' textAlign='center'>
-							<Image src='/logo.png' /> Log-in to your account
-						</Header>
+                <Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
+					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
+                        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+                            <Grid.Column style={{ maxWidth: 450 }}>
+                                <Header as='h2' color='teal' textAlign='center'>
+                                    <Image src='/logo.png' /> Log-in to your account
+                                </Header>
 
-						<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset} >
-                            <Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
-                            <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
-                            <Button color='teal' fluid size='large' type='submit'>Login</Button>
-						</Form>
+                                <Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset} >
+                                    <Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
+                                    <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
+                                    <Button color='teal' fluid size='large' type='submit'>Login</Button>
+                                </Form>
 
-                        {this.state.error ? (<Message attached error header="There was an error with your submission:" list={this.state.error}/>) : null }
+                                {this.state.error ? (<Message attached error header="There was an error with your submission:" list={this.state.error}/>) : null }
 
-                        <Message>Need An Account? <a href='/signup'>Sign Up</a></Message>
+                                <Message>Need An Account? <a href='/signup'>Sign Up</a></Message>
 
 
-					</Grid.Column>
-				</Grid>
+                            </Grid.Column>
+                        </Grid>
+                    </Container>
+                </Segment>
 			</div>
 		);
 	}
 }
 
-export default connect(null, {setCurrentUser})(Login);
+const mapStateToProps = (state) => {
+	return {
+		api_urls: state.favorites.api_urls
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setCurrentUser: (data) => setCurrentUser(data)(dispatch)
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
