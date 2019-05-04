@@ -6,7 +6,7 @@ import FavCarValuesContainer from './FavCarValuesContainer';
 import { fetchFavorites } from '../../Actions/FavoritesActions'
 import { connect } from 'react-redux';
 
-import { Tab } from 'semantic-ui-react';
+import { Segment, Container, Tab } from 'semantic-ui-react';
 
 
 class Favorites extends React.Component {
@@ -29,7 +29,11 @@ class Favorites extends React.Component {
         return (
             <div>
                 <NavBar />
-                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} panes={panes} />
+                <Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
+                    <Container textAlign='center'>
+                        <Tab menu={{ color: 'teal', secondary: true, pointing: true }} panes={panes} />
+                    </Container>
+                </Segment>
 			</div>
 		);
     }
