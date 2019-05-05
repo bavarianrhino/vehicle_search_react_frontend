@@ -1,8 +1,8 @@
 import React from 'react';
 import CarsForSaleSearchForm from '../Components/CarsForSaleSearchForm';
-// import CarValueSearchForm from '../Components/CarValueSearchForm';
-import { connect } from 'react-redux';
+import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
 
+import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
 
 
@@ -20,7 +20,7 @@ class Searcher extends React.Component {
 
         const panes = [
             { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}><CarsForSaleSearchForm /></Tab.Pane> },
-            { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane> },
+            { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}><UsedCarsForSaleSearchForm /></Tab.Pane> },
             { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
         ]
 

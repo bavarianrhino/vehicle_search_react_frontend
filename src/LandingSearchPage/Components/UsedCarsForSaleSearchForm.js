@@ -9,9 +9,10 @@ import { fetchUsedCarsForSale } from '../../Actions/CarsActions';
 import { Form } from 'semantic-ui-react';
 
 const distanceOptions = [{ key: '1', text: '50 Miles', value: '50' }, { key: '2', text: '100 Miles', value: '100' }, { key: '3', text: '200 Miles', value: '200' }, { key: '4', text: '500 Miles', value: '500' }, { key: '5', text: '1000 Miles', value: '1000' }];
-const modelOptions = [{ key: '1', text: 'X1', value: 'X1' }, { key: '2', text: 'X2', value: 'X2' }];
+const modelOptions = [{ key: '1', text: '7 Series', value: '7%20series' }, { key: '2', text: '5 Series', value: '5%20series' }];
 
 class UsedCarsForSaleSearchForm extends React.Component {
+
 	state = {
 		year: '',
 		make: '',
@@ -60,11 +61,11 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	// };
 
 	handleReset = () => {
-		this.setState({
-			year: null,
-			make: '',
-			model: ''
-		});
+		// this.setState({
+		// 	year: null,
+		// 	make: '',
+		// 	model: ''
+		// });
 	};
 
 	render() {
@@ -92,10 +93,7 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(
-	null,
-	mapDispatchToProps
-)(UsedCarsForSaleSearchForm);
+export default connect(null,mapDispatchToProps)(UsedCarsForSaleSearchForm);
 // export default connect(null, {landCarsForSale})(CarsForSaleSearchForm);
 
 /* <Form onSubmit={this.handleSubmit}>

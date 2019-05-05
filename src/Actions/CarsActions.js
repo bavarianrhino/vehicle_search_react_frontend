@@ -12,7 +12,7 @@ import { MODEL } from '../Data/GlobalVars'
 import { ZIP } from '../Data/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
 import { ROWS_10 } from '../Data/GlobalVars'
-// import { ROWS_25 } from '../Data/GlobalVars'
+import { ROWS_25 } from '../Data/GlobalVars'
 // import { ROWS_50 } from '../Data/GlobalVars'
 import { PHOTOS } from '../Data/GlobalVars'
 
@@ -21,7 +21,7 @@ export const fetchCarsForSale = (data) => {
     return dispatch => {
         dispatch({ type: 'LOADING_CARS' });
         return fetch(
-			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_10}${PHOTOS}`,
+			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
 			{
 				method: 'GET',
 				headers: {
@@ -35,11 +35,11 @@ export const fetchCarsForSale = (data) => {
 };
 
 export const fetchUsedCarsForSale = (data) => {
-    console.log(data);
+    // console.log(data);
     return dispatch => {
         dispatch({ type: 'LOADING_CARS' });
         return fetch(
-			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_10}${PHOTOS}`,
+			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
 			{
 				method: 'GET',
 				headers: {
