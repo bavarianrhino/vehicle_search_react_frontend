@@ -8,6 +8,25 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 
 
 class App extends Component {
+
+    componentDidMount () {
+        this.getLocation()
+    }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(this.setPosition);
+        } else {
+          console.log("Geolocation is not supported by this browser.")
+        }
+    }
+
+    setPosition = (position) => {
+        let lat = position.coords.latitude
+        let long = position.coords.longitude
+
+    }
+
     render() {
         window.localStorage.clear()
         return (
