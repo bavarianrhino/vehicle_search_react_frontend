@@ -15,16 +15,20 @@ class App extends Component {
 
     getLocation = () => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.setPosition);
+          navigator.geolocation.getCurrentPosition(this.logPosition)
         } else {
           console.log("Geolocation is not supported by this browser.")
         }
     }
 
-    setPosition = (position) => {
-        let lat = position.coords.latitude
-        let long = position.coords.longitude
-
+    logPosition = (position) => {
+        const location = {
+			lat: position.coords.latitude,
+			long: position.coords.longitude
+		};
+        console.log("Users Location:", `Longitude - ${location.long}`)
+        console.log('               ', `Latitude - ${location.lat}`);
+        this.props.setPosition(location)
     }
 
     render() {
