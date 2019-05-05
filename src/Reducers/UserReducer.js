@@ -1,0 +1,20 @@
+export const UserReducer = (
+
+	state = {
+        loading: false,
+        longitude: null,
+        latitude: null
+        
+	}, action) => {
+
+        switch (action.type) {
+			case 'SAVING_LOCATION':
+				return { ...state, loading: true };
+
+			case 'SET_LOCATION':
+				return { ...state, loading: true };
+
+			default:
+				return state;
+		}
+};
