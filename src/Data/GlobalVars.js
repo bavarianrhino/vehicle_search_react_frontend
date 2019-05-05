@@ -25,3 +25,6 @@ export const ROWS_10 = '&rows=10&start=1'
 export const ROWS_25 = '&rows=25&start=1'
 export const ROWS_50 = '&rows=50&start=1'
 export const PHOTOS = '&photo_links=true'
+
+// ------------- Missing Picture Url ------------- //
+export const TRUSTFALL = 'https://img00.deviantart.net/69d9/i/2009/219/c/f/missing_car_by_dreamofyou.jpg'
