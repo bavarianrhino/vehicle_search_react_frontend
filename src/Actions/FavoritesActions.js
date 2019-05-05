@@ -74,18 +74,25 @@ export const handleAddFavorite = (data) => {
     }
 }
 
-export const deleteFavorite = (data) => {
-    console.log(data)
+export const deleteFavorite = (user, vin) => {
+    console.log(vin)
+    console.log(user);
     return dispatch => {
         dispatch({ type: 'DELETING_FAVORITE' })
-        return fetch(`${LOCALHOST}/cars`, {
+        return fetch(`${LOCALHOST}/favorites`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: data
+                user_id: user,
+                vin: vin
             })
+        })
+        .then(res => res.json())
+        .then((payload) => {
+            console.log(payload)
+            dispatch({ type: 'REMOVE_FAVORITE_CAR', payload });
         })
     }
 }

@@ -26,7 +26,8 @@ class Favorites extends React.Component {
 
 	// handleRangeChange = (e) => this.setState({ activeIndex: e.target.value, loading: !this.state.loading });
 
-	mapFavs = (res) => {
+	// mapFavs = (res) => {
+    // };
         // this.props.favorites.map((res) => {
         //     console.log(res)
         // })
@@ -35,7 +36,6 @@ class Favorites extends React.Component {
 		// .then((res) => {
 		//     return this.props.favorites.favorites.map(fav => fav)
 		// })
-	};
 
     // handleClick = (e, data) => {
     //     console.log(data.activeIndex)

@@ -33,7 +33,16 @@ class FavCarsForSaleCard extends React.Component {
 	};
 
 	deleteFavorite = (buildCarObj) => {
-        console.log('Deleted Favorite', `${buildCarObj.id}: ${buildCarObj.user_id}`);
+        console.log('DELETE', `User ${buildCarObj.user_id} with car VIN: ${buildCarObj.id}`);
+        let user = this.props.currentUser
+        let vin = buildCarObj.vin
+		this.props.deleteFavorite(user, vin);
+		// console.log('HIT');
+        // this.setState({ activeIndex: data.activeIndex, loading: !this.state.loading });
+		// this.props.landFavorites(this.props.api_urls).then((res) => {
+			// this.setState({ loading: !this.state.loading });
+		// });
+        // console.log('Deleted Favorite', `${buildCarObj.id}: ${buildCarObj.user_id}`);
     }
 
     showDetails = (buildCarObj) => {
