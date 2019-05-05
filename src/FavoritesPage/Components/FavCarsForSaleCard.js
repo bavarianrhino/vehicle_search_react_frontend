@@ -33,11 +33,11 @@ class FavCarsForSaleCard extends React.Component {
 	};
 
 	deleteFavorite = (buildCarObj) => {
-        console.log('Deleted Favorite', `{buildCarObj.id}: ${buildCarObj.user_id}`);
+        console.log('Deleted Favorite', `${buildCarObj.id}: ${buildCarObj.user_id}`);
     }
 
     showDetails = (buildCarObj) => {
-        console.log('Show Favorite Details', `{buildCarObj.id}: ${buildCarObj.user_id}`);
+        console.log('Show Favorite Details', `${buildCarObj.id}: ${buildCarObj.user_id}`);
     }
 
 	render() {

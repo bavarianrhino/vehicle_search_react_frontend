@@ -40,10 +40,10 @@ class Favorites extends React.Component {
     // handleClick = (e, data) => {
     //     console.log(data.activeIndex)
     //     console.log(this.panes[0].activeIndex)
-    //     let vsome = this.panes.find((ele, i) => {
+    //     let somme = this.panes.find((ele, i) => {
     //         return ele.activeIndex === data.activeIndex
     //     })
-    //     console.log(vsome)
+    //     console.log(somme)
     // }
 
 	mapVaLs = () => {
