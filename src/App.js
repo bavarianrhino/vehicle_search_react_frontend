@@ -51,16 +51,4 @@ class App extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-// 		currentUser: state.cars.currentUser
-// 	};
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-//         setPosition: (location) => setPosition(location)(dispatch)
-// 	};
-// };
-
 export default connect(null, {setPosition})(App);
