@@ -1,23 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { distanceRadiusMiles } from '../../Data/MileRadiusDistance'
 
-// import { fetchUsedCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchYearsForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchMakesForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchModelsForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchTrimsForNewCarsForSale } from '../../Actions/NewCarsActions';
-// import { landCarsForSale } from '../../Actions/AllActions';
 
 import { Form } from 'semantic-ui-react';
-
-const distanceOptions = [
-	{ key: '1', text: '50 Miles', value: '50' },
-	{ key: '2', text: '100 Miles', value: '100' },
-	{ key: '3', text: '200 Miles', value: '200' },
-	{ key: '4', text: '500 Miles', value: '500' },
-    { key: '5', text: '1000 Miles', value: '1000' },
-    { key: '6', text: '2000 Miles', value: '2000' },
-];
 
 class NewCarsForSaleSearchForm extends React.Component {
 
@@ -30,7 +21,6 @@ class NewCarsForSaleSearchForm extends React.Component {
 		make_loading: false,
 		model_loading: false,
 		trim_loading: false,
-		// radius_disabled: false,
 		year_disabled: true,
 		make_disabled: true,
 		model_disabled: true,
@@ -57,43 +47,13 @@ class NewCarsForSaleSearchForm extends React.Component {
 			this.setState({
 				...this.state,
 				form_loading: !this.state.form_loading,
-                radius_loading: !this.state.radius_loading,
-                radius: '200',
-				radius_options: distanceOptions,
+				radius_loading: !this.state.radius_loading,
+				radius: '200',
+				radius_options: distanceRadiusMiles,
 				year_options: this.props.facet_years
 			});
 		});
 	}
-
-	// handleChangeRadius = (e, { value }) => {
-	// 	this.setState({ ...this.state, zip: e.target.value });
-	// };
-
-	// handleChangeYear = (e, { value }) => {
-	// 	let str = value;
-	// 	this.setState({ ...this.state, year: str });
-	// };
-
-	// handleChangeMake = (e, { value }) => {
-	// 	let str = value;
-	// 	this.setState({ ...this.state, make: str });
-	// };
-
-	// handleChangeModel = (e, { value }) => {
-	// 	let str = value;
-	// 	this.setState({ ...this.state, model: str });
-	// };
-
-	// handleChangeMTrim = (e, { value }) => {
-	// 	let str = value;
-	// 	this.setState({ ...this.state, miles: str });
-	// };
-
-	// handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	this.props.fetchCarsForSale(this.state);
-	// 	e.target.reset();
-	// };
 
 	handleFormLoading = () => {
 		this.setState({ ...this.state, form_loading: !this.state.form_loading });
@@ -110,21 +70,19 @@ class NewCarsForSaleSearchForm extends React.Component {
 	handleTrimLoading = () => {
 		this.setState({ ...this.state, trim_loading: !this.state.trim_loading });
 	};
-	toggleFormDisabled = () => {
-		this.setState({ ...this.state, form_disabled: !this.state.form_disabled });
-	};
-	toggleYearDisabled = () => {
-		this.setState({ ...this.state, year_disabled: !this.state.year_disabled });
-	};
-	toggleMakeDisabled = () => {
-		this.setState({ ...this.state, make_disabled: !this.state.make_disabled });
-	};
-	toggleModelDisabled = () => {
-		this.setState({ ...this.state, model_disabled: !this.state.model_disabled });
-	};
-	toggleTrimDisabled = () => {
-		this.setState({ ...this.state, trim_disabled: !this.state.trim_disabled });
-	};
+	// toggleFormDisabled = () => {
+	// 	this.setState({ ...this.state, form_disabled: !this.state.form_disabled })
+	// 	this.setState({ ...this.state, year_disabled: !this.state.year_disabled });
+	// };
+	// toggleMakeDisabled = () => {
+	// 	this.setState({ ...this.state, make_disabled: !this.state.make_disabled });
+	// };
+	// toggleModelDisabled = () => {
+	// 	this.setState({ ...this.state, model_disabled: !this.state.model_disabled });
+	// };
+	// toggleTrimDisabled = () => {
+	// 	this.setState({ ...this.state, trim_disabled: !this.state.trim_disabled });
+	// };
 
 	handleChangeRadius = (e, { value }) => {
         let str = value;
@@ -134,14 +92,15 @@ class NewCarsForSaleSearchForm extends React.Component {
 			miles: str
 		};
 		this.handleYearLoading();
-		// console.log(this.state.year_disabled);
-        // .then((res) => this.toggleYearDisabled())
 		this.props.fetchYearsForNewCarsForSale(location)
 			.then((res) => {
                 // console.log(this.state.year_disabled);
 				this.setState({
-                    ...this.state,
-                    year_disabled: false,
+					...this.state,
+					year_disabled: false,
+					make_disabled: true,
+					model_disabled: true,
+					trim_disabled: true,
 					year_options: this.props.facet_years,
 					make_options: [],
 					model_options: [],
@@ -169,8 +128,10 @@ class NewCarsForSaleSearchForm extends React.Component {
 		this.props.fetchMakesForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-                    ...this.state,
-                    make_disabled: false,
+					...this.state,
+					make_disabled: false,
+					model_disabled: true,
+					trim_disabled: true,
 					make_options: this.props.facet_makes,
 					model_options: [],
 					trim_options: [],
@@ -196,8 +157,9 @@ class NewCarsForSaleSearchForm extends React.Component {
 		this.props.fetchModelsForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-                    ...this.state,
-                    model_disabled: false,
+					...this.state,
+					model_disabled: false,
+					trim_disabled: true,
 					model_options: this.props.facet_models,
 					trim_options: [],
 					make: make,
@@ -242,12 +204,24 @@ class NewCarsForSaleSearchForm extends React.Component {
 			make: this.state.make,
 			model: this.state.model,
 			trim: trim
-		};
-		this.handleTrimLoading();
+        };
+        // ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
+		// this.handleTrimLoading();
 		// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
-		// this.setState({...this.state, trim: trim});
-		// })
-	};
+
+		this.setState({...this.state, trim: trim});
+    };
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+		this.setState({
+			...this.state,
+			button_disabled: false,
+			button_loading: true
+		});
+		this.props.fetchNewCarsForSale(this.state);
+		e.target.reset();
+    }
 
 	render() {
 		return (
@@ -281,12 +255,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		// fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
+		fetchNewCarsForSale: (data) => fetchNewCarsForSale(data)(dispatch),
         fetchYearsForNewCarsForSale: (data) => fetchYearsForNewCarsForSale(data)(dispatch),
         fetchMakesForNewCarsForSale: (data) => fetchMakesForNewCarsForSale(data)(dispatch),
         fetchModelsForNewCarsForSale: (data) => fetchModelsForNewCarsForSale(data)(dispatch),
         fetchTrimsForNewCarsForSale: (data) => fetchTrimsForNewCarsForSale(data)(dispatch)
-		// openModal: (current) => dispatch(openModal(current))
 	};
 };
 
