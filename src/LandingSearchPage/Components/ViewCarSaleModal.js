@@ -25,7 +25,7 @@ const ViewCarSaleModal = (props) => {
 				</Modal.Description>
 			</Modal.Content>
 			<Modal.Actions>
-				<Button icon color='red' labelPosition='right' onClick={() => props.toggleModal()}>Next<Icon name='right arrow' /></Button>
+				<Button icon color='red' labelPosition='right' onClick={() => props.toggleModal()}>CLOSE<Icon name='right arrow' /></Button>
 			</Modal.Actions>
 		</Modal>
 	);

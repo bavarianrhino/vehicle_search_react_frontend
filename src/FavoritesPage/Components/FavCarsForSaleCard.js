@@ -54,30 +54,30 @@ class FavCarsForSaleCard extends React.Component {
        const { car } = this.props
 
 		const buildCarObj = {
-			id: !!car.id ? car.id : `${TRUSTFALL}`,
-			user_id: !!this.props.currentUser ? this.props.currentUser : `${TRUSTFALL}`,
-			heading: !!car.heading ? car.heading : `${TRUSTFALL}`,
-			car_specs: !!car.build ? car.build : `${TRUSTFALL}`,
-			price: !!car.ref_price ? car.ref_price : `${TRUSTFALL}`,
-			miles: !!car.miles ? car.miles : `${TRUSTFALL}`,
-			dealerInfo: !!car.dealer ? car.dealer : `${TRUSTFALL}`,
-			distance: !!car.dist ? car.dist : `${TRUSTFALL}`,
-			image: !!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`,
-            images: !!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`,
-            build: !!car.build ? car.build : car.heading,
-			make: !!car.build.make ? car.build.make : `${TRUSTFALL}`,
-			model: !!car.build.model ? car.build.model : `${TRUSTFALL}`,
-			trim: !!car.build.trim ? car.build.trim : `${TRUSTFALL}`,
-			year: !!car.build.year ? car.build.year : `${TRUSTFALL}`,
-			vdp_url: !!car.vdp_url ? car.vdp_url : `${TRUSTFALL}`,
-			vin: !!car.vin ? car.vin : `${TRUSTFALL}`
+			id: (!!car.id ? car.id : `${TRUSTFALL.id}`),
+			user_id: (!!this.props.currentUser ? this.props.currentUser : `${TRUSTFALL.user_id}`),
+			heading: (!!car.heading ? car.heading : `${TRUSTFALL.heading}`),
+			car_specs: (!!car.build ? car.build : `${TRUSTFALL.car_specs}`),
+			price: (!!car.ref_price ? car.ref_price : `${TRUSTFALL.price}`),
+			miles: (!!car.miles ? car.miles : `${TRUSTFALL.miles}`),
+			dealerInfo: (!!car.dealer ? car.dealer : `${TRUSTFALL.dealerInfo}`),
+			distance: (!!car.dist ? car.dist : `${TRUSTFALL.distance}`),
+			image: (!!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
+			images: (!!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
+			build: (!!car.build ? car.build : `${TRUSTFALL.build}`),
+			make: (!!car.build.make ? car.build.make : `${TRUSTFALL.make}`),
+			model: (!!car.build.model ? car.build.model : `${TRUSTFALL.model}`),
+			trim: (!!car.build.trim ? car.build.trim : `${TRUSTFALL.trim}`),
+			year: (!!car.build.year ? car.build.year : `${TRUSTFALL.year}`),
+			vdp_url: (!!car.vdp_url ? car.vdp_url : `${TRUSTFALL.vdp_url}`),
+			vin: (!!car.vin ? car.vin : `${TRUSTFALL.vin}`)
 		};
 
 		return (
 			<Card className='car_card' color='black' style={{ padding: '1em 1em', margin: '1.1em 0.6em', 'box-shadow': '0 1px 4px 1px rgba(0,0,0,.1)' }}>
 				<Grid>
 					<Grid.Column width={5} style={{ padding: '0rem' }}>
-						<Image size='medium' alt='no image' src={buildCarObj.image.length === 0 ? `${TRUSTFALL}` : `${buildCarObj.image}`} style={{ 'border-radius': '3px' }} />
+						<Image size='medium' alt='no image' src={buildCarObj.image.length === 0 ? `${TRUSTFALL.image}` : `${buildCarObj.image}`} style={{ 'border-radius': '3px' }} />
 					</Grid.Column>
 					<Grid.Column width={7}>
 						<Card.Content>

@@ -8,6 +8,10 @@ export const MCAPIKEY = process.env.REACT_APP_MARKETCHECK_API_KEY;
 console.log('API KEY', MCAPIKEY);
 
 
+// ------------- Google Map EndPoints ------------- //
+export const GOOGLE = 'https://www.google.com/maps/place/';
+
+
 // ------------- Market Check EndPoints ------------- //
 export const COORS = 'https://cors-anywhere.herokuapp.com/';
 export const MCSALES = 'https://marketcheck-prod.apigee.net/v1/sales?api_key='
@@ -38,7 +42,7 @@ export const TRUSTFALL = {
     miles: 'Miles Missing',
     dealerInfo: 'Dealer Info Missing',
     distance: 'Distance Missing',
-    image: 'Image Missing',
+    image: 'https://img00.deviantart.net/69d9/i/2009/219/c/f/missing_car_by_dreamofyou.jpg',
     images: 'Images Missing',
     build: 'Build Missing',
     make: 'Make Missing',

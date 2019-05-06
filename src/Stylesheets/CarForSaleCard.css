@@ -7,5 +7,18 @@
 }
 
 .car_card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    z-index: 5;
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
 }
+
+/* .ui.cards a.card:hover, .ui.link.card:hover, .ui.link.cards .card:hover, a.ui.card:hover {
+    cursor: pointer;
+    z-index: 5;
+    background: #fff;
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 #bcbdbd, 0 0 0 1px #d4d4d5;
+    box-shadow: 0 1px 3px 0 #bcbdbd, 0 0 0 1px #d4d4d5;
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);} */
