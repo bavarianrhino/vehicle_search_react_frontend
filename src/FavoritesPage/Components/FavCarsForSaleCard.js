@@ -50,23 +50,27 @@ class FavCarsForSaleCard extends React.Component {
     }
 
 	render() {
+
+       const { car } = this.props
+
 		const buildCarObj = {
-			id: this.props.car.id,
-			user_id: this.props.currentUser,
-			heading: this.props.car.heading,
-			car_specs: this.props.car.build,
-			price: this.props.car.ref_price,
-			miles: this.props.car.miles,
-			dealerInfo: this.props.car.dealer,
-			distance: this.props.car.dist,
-			image: (!!this.props.car.media.photo_links ? (this.props.car.media.photo_links.length >= 2 ? this.props.car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`),
-			images: (!!this.props.car.media.photo_links ? (this.props.car.media.photo_links.length >= 2 ? this.props.car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`),
-			make: this.props.car.build.make,
-			model: this.props.car.build.model,
-			trim: this.props.car.build.trim,
-			year: this.props.car.build.year,
-			vdp_url: this.props.car.vdp_url,
-			vin: this.props.car.vin
+			id: !!car.id ? car.id : `${TRUSTFALL}`,
+			user_id: !!this.props.currentUser ? this.props.currentUser : `${TRUSTFALL}`,
+			heading: !!car.heading ? car.heading : `${TRUSTFALL}`,
+			car_specs: !!car.build ? car.build : `${TRUSTFALL}`,
+			price: !!car.ref_price ? car.ref_price : `${TRUSTFALL}`,
+			miles: !!car.miles ? car.miles : `${TRUSTFALL}`,
+			dealerInfo: !!car.dealer ? car.dealer : `${TRUSTFALL}`,
+			distance: !!car.dist ? car.dist : `${TRUSTFALL}`,
+			image: !!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`,
+            images: !!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL}`) : `${TRUSTFALL}`,
+            build: !!car.build ? car.build : car.heading,
+			make: !!car.build.make ? car.build.make : `${TRUSTFALL}`,
+			model: !!car.build.model ? car.build.model : `${TRUSTFALL}`,
+			trim: !!car.build.trim ? car.build.trim : `${TRUSTFALL}`,
+			year: !!car.build.year ? car.build.year : `${TRUSTFALL}`,
+			vdp_url: !!car.vdp_url ? car.vdp_url : `${TRUSTFALL}`,
+			vin: !!car.vin ? car.vin : `${TRUSTFALL}`
 		};
 
 		return (
@@ -101,7 +105,7 @@ class FavCarsForSaleCard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-		currentUser: state.cars.currentUser,
+		currentUser: state.user.currentUser,
 		favorites: state.favorites.favorites
 	};
 }

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 // import { carMakes } from '../../Data/CarModelData';
 // import { carYear } from '../../Data/CarYearData';
 // import { fetchCarsForSale } from '../../Services/APIFetchs';
-import { fetchUsedCarsForSale } from '../../Actions/CarsActions';
-import { fetchYearsForUsedCarsForSale } from '../../Actions/CarsActions';
-import { fetchMakesForUsedCarsForSale } from '../../Actions/CarsActions';
-import { fetchModelsForUsedCarsForSale } from '../../Actions/CarsActions';
-import { fetchTrimsForUsedCarsForSale } from '../../Actions/CarsActions';
+import { fetchUsedCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchYearsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchMakesForUsedCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchModelsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchTrimsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
 // import { landCarsForSale } from '../../Actions/AllActions';
 
 import { Form } from 'semantic-ui-react';
@@ -43,19 +43,22 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	componentDidMount() {
 		let location = {
 			lat: this.props.latitude,
-			long: this.props.longitude
-			// miles: this.state.radius
+			long: this.props.longitude,
+			miles: '200'
 		};
-		// this.props.fetchYearsForUsedCarsForSale(location).then((res) => {
-		this.setState({
-			...this.state,
-			form_loading: !this.state.form_loading,
-			radius_options: distanceOptions,
-			// year_options: this.props.facet_years,
-			radius_loading: !this.state.radius_loading
-		});
-		// });
+		this.props.fetchYearsForUsedCarsForSale(location).then((res) => {
+            this.setState({
+                ...this.state,
+                form_loading: !this.state.form_loading,
+                radius_loading: !this.state.radius_loading,
+                radius_options: distanceOptions,
+                year_options: this.props.facet_years
+            })
+        })
 	}
+            // .then((res) => {
+            //     this.props.toggleResultsBasedOnIndexedTab()
+            // })
 
 	handleFormLoading = () => {
 		this.setState({ ...this.state, form_loading: !this.state.form_loading });
@@ -261,17 +264,17 @@ const mapStateToProps = (state) => {
     return {
 		latitude: state.user.latitude,
 		longitude: state.user.longitude,
-		listings: state.cars.listings,
-		facet_years: state.cars.facet_years,
-        facet_makes: state.cars.facet_makes,
-        facet_models: state.cars.facet_models,
-        facet_trims: state.cars.facet_trims
+		listings: state.used_cars.listings,
+		facet_years: state.used_cars.facet_years,
+        facet_makes: state.used_cars.facet_makes,
+        facet_models: state.used_cars.facet_models,
+        facet_trims: state.used_cars.facet_trims
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
+		// fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
         fetchYearsForUsedCarsForSale: (data) => fetchYearsForUsedCarsForSale(data)(dispatch),
         fetchMakesForUsedCarsForSale: (data) => fetchMakesForUsedCarsForSale(data)(dispatch),
         fetchModelsForUsedCarsForSale: (data) => fetchModelsForUsedCarsForSale(data)(dispatch),

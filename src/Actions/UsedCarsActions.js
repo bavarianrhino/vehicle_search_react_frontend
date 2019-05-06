@@ -14,53 +14,53 @@ import { YEAR } from '../Data/GlobalVars'
 import { MAKE } from '../Data/GlobalVars'
 import { MODEL } from '../Data/GlobalVars'
 // import { TRIM } from '../Data/GlobalVars'
-import { ZIP } from '../Data/GlobalVars'
+// import { ZIP } from '../Data/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
 import { ROWS_10 } from '../Data/GlobalVars'
-import { ROWS_25 } from '../Data/GlobalVars'
+// import { ROWS_25 } from '../Data/GlobalVars'
 // import { ROWS_50 } from '../Data/GlobalVars'
-import { PHOTOS } from '../Data/GlobalVars'
+// import { PHOTOS } from '../Data/GlobalVars'
 
-export const fetchCarsForSale = (data) => {
-    console.log(data);
-    return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
-        return fetch(
-			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
-			{
-				method: 'GET',
-				headers: {
-					Accept: 'application/json'
-				}
-			}
-		)
-        .then((res) => res.json())
-        .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
-    }
-};
+// export const fetchCarsForSale = (data) => {
+//     console.log(data);
+//     return dispatch => {
+//         dispatch({ type: 'LOADING_USED_CARS' });
+//         return fetch(
+// 			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
+// 			{
+// 				method: 'GET',
+// 				headers: {
+// 					Accept: 'application/json'
+// 				}
+// 			}
+// 		)
+//         .then((res) => res.json())
+//         .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
+//     }
+// };
 
-export const fetchUsedCarsForSale = (data) => {
-    console.log(data);
-    return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
-        return fetch(
-			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
-			{
-				method: 'GET',
-				headers: {
-					Accept: 'application/json'
-				}
-			}
-		)
-        .then((res) => res.json())
-        .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
-    }
-};
+// export const fetchUsedCarsForSale = (data) => {
+//     console.log(data);
+//     return dispatch => {
+//         dispatch({ type: 'LOADING_USED_CARS' });
+//         return fetch(
+// 			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
+// 			{
+// 				method: 'GET',
+// 				headers: {
+// 					Accept: 'application/json'
+// 				}
+// 			}
+// 		)
+//         .then((res) => res.json())
+//         .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
+//     }
+// };
 
 export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_USED_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${USED}${ROWS_10}&facets=year|0|60`,
         {
 			method: 'GET',
@@ -69,14 +69,14 @@ export const fetchYearsForUsedCarsForSale = (location) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_YEARS', payload }));
+        .then((payload) => dispatch({ type: 'LAND_USED_YEARS', payload }));
     }
 }
 
 export const fetchMakesForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_USED_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}&facets=make|0|60`,
         {
 			method: 'GET',
@@ -85,14 +85,14 @@ export const fetchMakesForUsedCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_MAKES', payload }));
+        .then((payload) => dispatch({ type: 'LAND_USED_MAKES', payload }));
     }
 }
 
 export const fetchModelsForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_USED_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
         {
 			method: 'GET',
@@ -101,14 +101,14 @@ export const fetchModelsForUsedCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_MODELS', payload }));
+        .then((payload) => dispatch({ type: 'LAND_USED_MODELS', payload }));
     }
 }
 
 export const fetchTrimsForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_USED_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
         {
 			method: 'GET',
@@ -117,7 +117,7 @@ export const fetchTrimsForUsedCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_TRIMS', payload }))
+        .then((payload) => dispatch({ type: 'LAND_USED_TRIMS', payload }))
     }
 }
 

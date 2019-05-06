@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import { CarsReducer } from './CarsReducer';
+import { NewCarsReducer } from './NewCarsReducer';
+import { UsedCarsReducer } from './UsedCarsReducer';
 import { FavoritesReducer } from './FavoritesReducer';
 import { UserReducer } from './UserReducer';
 
 export const RootReducer = combineReducers({
-	cars: CarsReducer,
+    new_cars: NewCarsReducer,
+	used_cars: UsedCarsReducer,
     favorites: FavoritesReducer,
     user: UserReducer
 });

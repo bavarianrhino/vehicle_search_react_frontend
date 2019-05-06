@@ -7,12 +7,19 @@ import { Card } from 'semantic-ui-react';
 
 
 class CarsForSaleResultList extends React.Component {
-	// state = {
-	// 	open: false
-	// };
+    
+	state = {
+        open: false
+    };
+    
+	mapNewCars = (props) => {
+		return this.props.new_cars.map((car) => {
+			return <CarForSaleCard key={car.id} car={car} />;
+		});
+	};
 
-	mapCars = (props) => {
-        return this.props.cars.map((car) => {
+	mapUsedCars = (props) => {
+		return this.props.used_cars.map((car) => {
 			return <CarForSaleCard key={car.id} car={car} />;
 		});
 	};
@@ -30,10 +37,15 @@ class CarsForSaleResultList extends React.Component {
 	// };
 
 	render() {
+        console.log(this.props.new_cars);
+        console.log(this.props.activeIndex);
 		return (
 			<div>
 				<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
-					{this.props.cars ? this.mapCars() : null}
+					{this.props.activeIndex === 0 && this.props.new_cars ? this.mapNewCars() : null}
+				</Card.Group>
+				<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
+					{this.props.activeIndex === 1 && this.props.used_cars ? this.mapUsedCars() : null}
 				</Card.Group>
 			</div>
 		);
@@ -45,8 +57,10 @@ class CarsForSaleResultList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        cars: state.cars.carsForSale
-    }
+		used_cars: state.used_cars.listings,
+        new_cars: state.new_cars.listings,
+        activeIndex: state.user.activeTab
+	};
 }
 
 const mapDispatchToProps = (dispatch) => ({

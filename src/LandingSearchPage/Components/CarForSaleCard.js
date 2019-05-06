@@ -100,7 +100,7 @@ class CarForSaleCard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-		currentUser: state.cars.currentUser,
+		currentUser: state.user.currentUser,
 		favorites: state.favorites.favorites
 	};
 }
