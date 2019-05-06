@@ -1,6 +1,6 @@
 import React from 'react';
-import CarsForSaleSearchForm from '../Components/CarsForSaleSearchForm';
 import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
+import NewCarsForSaleSearchForm from '../Components/NewCarsForSaleSearchForm';
 
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
@@ -19,7 +19,7 @@ class Searcher extends React.Component {
     render() {
 
         const panes = [
-            { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}><CarsForSaleSearchForm /></Tab.Pane> },
+            { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}><NewCarsForSaleSearchForm /></Tab.Pane> },
             { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}><UsedCarsForSaleSearchForm /></Tab.Pane> },
             { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
         ]
@@ -31,9 +31,6 @@ class Searcher extends React.Component {
 		);
     }
 }
-/* <CarValueSearchForm />; */
-                
-                // const TabExampleSecondaryPointing = () => (
 
 const mapStateToProps = (state) => {
     return {

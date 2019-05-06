@@ -67,27 +67,25 @@ export const CarsReducer = (
 				loading: false
 			};
             
-            // facet_years: ...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i })),
-            // facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))],
-            // facet_years: [...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
-				// facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
-                // facet_models: action.payload.facets.facet_models,
-                // facet_trims: action.payload.facets.facet_trims,
-                // return { ...state, favorites: [...state.favorites, action.json], loading: false };
-                // const arr = [{id:1,name:'foo'},{id:2,name:'bar'}];
-// const mapped = arr.map(element => Object.assign(element, {isApproved: true})
-// More new approach would be using spread operator:
-
-// const arr = [{id:1,name:'foo'},{id:2,name:'bar'}];
-// const mapped = arr.map(element => ({isApproved: true ,...element}))
-
-		case 'LAND_CARS_FOR_SALE':
+            
+            case 'LAND_CARS_FOR_SALE':
 			return { ...state, loading: false, carsForSale: action.payload };
-
-		default:
+            
+            default:
 			return state;
-	}
-};
+        }
+    };
+    // facet_years: ...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i })),
+    // facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))],
+    // facet_years: [...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
+        // facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
+        // facet_models: action.payload.facets.facet_models,
+        // facet_trims: action.payload.facets.facet_trims,
+        // return { ...state, favorites: [...state.favorites, action.json], loading: false };
+        // const arr = [{id:1,name:'foo'},{id:2,name:'bar'}];
+        // const mapped = arr.map(element => Object.assign(element, {isApproved: true})
+        // More new approach would be using spread operator:
 
-// case 'SET_CAR_VALUES':
-//     return { ...state, carValueInfo: action.data }
+        // const arr = [{id:1,name:'foo'},{id:2,name:'bar'}];
+        // const mapped = arr.map(element => ({isApproved: true ,...element}))
+    
