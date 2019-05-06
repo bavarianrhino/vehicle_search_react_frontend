@@ -27,11 +27,11 @@ export const CarsReducer = (
             return { ...state, 
                 fetch_count: action.payload.num_found,
                 listings: action.payload.listings,
-                facet_years: action.payload.facets.facet_years,
-                facet_makes: action.payload.facets.facet_makes,
-                facet_models: action.payload.facets.facet_models,
-                facet_trims: action.payload.facets.facet_trims,
+                facet_years: action.payload.facets.year,
+                facet_makes: action.payload.facets.make,
                 loading: false };
+                // facet_models: action.payload.facets.facet_models,
+                // facet_trims: action.payload.facets.facet_trims,
 
 		case 'LAND_CARS_FOR_SALE':
 			return { ...state, loading: false, carsForSale: action.payload };

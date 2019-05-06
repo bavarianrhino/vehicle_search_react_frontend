@@ -16,7 +16,7 @@ import { MODEL } from '../Data/GlobalVars'
 // import { TRIM } from '../Data/GlobalVars'
 import { ZIP } from '../Data/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
-// import { ROWS_10 } from '../Data/GlobalVars'
+import { ROWS_10 } from '../Data/GlobalVars'
 import { ROWS_25 } from '../Data/GlobalVars'
 // import { ROWS_50 } from '../Data/GlobalVars'
 import { PHOTOS } from '../Data/GlobalVars'
@@ -62,7 +62,7 @@ export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location.lat);
     return dispatch => {
         dispatch({ type: 'LOADING_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}&${RADIUS}200${USED}${ROWS_25}&facets=year`, {
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}200${USED}${ROWS_10}&facets=year|0|60|,make|0|60`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json'
@@ -71,9 +71,8 @@ export const fetchYearsForUsedCarsForSale = (location) => {
 			.then((res) => res.json())
 			.then((payload) => {
 				console.log(payload);
-				return dispatch({ type: 'DONE_LOADING_CARS' });
+				return dispatch({ type: 'DONE_LOADING_CARS', payload });
 			});
-			// .then((payload) => console.log(payload));
     }
 };
 
