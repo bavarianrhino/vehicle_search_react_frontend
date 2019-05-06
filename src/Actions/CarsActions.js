@@ -59,10 +59,11 @@ export const fetchUsedCarsForSale = (data) => {
 
 export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location.long)
-    console.log(location.lat);
+    console.log(location.lat)
+    console.log(location.miles);
     return dispatch => {
         dispatch({ type: 'LOADING_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}200${USED}${ROWS_10}&facets=year|0|60|,make|0|60`, {
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${USED}${ROWS_10}&facets=year|0|60`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json'
@@ -71,7 +72,7 @@ export const fetchYearsForUsedCarsForSale = (location) => {
 			.then((res) => res.json())
 			.then((payload) => {
 				console.log(payload);
-				return dispatch({ type: 'DONE_LOADING_CARS', payload });
+				return dispatch({ type: 'LAND_YEARS', payload }, { type: 'SET_YEARS', payload: payload.facets.year });
 			});
     }
 };

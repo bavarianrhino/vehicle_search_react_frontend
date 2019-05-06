@@ -23,15 +23,20 @@ export const CarsReducer = (
 		case 'LOADING_CARS':
 			return { ...state, loading: true };
 
-		case 'DONE_LOADING_CARS':
+        case 'LAND_YEARS':
+            let years = action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))
             return {
 				...state,
 				fetch_count: action.payload.num_found,
-				listings: action.payload.listings,
-				facet_years: [...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, count: obj.count, key: i }))],
-				facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, count: obj.count, key: i }))],
+                listings: action.payload.listings,
+                facet_years: years,
+				carsForSale: action.payload.listings,
 				loading: false
 			};
+            // facet_years: ...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i })),
+            // facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))],
+            // facet_years: [...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
+				// facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
                 // facet_models: action.payload.facets.facet_models,
                 // facet_trims: action.payload.facets.facet_trims,
                 // return { ...state, favorites: [...state.favorites, action.json], loading: false };
