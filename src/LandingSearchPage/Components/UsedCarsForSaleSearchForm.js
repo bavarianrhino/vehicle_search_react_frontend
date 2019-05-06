@@ -1,19 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { carMakes } from '../../Data/CarModelData';
-// import { carYear } from '../../Data/CarYearData';
-// import { fetchCarsForSale } from '../../Services/APIFetchs';
+import { distanceRadiusMiles } from '../../Data/MileRadiusDistance';
+
 import { fetchUsedCarsForSale } from '../../Actions/UsedCarsActions';
 import { fetchYearsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
 import { fetchMakesForUsedCarsForSale } from '../../Actions/UsedCarsActions';
 import { fetchModelsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
 import { fetchTrimsForUsedCarsForSale } from '../../Actions/UsedCarsActions';
-// import { landCarsForSale } from '../../Actions/AllActions';
 
 import { Form } from 'semantic-ui-react';
-
-const distanceOptions = [{ key: '1', text: '50 Miles', value: '50' }, { key: '2', text: '100 Miles', value: '100' }, { key: '3', text: '200 Miles', value: '200' }, { key: '4', text: '500 Miles', value: '500' }, { key: '5', text: '1000 Miles', value: '1000' }];
-// const modelOptions = [{ key: '1', text: '7 Series', value: '7%20series' }, { key: '2', text: '5 Series', value: '5%20series' }];
 
 class UsedCarsForSaleSearchForm extends React.Component {
 	state = {
@@ -23,11 +18,12 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		make_loading: false,
 		model_loading: false,
 		trim_loading: false,
-		// radius_disabled: false,
+		button_loading: false,
 		year_disabled: true,
 		make_disabled: true,
 		model_disabled: true,
 		trim_disabled: true,
+		button_disabled: true,
 		radius_options: [],
 		year_options: [],
 		make_options: [],
@@ -37,7 +33,10 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		year: '',
 		make: '',
 		model: '',
-		trim: ''
+		trim: '',
+		lat: this.props.latitude,
+		long: this.props.longitude,
+		built_data: []
 	};
 
 	componentDidMount() {
@@ -47,18 +46,18 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			miles: '200'
 		};
 		this.props.fetchYearsForUsedCarsForSale(location).then((res) => {
-            this.setState({
-                ...this.state,
-                form_loading: !this.state.form_loading,
-                radius_loading: !this.state.radius_loading,
-                radius_options: distanceOptions,
-                year_options: this.props.facet_years
-            })
-        })
+			this.setState({
+				...this.state,
+				form_loading: !this.state.form_loading,
+				radius_loading: !this.state.radius_loading,
+				radius_options: distanceRadiusMiles,
+				year_options: this.props.facet_years
+			});
+		});
 	}
-            // .then((res) => {
-            //     this.props.toggleResultsBasedOnIndexedTab()
-            // })
+	// .then((res) => {
+	//     this.props.toggleResultsBasedOnIndexedTab()
+	// })
 
 	handleFormLoading = () => {
 		this.setState({ ...this.state, form_loading: !this.state.form_loading });
@@ -75,21 +74,21 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	handleTrimLoading = () => {
 		this.setState({ ...this.state, trim_loading: !this.state.trim_loading });
 	};
-    toggleFormDisabled = () => {
-		this.setState({ ...this.state, form_disabled: !this.state.form_disabled });
-	};
-    toggleYearDisabled = () => {
-		this.setState({ ...this.state, year_disabled: !this.state.year_disabled });
-	};
-    toggleMakeDisabled = () => {
-		this.setState({ ...this.state, make_disabled: !this.state.make_disabled });
-	};
-    toggleModelDisabled = () => {
-		this.setState({ ...this.state, model_disabled: !this.state.model_disabled });
-	};
-    toggleTrimDisabled = () => {
-		this.setState({ ...this.state, trim_disabled: !this.state.trim_disabled });
-	};
+	// toggleFormDisabled = () => {
+	// 	this.setState({ ...this.state, form_disabled: !this.state.form_disabled });
+	// };
+	// toggleYearDisabled = () => {
+	// 	this.setState({ ...this.state, year_disabled: !this.state.year_disabled });
+	// };
+	// toggleMakeDisabled = () => {
+	// 	this.setState({ ...this.state, make_disabled: !this.state.make_disabled });
+	// };
+	// toggleModelDisabled = () => {
+	// 	this.setState({ ...this.state, model_disabled: !this.state.model_disabled });
+	// };
+	// toggleTrimDisabled = () => {
+	// 	this.setState({ ...this.state, trim_disabled: !this.state.trim_disabled });
+	// };
 
 	handleChangeRadius = (e, { value }) => {
 		let str = value;
@@ -97,16 +96,15 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			lat: this.props.latitude,
 			long: this.props.longitude,
 			miles: str
-        };
-        this.handleYearLoading();
-        console.log(this.state.year_disabled);
+		};
+		this.handleYearLoading();
 		this.props
 			.fetchYearsForUsedCarsForSale(location)
-			.then((res) => this.toggleYearDisabled())
 			.then((res) => {
 				this.setState({
 					...this.state,
 					year_options: this.props.facet_years,
+					year_disabled: false,
 					make_options: [],
 					model_options: [],
 					trim_options: [],
@@ -127,15 +125,15 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			long: this.props.longitude,
 			miles: this.state.radius,
 			year: year
-        };
+		};
 		this.handleMakeLoading();
 		this.props
-            .fetchMakesForUsedCarsForSale(data)
-            .then((res) => this.toggleMakeDisabled())
+			.fetchMakesForUsedCarsForSale(data)
 			.then((res) => {
 				this.setState({
 					...this.state,
 					make_options: this.props.facet_makes,
+					make_disabled: false,
 					model_options: [],
 					trim_options: [],
 					year: year,
@@ -155,15 +153,15 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			miles: this.state.radius,
 			year: this.state.year,
 			make: make
-        };
+		};
 		this.handleModelLoading();
 		this.props
-        .fetchModelsForUsedCarsForSale(data)
-            .then((res) => this.toggleModelDisabled())
+			.fetchModelsForUsedCarsForSale(data)
 			.then((res) => {
 				this.setState({
 					...this.state,
 					model_options: this.props.facet_models,
+					model_disabled: false,
 					trim_options: [],
 					make: make,
 					model: '',
@@ -182,15 +180,15 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			year: this.state.year,
 			make: this.state.make,
 			model: this.state.model
-        };
+		};
 		this.handleTrimLoading();
 		this.props
 			.fetchTrimsForUsedCarsForSale(data)
-			.then((res) => this.toggleTrimDisabled())
 			.then((res) => {
 				this.setState({
 					...this.state,
 					trim_options: this.props.facet_trims,
+					trim_disabled: false,
 					model: model,
 					trim: ''
 				});
@@ -209,38 +207,32 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			model: this.state.model,
 			trim: trim
 		};
-		this.handleTrimLoading();
+		// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
+		// this.handleTrimLoading();
 		// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
-		// this.setState({...this.state, trim: trim});
-		// })
+		this.setState({ ...this.state, trim: trim });
 	};
 
-	// handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	this.props.fetchUsedCarsForSale(this.state);
-	// 	e.target.reset();
-	// };
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.setState({
+			...this.state,
+			built_data: this.state,
+			button_disabled: false,
+			button_loading: true
+		});
+        this.props.fetchUsedCarsForSale(this.state.built_data);
+		e.target.reset();
+	};
 
-	// handleYearMakeSubmit = ()
-
-	// handleSubmit1 = (e) => {
-	// e.preventDefault();
-	// fetchUsedCarsForSale(this.state).then((payload) => {
-	// console.log(payload)
-	// landCarsForSale(payload);
-	// });
-	// e.target.reset();
-	// };
-
-	// handleReset = () => {
-	// this.setState({
-	// 	year: null,
-	// 	make: '',
-	// 	model: ''
-	// });
-	// };
-
-	// fetchYearsForUsedCarsForSale() {}
+	handleReset = () => {
+		console.warn('TRIED TO RESET IN USED CARS FORM!');
+		// this.setState({
+		// 	year: null,
+		// 	make: '',
+		// 	model: ''
+		// });
+	};
 
 	render() {
 		return (
@@ -274,27 +266,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		// fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
+		fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
         fetchYearsForUsedCarsForSale: (data) => fetchYearsForUsedCarsForSale(data)(dispatch),
         fetchMakesForUsedCarsForSale: (data) => fetchMakesForUsedCarsForSale(data)(dispatch),
         fetchModelsForUsedCarsForSale: (data) => fetchModelsForUsedCarsForSale(data)(dispatch),
         fetchTrimsForUsedCarsForSale: (data) => fetchTrimsForUsedCarsForSale(data)(dispatch)
-		// openModal: (current) => dispatch(openModal(current))
 	};
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UsedCarsForSaleSearchForm);
-// export default connect(null, {landCarsForSale})(CarsForSaleSearchForm);
-
-/* <Form onSubmit={this.handleSubmit}>
-	<Form.Group widths='equal'>
-		<Form.Input fluid label='Make' placeholder='Make' name='make' onChange={this.handleChange} />
-		<Form.Input fluid label='Model' placeholder='Model' name='model' onChange={this.handleChange} />
-		<Form.Select fluid label='Year' placeholder='Year' name='year' onChange={this.handleChange} />
-		<Form.Input fluid label='Zip Code' placeholder='Zip Code' name='zip' onChange={this.handleChange} />
-		<Form.Select fluid label='Distance' options={distanceOptions} placeholder='Distance' name='distance' onChange={this.handleChange} />
-	</Form.Group>
-	<Form.Button type='submit'>Submit</Form.Button>
-</Form>; */
-
-    // <Form.Input onChange={this.handleChangeZip} fluid label='Zip Code' placeholder='Zip Code' name='zip' />

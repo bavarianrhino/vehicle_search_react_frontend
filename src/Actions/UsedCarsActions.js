@@ -1,5 +1,3 @@
-// import { connect } from 'react-redux';
-// import { UserReducer } from './UserReducer';
 
 // import { LOCALHOST } from '../Data/GlobalVars';
 import { COORS } from '../Data/GlobalVars'
@@ -13,13 +11,13 @@ import { LONG } from '../Data/GlobalVars'
 import { YEAR } from '../Data/GlobalVars'
 import { MAKE } from '../Data/GlobalVars'
 import { MODEL } from '../Data/GlobalVars'
-// import { TRIM } from '../Data/GlobalVars'
-// import { ZIP } from '../Data/GlobalVars'
+import { TRIM } from '../Data/GlobalVars'
+// import { ZIP } from '../Dat÷a/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
 import { ROWS_10 } from '../Data/GlobalVars'
 // import { ROWS_25 } from '../Data/GlobalVars'
-// import { ROWS_50 } from '../Data/GlobalVars'
-// import { PHOTOS } from '../Data/GlobalVars'
+import { ROWS_50 } from '../Data/GlobalVars'
+import { PHOTOS } from '../Data/GlobalVars'
 
 // export const fetchCarsForSale = (data) => {
 //     console.log(data);
@@ -39,23 +37,20 @@ import { ROWS_10 } from '../Data/GlobalVars'
 //     }
 // };
 
-// export const fetchUsedCarsForSale = (data) => {
-//     console.log(data);
-//     return dispatch => {
-//         dispatch({ type: 'LOADING_USED_CARS' });
-//         return fetch(
-// 			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
-// 			{
-// 				method: 'GET',
-// 				headers: {
-// 					Accept: 'application/json'
-// 				}
-// 			}
-// 		)
-//         .then((res) => res.json())
-//         .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
-//     }
-// };
+export const fetchUsedCarsForSale = (query_obj) => {
+    console.log(query_obj);
+    return dispatch => {
+        dispatch({ type: 'LOADING_USED_CARS' });
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${query_obj.long}${LAT}${query_obj.lat}${RADIUS}${query_obj.miles}${USED}${ROWS_50}${YEAR}${query_obj.year}${MAKE}${query_obj.make}${MODEL}${query_obj.model}${TRIM}${query_obj.trim}${ROWS_50}${PHOTOS}`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((payload) => dispatch({ type: 'LAND_USED_CARS_FOR_SALE', payload }));   
+    }
+};
 
 export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location)
