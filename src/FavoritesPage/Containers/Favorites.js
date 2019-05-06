@@ -14,13 +14,20 @@ class Favorites extends React.Component {
 
 	state = {
 		activeIndex: null,
-		loading: false
-	};
+		loading: true
+    };
+    
+    componentDidMount () {
+		this.props.landFavorites(this.props.api_urls).then((res) => {
+			this.setState({ loading: !this.state.loading });
+		});
+    }
 
 	handleTabChange = (e, data) => {
+        console.log(data)
 		this.setState({ activeIndex: data.activeIndex, loading: !this.state.loading });
-        this.props.landFavorites(this.props.api_urls)
-        .then((res) => {this.setState({ loading: !this.state.loading })})
+        // this.props.landFavorites(this.props.api_urls)
+        // .then((res) => {this.setState({ loading: !this.state.loading })})
         // .then((res) => {this.mapFavs(res)})
 		}
 
