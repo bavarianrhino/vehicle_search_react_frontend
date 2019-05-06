@@ -4,7 +4,7 @@ import FavCarsForSaleContainer from './FavCarsForSaleContainer';
 import FavCarValuesContainer from './FavCarValuesContainer';
 
 import { landFavorites } from '../../Actions/FavoritesActions';
-import { carMakes }from '../../Data/CarModelData'
+// import { carMakes }from '../../Data/CarModelData'
 import { connect } from 'react-redux';
 
 import { Segment, Container, Tab } from 'semantic-ui-react';
@@ -46,11 +46,11 @@ class Favorites extends React.Component {
     //     console.log(somme)
     // }
 
-	mapVaLs = () => {
-		return carMakes.makes.map((m) => {
-			console.log(m.value);
-		});
-	};
+	// mapVaLs = () => {
+	// 	return carMakes.makes.map((m) => {
+	// 		console.log(m.value);
+	// 	});
+	// };
 
 	panes = [{menuItem: 'Favorite Cars', render: () => (<Tab.Pane attached={false} loading={this.state.loading}><FavCarsForSaleContainer /></Tab.Pane>)},
             {menuItem: 'Saved Car Value Stats', render: () => (<Tab.Pane attached={false}><FavCarValuesContainer /></Tab.Pane>)}];

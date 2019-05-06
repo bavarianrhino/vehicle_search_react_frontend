@@ -4,6 +4,9 @@ import Login from "./Login_SignupPages/Login";
 import LandingSearchPage from './LandingSearchPage/Containers/LandingSearchPage';
 import Favorites from './FavoritesPage/Containers/Favorites';
 
+import { connect } from 'react-redux';
+import { setPosition } from './Actions/UserActions';
+
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 
@@ -48,5 +51,16 @@ class App extends Component {
     }
 }
 
+// const mapStateToProps = (state) => {
+//     return {
+// 		currentUser: state.cars.currentUser
+// 	};
+// }
 
-export default App;
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+//         setPosition: (location) => setPosition(location)(dispatch)
+// 	};
+// };
+
+export default connect(null, {setPosition})(App);

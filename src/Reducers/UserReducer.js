@@ -12,7 +12,7 @@ export const UserReducer = (
 				return { ...state, loading: true };
 
 			case 'SET_LOCATION':
-				return { ...state, loading: true };
+				return { ...state, longitude: action.location.long, latitude: action.location.lat };
 
 			default:
 				return state;
