@@ -33,8 +33,10 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		year: '',
 		make: '',
 		model: '',
-        trim: '',
-        built_data: []
+		trim: '',
+		lat: this.props.latitude,
+		long: this.props.longitude,
+		built_data: []
 	};
 
 	componentDidMount() {
@@ -212,24 +214,24 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	};
 
 	handleSubmit = (e) => {
-        e.preventDefault();
-        this.setState({
-            ...this.state,
-            built_data: this.state,
-            button_disabled: false,
-            button_loading: true,
-        })
+		e.preventDefault();
+		this.setState({
+			...this.state,
+			built_data: this.state,
+			button_disabled: false,
+			button_loading: true
+		});
         this.props.fetchUsedCarsForSale(this.state.built_data);
 		e.target.reset();
 	};
 
 	handleReset = () => {
-        console.warn("TRIED TO RESET IN USED CARS FORM!")
-	// this.setState({
-	// 	year: null,
-	// 	make: '',
-	// 	model: ''
-	// });
+		console.warn('TRIED TO RESET IN USED CARS FORM!');
+		// this.setState({
+		// 	year: null,
+		// 	make: '',
+		// 	model: ''
+		// });
 	};
 
 	render() {

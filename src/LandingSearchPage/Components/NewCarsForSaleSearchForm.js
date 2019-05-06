@@ -11,10 +11,9 @@ import { fetchTrimsForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { Form } from 'semantic-ui-react';
 
 class NewCarsForSaleSearchForm extends React.Component {
-
 	state = {
-        loadingform: false,
-        loadingformgroup: true,
+		loadingform: false,
+		loadingformgroup: true,
 		form_loading: true,
 		radius_loading: true,
 		year_loading: false,
@@ -34,11 +33,14 @@ class NewCarsForSaleSearchForm extends React.Component {
 		year: '',
 		make: '',
 		model: '',
-		trim: ''
+		trim: '',
+		lat: this.props.latitude,
+		long: this.props.longitude,
+		built_data: []
 	};
 
 	componentDidMount() {
-        let location = {
+		let location = {
 			lat: this.props.latitude,
 			long: this.props.longitude,
 			miles: '200'
@@ -85,16 +87,17 @@ class NewCarsForSaleSearchForm extends React.Component {
 	// };
 
 	handleChangeRadius = (e, { value }) => {
-        let str = value;
+		let str = value;
 		let location = {
 			lat: this.props.latitude,
 			long: this.props.longitude,
 			miles: str
 		};
 		this.handleYearLoading();
-		this.props.fetchYearsForNewCarsForSale(location)
+		this.props
+			.fetchYearsForNewCarsForSale(location)
 			.then((res) => {
-                // console.log(this.state.year_disabled);
+				// console.log(this.state.year_disabled);
 				this.setState({
 					...this.state,
 					year_disabled: false,
@@ -112,8 +115,8 @@ class NewCarsForSaleSearchForm extends React.Component {
 					trim: ''
 				});
 			})
-            .then((res) => this.handleYearLoading());
-            // console.log(this.state.year_disabled);
+			.then((res) => this.handleYearLoading());
+		// console.log(this.state.year_disabled);
 	};
 
 	handleChangeYear = (e, { value }) => {
@@ -125,7 +128,8 @@ class NewCarsForSaleSearchForm extends React.Component {
 			year: year
 		};
 		this.handleMakeLoading();
-		this.props.fetchMakesForNewCarsForSale(data)
+		this.props
+			.fetchMakesForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
 					...this.state,
@@ -154,7 +158,8 @@ class NewCarsForSaleSearchForm extends React.Component {
 			make: make
 		};
 		this.handleModelLoading();
-		this.props.fetchModelsForNewCarsForSale(data)
+		this.props
+			.fetchModelsForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
 					...this.state,
@@ -181,11 +186,12 @@ class NewCarsForSaleSearchForm extends React.Component {
 			model: model
 		};
 		this.handleTrimLoading();
-		this.props.fetchTrimsForNewCarsForSale(data)
+		this.props
+			.fetchTrimsForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-                    ...this.state,
-                    trim_disabled: false,
+					...this.state,
+					trim_disabled: false,
 					trim_options: this.props.facet_trims,
 					model: model,
 					trim: ''
@@ -204,24 +210,25 @@ class NewCarsForSaleSearchForm extends React.Component {
 			make: this.state.make,
 			model: this.state.model,
 			trim: trim
-        };
-        // ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
+		};
+		// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
 		// this.handleTrimLoading();
 		// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
 
-		this.setState({...this.state, trim: trim});
-    };
-    
-    handleSubmit = (e) => {
-        e.preventDefault();
+		this.setState({ ...this.state, trim: trim });
+	};
+
+	handleSubmit = (e) => {
+		e.preventDefault();
 		this.setState({
 			...this.state,
+			built_data: this.state,
 			button_disabled: false,
 			button_loading: true
 		});
-		this.props.fetchNewCarsForSale(this.state);
+		this.props.fetchNewCarsForSale(this.state.built_data);
 		e.target.reset();
-    }
+	};
 
 	render() {
 		return (
