@@ -4,10 +4,36 @@ import Login from "./Login_SignupPages/Login";
 import LandingSearchPage from './LandingSearchPage/Containers/LandingSearchPage';
 import Favorites from './FavoritesPage/Containers/Favorites';
 
+import { connect } from 'react-redux';
+import { setPosition } from './Actions/UserActions';
+
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 
 class App extends Component {
+
+    componentDidMount () {
+        this.getLocation()
+    }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(this.logPosition)
+        } else {
+          console.log("Geolocation is not supported by this browser.")
+        }
+    }
+
+    logPosition = (position) => {
+        const location = {
+			lat: position.coords.latitude,
+			long: position.coords.longitude
+		};
+        console.log("Users Location:", `Longitude - ${location.long}`)
+        console.log('               ', `Latitude - ${location.lat}`);
+        this.props.setPosition(location)
+    }
+
     render() {
         window.localStorage.clear()
         return (
@@ -25,5 +51,4 @@ class App extends Component {
     }
 }
 
-
-export default App;
+export default connect(null, {setPosition})(App);

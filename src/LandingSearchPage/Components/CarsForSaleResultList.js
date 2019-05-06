@@ -45,7 +45,7 @@ class CarsForSaleResultList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        cars: state.cars.carsForSale.listings
+        cars: state.cars.carsForSale
     }
 }
 
