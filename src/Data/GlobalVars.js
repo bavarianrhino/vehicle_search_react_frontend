@@ -8,6 +8,10 @@ export const MCAPIKEY = process.env.REACT_APP_MARKETCHECK_API_KEY;
 console.log('API KEY', MCAPIKEY);
 
 
+// ------------- Google Map EndPoints ------------- //
+export const GOOGLE = 'https://www.google.com/maps/place/';
+
+
 // ------------- Market Check EndPoints ------------- //
 export const COORS = 'https://cors-anywhere.herokuapp.com/';
 export const MCSALES = 'https://marketcheck-prod.apigee.net/v1/sales?api_key='
@@ -28,5 +32,23 @@ export const ROWS_25 = '&start=0&rows=25'
 export const ROWS_50 = '&start=0&rows=50'
 export const PHOTOS = '&photo_links=true'
 
-// ------------- Missing Picture Url ------------- //
-export const TRUSTFALL = 'https://img00.deviantart.net/69d9/i/2009/219/c/f/missing_car_by_dreamofyou.jpg'
+// ------------- Missing Data Catch ------------- //
+export const TRUSTFALL = {
+    id: 'Car ID - n/a',
+    user_id: 'User ID - n/a',
+    heading: 'Heading Missing',
+    car_specs: 'Car Specs Missing',
+    price: 'Price Missing',
+    miles: 'Miles Missing',
+    dealerInfo: 'Dealer Info Missing',
+    distance: 'Distance Missing',
+    image: 'https://img00.deviantart.net/69d9/i/2009/219/c/f/missing_car_by_dreamofyou.jpg',
+    images: 'Images Missing',
+    build: 'Build Missing',
+    make: 'Make Missing',
+    model: 'Model Missing',
+    trim: 'Trim Missing',
+    year: 'Year Missing',
+    vdp_url: 'URL Missing',
+    vin: 'Vin Missing'
+}

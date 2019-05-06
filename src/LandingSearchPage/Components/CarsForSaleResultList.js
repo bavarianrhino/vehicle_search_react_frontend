@@ -38,13 +38,12 @@ class CarsForSaleResultList extends React.Component {
 
 	render() {
         console.log(this.props.new_cars);
-        console.log(this.props.activeIndex);
 		return (
 			<div>
-				<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
+				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
 					{this.props.activeIndex === 0 && this.props.new_cars ? this.mapNewCars() : null}
 				</Card.Group>
-				<Card.Group textAlign='center' itemsPerRow={2} style={{ display: 'flex', margin: '3.125em auto' }}>
+				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
 					{this.props.activeIndex === 1 && this.props.used_cars ? this.mapUsedCars() : null}
 				</Card.Group>
 			</div>
