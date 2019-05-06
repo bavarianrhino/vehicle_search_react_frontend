@@ -6,7 +6,12 @@ export const CarsReducer = (
 		currentUser: null,
         carsForSale: [],
         favorites: [],
-        carValueInfo: []
+        fetch_count: 0,
+        listings: [],
+        facet_years: [],
+        facet_makes: [],
+        facet_models: [],
+        facet_trims: []
     }, 
     action
 ) => {
@@ -19,7 +24,14 @@ export const CarsReducer = (
 			return { ...state, loading: true };
 
 		case 'DONE_LOADING_CARS':
-			return { ...state, loading: false };
+            return { ...state, 
+                fetch_count: action.payload.num_found,
+                listings: action.payload.listings,
+                facet_years: action.payload.facets.facet_years,
+                facet_makes: action.payload.facets.facet_makes,
+                facet_models: action.payload.facets.facet_models,
+                facet_trims: action.payload.facets.facet_trims,
+                loading: false };
 
 		case 'LAND_CARS_FOR_SALE':
 			return { ...state, loading: false, carsForSale: action.payload };

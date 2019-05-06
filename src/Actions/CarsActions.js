@@ -1,10 +1,15 @@
+// import { connect } from 'react-redux';
+// import { UserReducer } from './UserReducer';
+
 // import { LOCALHOST } from '../Data/GlobalVars';
 import { COORS } from '../Data/GlobalVars'
 import { MCAPIKEY } from '../Data/GlobalVars';
 // import { MCSALES } from '../Data/GlobalVars'
 import { MCSEARCH } from '../Data/GlobalVars'
-// import { USED } from '../Data/GlobalVars'
+import { USED } from '../Data/GlobalVars'
 // import { NEW } from '../Data/GlobalVars'
+import { LAT } from '../Data/GlobalVars'
+import { LONG } from '../Data/GlobalVars'
 import { YEAR } from '../Data/GlobalVars'
 import { MAKE } from '../Data/GlobalVars'
 import { MODEL } from '../Data/GlobalVars'
@@ -51,6 +56,35 @@ export const fetchUsedCarsForSale = (data) => {
         .then((payload) => dispatch({ type: "LAND_CARS_FOR_SALE", payload }));   
     }
 };
+
+export const fetchYearsForUsedCarsForSale = (location) => {
+    console.log(location.long)
+    console.log(location.lat);
+    return dispatch => {
+        dispatch({ type: 'LOADING_CARS' });
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}&${RADIUS}200${USED}${ROWS_25}&facets=year`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((payload) => {
+				console.log(payload);
+				return dispatch({ type: 'DONE_LOADING_CARS' });
+			});
+			// .then((payload) => console.log(payload));
+    }
+};
+
+// const mapStateToProps = (state) => {
+//     return {
+//         longitude: state.user.longitude,
+//         latitude: state.user.latitude
+//     }
+// }
+
+// export default connect(mapStateToProps, null)()
 
 // export const getCarValueByVIN = (VINData) => {
 // 	console.log(VINData);

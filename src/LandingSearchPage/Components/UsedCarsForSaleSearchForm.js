@@ -4,6 +4,7 @@ import { carMakes } from '../../Data/CarModelData';
 import { carYear } from '../../Data/CarYearData';
 // import { fetchCarsForSale } from '../../Services/APIFetchs';
 import { fetchUsedCarsForSale } from '../../Actions/CarsActions';
+import { fetchYearsForUsedCarsForSale } from '../../Actions/CarsActions';
 // import { landCarsForSale } from '../../Actions/AllActions';
 
 import { Form } from 'semantic-ui-react';
@@ -19,7 +20,16 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		model: '',
 		miles: '',
 		zip: ''
-	};
+    };
+    
+    componentDidMount(){
+        let location = {
+            lat: this.props.latitude,
+            long: this.props.longitude
+		};
+        this.props.fetchYearsForUsedCarsForSale(location);
+
+    }
 
 	handleChangeYear = (e, { value }) => {
 		let str = value;
@@ -68,6 +78,10 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		// });
 	};
 
+	fetchYearsForUsedCarsForSale(){
+
+    }
+
 	render() {
 		return (
 			<div>
@@ -86,14 +100,22 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	}
 }
 
+const mapStateToProps = (state) => {
+	return {
+		latitude: state.user.latitude,
+		longitude: state.user.longitude
+	};
+};
+
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch)
+        fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
+        fetchYearsForUsedCarsForSale: (data) => fetchYearsForUsedCarsForSale(data)(dispatch)
 		// openModal: (current) => dispatch(openModal(current))
 	};
 };
 
-export default connect(null,mapDispatchToProps)(UsedCarsForSaleSearchForm);
+export default connect(mapStateToProps,mapDispatchToProps)(UsedCarsForSaleSearchForm);
 // export default connect(null, {landCarsForSale})(CarsForSaleSearchForm);
 
 /* <Form onSubmit={this.handleSubmit}>
