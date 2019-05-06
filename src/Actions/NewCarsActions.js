@@ -18,18 +18,18 @@ import { YEAR } from '../Data/GlobalVars'
 import { MAKE } from '../Data/GlobalVars'
 import { MODEL } from '../Data/GlobalVars'
 // import { TRIM } from '../Data/GlobalVars'
-import { ZIP } from '../Data/GlobalVars'
+// import { ZIP } from '../Data/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
 import { ROWS_10 } from '../Data/GlobalVars'
-import { ROWS_25 } from '../Data/GlobalVars'
+// import { ROWS_25 } from '../Data/GlobalVars'
 // import { ROWS_50 } from '../Data/GlobalVars'
-import { PHOTOS } from '../Data/GlobalVars'
+// import { PHOTOS } from '../Data/GlobalVars'
 
 
 export const fetchYearsForNewCarsForSale = (location) => {
     console.log(location)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_NEW_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${NEW}${ROWS_10}&facets=year|0|60`,
         {
 			method: 'GET',
@@ -38,14 +38,14 @@ export const fetchYearsForNewCarsForSale = (location) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_YEARS', payload }));
+        .then((payload) => dispatch({ type: 'LAND_NEW_YEARS', payload }));
     }
 }
 
 export const fetchMakesForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_NEW_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}&facets=make|0|60`,
         {
 			method: 'GET',
@@ -54,14 +54,14 @@ export const fetchMakesForNewCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_MAKES', payload }));
+        .then((payload) => dispatch({ type: 'LAND_NEW_MAKES', payload }));
     }
 }
 
 export const fetchModelsForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_NEW_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
         {
 			method: 'GET',
@@ -70,14 +70,14 @@ export const fetchModelsForNewCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_MODELS', payload }));
+        .then((payload) => dispatch({ type: 'LAND_NEW_MODELS', payload }));
     }
 }
 
 export const fetchTrimsForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
-        dispatch({ type: 'LOADING_CARS' });
+        dispatch({ type: 'LOADING_NEW_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
         {
             method: 'GET',
@@ -86,13 +86,13 @@ export const fetchTrimsForNewCarsForSale = (data) => {
 			}
 		})
         .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_TRIMS', payload }))
+        .then((payload) => dispatch({ type: 'LAND_NEW_TRIMS', payload }))
     }
 }
                                 // export const fetchCarsForSale = (data) => {
                                 //     console.log(data);
                                 //     return dispatch => {
-                                //         dispatch({ type: 'LOADING_CARS' });
+                                //         dispatch({ type: 'LOADING_USED_CARS' });
                                 //         return fetch(
                                 // 			`${COORS}${MCSEARCH}${MCAPIKEY}${RADIUS}${data.miles}${ZIP}${data.zip}&car_type=used${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${ROWS_25}${PHOTOS}`,
                                 // 			{

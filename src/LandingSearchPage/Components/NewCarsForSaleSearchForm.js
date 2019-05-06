@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // import { fetchUsedCarsForSale } from '../../Actions/UsedCarsActions';
-import { fetchYearsForNewCarsForSale } from '../../Actions/UsedCarsActions';
-import { fetchMakesForNewCarsForSale } from '../../Actions/UsedCarsActions';
-import { fetchModelsForNewCarsForSale } from '../../Actions/UsedCarsActions';
-import { fetchTrimsForNewCarsForSale } from '../../Actions/UsedCarsActions';
+import { fetchYearsForNewCarsForSale } from '../../Actions/NewCarsActions';
+import { fetchMakesForNewCarsForSale } from '../../Actions/NewCarsActions';
+import { fetchModelsForNewCarsForSale } from '../../Actions/NewCarsActions';
+import { fetchTrimsForNewCarsForSale } from '../../Actions/NewCarsActions';
 // import { landCarsForSale } from '../../Actions/AllActions';
 
 import { Form } from 'semantic-ui-react';
@@ -48,11 +48,20 @@ class NewCarsForSaleSearchForm extends React.Component {
 	};
 
 	componentDidMount() {
-		this.setState({
-			...this.state,
-			radius_loading: !this.state.radius_loading,
-			form_loading: !this.state.form_loading,
-			radius_options: distanceOptions
+        let location = {
+			lat: this.props.latitude,
+			long: this.props.longitude,
+			miles: '200'
+		};
+		this.props.fetchYearsForNewCarsForSale(location).then((res) => {
+			this.setState({
+				...this.state,
+				form_loading: !this.state.form_loading,
+                radius_loading: !this.state.radius_loading,
+                radius: '200',
+				radius_options: distanceOptions,
+				year_options: this.props.facet_years
+			});
 		});
 	}
 
@@ -118,26 +127,26 @@ class NewCarsForSaleSearchForm extends React.Component {
 	};
 
 	handleChangeRadius = (e, { value }) => {
-		let str = value;
+        let str = value;
 		let location = {
 			lat: this.props.latitude,
 			long: this.props.longitude,
 			miles: str
 		};
 		this.handleYearLoading();
-		console.log(this.state.year_disabled);
-		this.props
-			.fetchYearsForNewCarsForSale(location)
-            .then((res) => this.toggleYearDisabled())
+		// console.log(this.state.year_disabled);
+        // .then((res) => this.toggleYearDisabled())
+		this.props.fetchYearsForNewCarsForSale(location)
 			.then((res) => {
-                console.log(this.state.year_disabled);
+                // console.log(this.state.year_disabled);
 				this.setState({
-					...this.state,
+                    ...this.state,
+                    year_disabled: false,
 					year_options: this.props.facet_years,
 					make_options: [],
 					model_options: [],
 					trim_options: [],
-					radius: value,
+					radius: location.miles,
 					year: '',
 					make: '',
 					model: '',
@@ -145,7 +154,7 @@ class NewCarsForSaleSearchForm extends React.Component {
 				});
 			})
             .then((res) => this.handleYearLoading());
-            console.log(this.state.year_disabled);
+            // console.log(this.state.year_disabled);
 	};
 
 	handleChangeYear = (e, { value }) => {
@@ -157,12 +166,11 @@ class NewCarsForSaleSearchForm extends React.Component {
 			year: year
 		};
 		this.handleMakeLoading();
-		this.props
-			.fetchMakesForNewCarsForSale(data)
-			.then((res) => this.toggleMakeDisabled())
+		this.props.fetchMakesForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-					...this.state,
+                    ...this.state,
+                    make_disabled: false,
 					make_options: this.props.facet_makes,
 					model_options: [],
 					trim_options: [],
@@ -185,12 +193,11 @@ class NewCarsForSaleSearchForm extends React.Component {
 			make: make
 		};
 		this.handleModelLoading();
-		this.props
-			.fetchModelsForNewCarsForSale(data)
-			.then((res) => this.toggleModelDisabled())
+		this.props.fetchModelsForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-					...this.state,
+                    ...this.state,
+                    model_disabled: false,
 					model_options: this.props.facet_models,
 					trim_options: [],
 					make: make,
@@ -209,15 +216,14 @@ class NewCarsForSaleSearchForm extends React.Component {
 			miles: this.state.radius,
 			year: this.state.year,
 			make: this.state.make,
-			model: this.state.model
+			model: model
 		};
 		this.handleTrimLoading();
-		this.props
-			.fetchTrimsForNewCarsForSale(data)
-			.then((res) => this.toggleTrimDisabled())
+		this.props.fetchTrimsForNewCarsForSale(data)
 			.then((res) => {
 				this.setState({
-					...this.state,
+                    ...this.state,
+                    trim_disabled: false,
 					trim_options: this.props.facet_trims,
 					model: model,
 					trim: ''
@@ -247,7 +253,7 @@ class NewCarsForSaleSearchForm extends React.Component {
 		return (
 			<div>
 				<Form onSubmit={this.handleSubmit} onReset={this.handleReset} loading={this.state.loadingform}>
-					<Form.Group widths='equal' loading={this.state.loadingformgroup}>
+					<Form.Group widths='equal' loading={this.state.loadingformgroup.toString()}>
 						<Form.Select loading={this.state.radius_loading ? true : false} disabled={this.state.radius_disabled ? true : false} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius' />
 						<Form.Select loading={this.state.year_loading ? true : false} disabled={this.state.year_disabled ? true : false} onChange={this.handleChangeYear} options={this.state.year_options} label='Choose Year' placeholder='Choose Year' selection name='year' />
 						<Form.Select loading={this.state.make_loading ? true : false} disabled={this.state.make_disabled ? true : false} onChange={this.handleChangeMake} options={this.state.make_options} label='Choose Make' placeholder='Choose Make' selection name='make' />
@@ -265,11 +271,11 @@ const mapStateToProps = (state) => {
     return {
 		latitude: state.user.latitude,
 		longitude: state.user.longitude,
-		listings: state.cars.listings,
-		facet_years: state.cars.facet_years,
-        facet_makes: state.cars.facet_makes,
-        facet_models: state.cars.facet_models,
-        facet_trims: state.cars.facet_trims
+		listings: state.new_cars.listings,
+		facet_years: state.new_cars.facet_years,
+        facet_makes: state.new_cars.facet_makes,
+        facet_models: state.new_cars.facet_models,
+        facet_trims: state.new_cars.facet_trims
 	};
 };
 

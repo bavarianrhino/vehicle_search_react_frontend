@@ -1,32 +1,34 @@
 import React from 'react';
-import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
 import NewCarsForSaleSearchForm from '../Components/NewCarsForSaleSearchForm';
+import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
 
 import { connect } from 'react-redux';
+import { setActiveRenderResults } from '../../Actions/UserActions'
 import { Tab } from 'semantic-ui-react';
 
 
 class Searcher extends React.Component {
 
     state = {
-        attr: null
+        activeIndex: this.props.activeIndex
     }
 
-    funcName = (e) => {
-        console.log(e.target.value)
+    handleTabChange = (e, { activeIndex }) => {
+        this.setState({ activeIndex }, console.log(activeIndex))
+        this.props.setActiveRenderResults(activeIndex)
     }
     
     render() {
 
         const panes = [
-            { menuItem: 'New Cars', render: () => <Tab.Pane attached={false}><NewCarsForSaleSearchForm /></Tab.Pane> },
-            { menuItem: 'Used Cars', render: () => <Tab.Pane attached={false}><UsedCarsForSaleSearchForm /></Tab.Pane> },
-            { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane> },
+            { menuItem: 'New Cars', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><NewCarsForSaleSearchForm /></Tab.Pane> },
+            { menuItem: 'Used Cars', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><UsedCarsForSaleSearchForm /></Tab.Pane> },
+            { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane renderActiveOnly={true} attached={false}>Tab 3 Content</Tab.Pane> },
         ]
 
         return (
 			<div>
-                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} panes={panes} />
+                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} activeIndex={this.activeIndex} onTabChange={this.handleTabChange} panes={panes} />
 			</div>
 		);
     }
@@ -34,12 +36,8 @@ class Searcher extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        attr: state.attr
-    }
+		activeIndex: state.user.activeTab
+	};
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Searcher);
+export default connect(mapStateToProps, { setActiveRenderResults })(Searcher);

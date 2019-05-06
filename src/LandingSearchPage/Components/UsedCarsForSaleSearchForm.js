@@ -44,7 +44,7 @@ class UsedCarsForSaleSearchForm extends React.Component {
 		let location = {
 			lat: this.props.latitude,
 			long: this.props.longitude,
-			miles: this.state.radius
+			miles: '200'
 		};
 		this.props.fetchYearsForUsedCarsForSale(location).then((res) => {
             this.setState({
@@ -56,6 +56,9 @@ class UsedCarsForSaleSearchForm extends React.Component {
             })
         })
 	}
+            // .then((res) => {
+            //     this.props.toggleResultsBasedOnIndexedTab()
+            // })
 
 	handleFormLoading = () => {
 		this.setState({ ...this.state, form_loading: !this.state.form_loading });
@@ -261,11 +264,11 @@ const mapStateToProps = (state) => {
     return {
 		latitude: state.user.latitude,
 		longitude: state.user.longitude,
-		listings: state.cars.listings,
-		facet_years: state.cars.facet_years,
-        facet_makes: state.cars.facet_makes,
-        facet_models: state.cars.facet_models,
-        facet_trims: state.cars.facet_trims
+		listings: state.used_cars.listings,
+		facet_years: state.used_cars.facet_years,
+        facet_makes: state.used_cars.facet_makes,
+        facet_models: state.used_cars.facet_models,
+        facet_trims: state.used_cars.facet_trims
 	};
 };
 
