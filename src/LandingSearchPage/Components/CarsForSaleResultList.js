@@ -38,7 +38,6 @@ class CarsForSaleResultList extends React.Component {
 
 	render() {
         console.log(this.props.new_cars);
-        console.log(this.props.activeIndex);
 		return (
 			<div>
 				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
