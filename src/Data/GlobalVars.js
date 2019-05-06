@@ -23,9 +23,9 @@ export const MODEL = '&model='
 export const TRIM = '&trim='
 export const ZIP = '&=zip'
 export const RADIUS = '&=radius'
-export const ROWS_10 = '&rows=10&start=1'
-export const ROWS_25 = '&rows=25&start=1'
-export const ROWS_50 = '&rows=50&start=1'
+export const ROWS_10 = '&rows=10&start=0'
+export const ROWS_25 = '&rows=25&start=0'
+export const ROWS_50 = '&rows=50&start=0'
 export const PHOTOS = '&photo_links=true'
 
 // ------------- Missing Picture Url ------------- //
