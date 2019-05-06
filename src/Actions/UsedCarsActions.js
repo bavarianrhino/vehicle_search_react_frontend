@@ -48,7 +48,7 @@ export const fetchUsedCarsForSale = (query_obj) => {
 			}
 		})
 			.then((res) => res.json())
-			.then((payload) => dispatch({ type: 'LAND_CARS_FOR_SALE', payload }));   
+			.then((payload) => dispatch({ type: 'LAND_USED_CARS_FOR_SALE', payload }));   
     }
 };
 
