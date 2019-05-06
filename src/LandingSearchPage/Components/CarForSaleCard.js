@@ -17,7 +17,7 @@ class CarForSaleCard extends React.Component {
 	mapImages = () => {
 		const fallback = 'https://media-cf.assets-cdk.com/websites/5.0.4032-199/websitesEar/websitesWebApp/css/common/images/en_US/noImage_large.png';
 		return this.props.car.media.photo_links.map((img) => {
-			return (<div><img alt='' src={this.props.car.media.photo_links === 0 ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} /></div>);
+			return (<div><img alt='' src={this.props.car.media.photo_links === undefined ? `${fallback}` : `${img}`} style={{ padding: '5px 5px' }} /></div>);
 		});
 	};
 
@@ -47,6 +47,7 @@ class CarForSaleCard extends React.Component {
 			dealerInfo: this.props.car.dealer,
 			distance: this.props.car.dist,
 			image: this.props.car.media.photo_links[0],
+			image1: this.props.car.media.photo_links[1],
 			images: this.props.car.media.photo_links,
 			make: this.props.car.build.make,
 			model: this.props.car.build.model,
@@ -62,7 +63,7 @@ class CarForSaleCard extends React.Component {
 			<Card className='car_card' color='black' style={{ padding: '1em 1em', margin: '0.5em 0.2em' }}>
 				<Grid>
 					<Grid.Column width={7}>
-						<Image size='medium' alt='no image' src={buildCarObj.image.length === 0 ? `${fallback}` : `${buildCarObj.image}`} style={{ padding: '5px 5px' }} />
+						<Image size='medium' alt='no image' src={buildCarObj.image1 === undefined ? `${fallback}` : `${buildCarObj.image1}`} style={{ padding: '5px 5px' }} />
 					</Grid.Column>
 					<Grid.Column width={9}>
 						<Card.Content>

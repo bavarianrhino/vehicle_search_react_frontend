@@ -32,7 +32,41 @@ export const CarsReducer = (
                 facet_years: years,
 				carsForSale: action.payload.listings,
 				loading: false
+            };
+            
+        case 'LAND_MAKES':
+            let makes = action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))
+            return {
+				...state,
+				fetch_count: action.payload.num_found,
+				listings: action.payload.listings,
+				facet_makes: makes,
+				carsForSale: action.payload.listings,
+				loading: false
 			};
+            
+        case 'LAND_MODELS':
+            let models = action.payload.facets.model.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))
+            return {
+				...state,
+				fetch_count: action.payload.num_found,
+				listings: action.payload.listings,
+				facet_models: models,
+				carsForSale: action.payload.listings,
+				loading: false
+			};
+            
+        case 'LAND_TRIMS':
+            let trims = action.payload.facets.trim.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))
+            return {
+				...state,
+				fetch_count: action.payload.num_found,
+				listings: action.payload.listings,
+				facet_trims: trims,
+				carsForSale: action.payload.listings,
+				loading: false
+			};
+            
             // facet_years: ...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i })),
             // facet_makes: [...state.facet_makes, action.payload.facets.make.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }))],
             // facet_years: [...state.facet_years, action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase.replace(/ /g, '%20'), count: obj.count, key: i }))],
