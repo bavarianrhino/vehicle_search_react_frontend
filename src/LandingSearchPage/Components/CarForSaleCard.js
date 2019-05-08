@@ -84,6 +84,8 @@ class CarForSaleCard extends React.Component {
         };
         
         const mapCoords = `${GOOGLE}${buildCarObj.lat},${buildCarObj.long}`;
+        // const likedLabel = { color: 'red', corner: 'left', icon: 'heart' };
+        // const needToLikLabel = { color: 'green', corner: 'left', icon: 'heart' };
 
 		return (
 			<Card className='car_card' color='black' style={{ padding: '1em 1em', margin: '0.5em 0.75em' }}>
@@ -100,7 +102,7 @@ class CarForSaleCard extends React.Component {
 							<Card.Description>${buildCarObj.price}.00</Card.Description>
 							<Button.Group style={{ margin: '0.95rem -0.25rem 0.95rem -0.25rem' }}>
 								<Button icon onClick={() => this.addFavorite(buildCarObj)}>
-                                    {((this.state.favorite) ? <Icon name='heart' color='red'/> : <Icon name='heart' color='green'/>)}
+									{this.state.favorite ? <Icon name='heart' color='red' /> : <Icon name='heart' color='green' />}
 								</Button>
 								<Button icon onClick={this.toggleModal}>
 									<Icon name='images' />
