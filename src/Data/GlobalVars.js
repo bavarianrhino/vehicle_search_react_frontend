@@ -31,6 +31,7 @@ export const ROWS_10 = '&start=0&rows=10'
 export const ROWS_25 = '&start=0&rows=25'
 export const ROWS_50 = '&start=0&rows=50'
 export const PHOTOS = '&photo_links=true'
+export const PLOT = '&plot=true&stats=price,miles'
 
 // ------------- Missing Data Catch ------------- //
 export const TRUSTFALL = {
