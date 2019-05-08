@@ -1,6 +1,5 @@
 import React from 'react';
-// import CarValueResultDataContainer from './CarValueResultDataContainer';
-// import CarValueResultGraphContainer from './CarValueResultGraphContainer';
+import CarValueResultGraphContainer from './CarValueResultGraphContainer';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -19,13 +18,11 @@ class CarValueResultsContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.funcName}
+                <CarValueResultGraphContainer /> */
             </div>
         )
     }
 }
-/* <CarValueResultDataContainer />
-<CarValueResultGraphContainer /> */
 
 
 const mapStateToProps = (state) => {
