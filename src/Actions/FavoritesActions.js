@@ -58,8 +58,7 @@ export const handleAddFavorite = (data) => {
 				year: data.id,
 				api_id: data.id,
 				url: data.vdp_url,
-				vin: data.vin,
-				user_id: data.user_id
+				vin: data.vin
 			})
 		})
         .then((res) => res.json())
@@ -73,9 +72,9 @@ export const handleAddFavorite = (data) => {
     }
 }
 
-export const deleteFavorite = (user, id) => {
-    console.log(id)
-    console.log(user);
+export const deleteFavorite = (user_id, car_id) => {
+    console.log(user_id)
+    console.log(car_id);
     return dispatch => {
         dispatch({ type: 'DELETING_FAVORITE' })
         return fetch(`${LOCALHOST}/favorites`, {
@@ -85,16 +84,12 @@ export const deleteFavorite = (user, id) => {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				user_id: user,
-				car_id: id
+				user_id: user_id,
+				car_id: car_id
 			})
 		})
-			.then((res) => res.json())
-			.then((payload) => {
-				console.log(payload);
-                // dispatch({ type: 'REMOVE_FAVORITE_CAR', payload });
-                // .then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
-			});
+        .then((payload) => dispatch({ type: 'DONE_LOADING_FAVORITES' }))
+        // .then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
     }
 }
 
