@@ -1,5 +1,5 @@
 
-export const CarValueReducer = (
+export const CarValuesReducer = (
 	state = {
         loading: false,
         count_found: 0,

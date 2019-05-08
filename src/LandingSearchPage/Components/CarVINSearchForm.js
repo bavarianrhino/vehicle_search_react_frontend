@@ -111,8 +111,8 @@
 
 import React from 'react';
 
-import { getCarValueByVIN } from '../../Services/APIFetchs';
-import { distanceRadiusMiles } from '../../Data/MileRadiusDistance';
+import { getCarValueByVIN } from '../../Actions/CarValueActions';
+// import { distanceRadiusMiles } from '../../Data/MileRadiusDistance';
 import { connect } from 'react-redux';
 
 import { Form } from 'semantic-ui-react';

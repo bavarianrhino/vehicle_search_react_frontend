@@ -1,5 +1,7 @@
 import React from 'react';
 import CarValueResultGraph from '../Components/CarValueResultGraph';
+
+import { fetchValuesForCars } from '../../Actions/CarValueActions';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -18,7 +20,6 @@ class CarValueResultGraphContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.funcName}
                 <CarValueResultGraph />
             </div>
         )
@@ -33,7 +34,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+    fetchValuesForCars: (data) => fetchValuesForCars(data)(dispatch)
+    // functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarValueResultGraphContainer);

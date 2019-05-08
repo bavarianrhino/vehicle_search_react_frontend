@@ -35,3 +35,19 @@ export const fetchValuesForCars = (data) => {
 			.then((payload) => dispatch({ type: 'LANDING_VALUES', payload }));
 	};
 };
+
+
+export const getCarValueByVIN = (data) => {
+	console.log(data);
+	return (dispatch) => {
+		dispatch({ type: 'LOADING_VALUES' });
+		return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${USED}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}${PLOT}`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json'
+			}
+		})
+			.then((res) => res.json())
+			.then((payload) => dispatch({ type: 'LANDING_VALUES', payload }));
+	};
+};
