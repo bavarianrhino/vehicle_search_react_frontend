@@ -1,6 +1,8 @@
 import React from 'react';
 import NewCarsForSaleSearchForm from '../Components/NewCarsForSaleSearchForm';
 import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
+import CarVINSearchForm from '../Components/CarVINSearchForm.js';
+import CarValueSearchForm from '../Components/CarValueSearchForm';
 
 import { connect } from 'react-redux';
 import { setActiveRenderResults } from '../../Actions/UserActions'
@@ -23,7 +25,8 @@ class Searcher extends React.Component {
         const panes = [
             { menuItem: 'New Cars', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><NewCarsForSaleSearchForm /></Tab.Pane> },
             { menuItem: 'Used Cars', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><UsedCarsForSaleSearchForm /></Tab.Pane> },
-            { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane renderActiveOnly={true} attached={false}>Tab 3 Content</Tab.Pane> },
+            { menuItem: 'Search Cars by VIN', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><CarVINSearchForm /></Tab.Pane> },
+            { menuItem: 'Used Vehicle Values', render: () => <Tab.Pane renderActiveOnly={true} attached={false}><CarValueSearchForm /></Tab.Pane> },
         ]
 
         return (
