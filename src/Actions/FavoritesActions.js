@@ -74,6 +74,31 @@ export const handleAddFavorite = (data) => {
     }
 }
 
+// export const getFavorites = (data) => {
+//     console.log(data);
+//     return dispatch => {
+//         dispatch({ type: 'SAVING_FAVORITE' });
+//         return fetch(`${LOCALHOST}/favorites`, {
+// 			method: 'GET',
+// 			headers: {
+// 				Authorization: `Bearer ${localStorage.getItem('token')}`,
+// 				'Content-Type': 'application/json'
+// 			},
+// 			body: JSON.stringify({
+// 				data: data
+// 			})
+// 		})
+//         .then((res) => res.json())
+//         .then((payload) => {
+//             if (payload.error) {
+//                 console.error(payload.error);
+//             } else {
+//                 dispatch({ type: 'HOLD_FAVORITES', payload });
+//             }
+//         });
+//     }
+// }
+
 export const deleteFavorite = (user, vin) => {
     console.log(vin)
     console.log(user);

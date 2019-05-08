@@ -20,7 +20,7 @@ class Favorites extends React.Component {
     componentDidMount () {
 		this.props.landFavorites(this.props.api_urls).then((res) => {
 			this.setState({ loading: !this.state.loading });
-		});
+		})
     }
 
 	handleTabChange = (e, data) => {
