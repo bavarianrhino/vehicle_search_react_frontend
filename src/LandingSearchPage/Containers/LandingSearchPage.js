@@ -2,11 +2,17 @@ import React from 'react';
 import NavBar from '../../NavBar/NavBar';
 import SearcherContainer from './SearcherContainer';
 import ResultsContainer from './ResultsContainer';
+
 import { connect } from 'react-redux';
+import { landFavorites } from '../../Actions/FavoritesActions';
 
 import { Container, Segment } from 'semantic-ui-react';
 
 class LandingSearchPage extends React.Component {
+
+    componentDidMount (){
+        // this.props.landFavorites(this.props.api_urls)
+    }
 
 	render() {
 		return (
@@ -23,5 +29,17 @@ class LandingSearchPage extends React.Component {
 	}
 }
 
+const mapStateToProps = (state) => {
+	return {
+		api_urls: state.favorites.api_urls,
+		favorites: state.favorites.favorites
+	};
+};
 
-export default connect()(LandingSearchPage);
+const mapDispatchToProps = (dispatch) => ({
+    landFavorites: (data) => landFavorites(data)(dispatch)
+});
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(LandingSearchPage);

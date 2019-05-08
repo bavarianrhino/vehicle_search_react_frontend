@@ -33,13 +33,12 @@ export const landFavorites = (urls) => {
 					headers: {
 						Accept: 'application/json'
 					}
-				})
-                const json = await response.json();
-                console.log(json)
-                dispatch({ type: 'LANDING_FAVORITES', json })
-                // (this.props.api_urls.map(({vin}) => vin).includes(json) ? dispatch({ type: 'LOADING_FAVORITES', json }) : dispatch({ type: 'LANDING_FAVORITES', json }))
+				});
+				const json = await response.json();
+				console.log(json)
+				dispatch({ type: 'LANDING_FAVORITES', json });
 			})
-		).then((res) => res)
+		)
     }    
 }
 
@@ -74,51 +73,28 @@ export const handleAddFavorite = (data) => {
     }
 }
 
-// export const getFavorites = (data) => {
-//     console.log(data);
-//     return dispatch => {
-//         dispatch({ type: 'SAVING_FAVORITE' });
-//         return fetch(`${LOCALHOST}/favorites`, {
-// 			method: 'GET',
-// 			headers: {
-// 				Authorization: `Bearer ${localStorage.getItem('token')}`,
-// 				'Content-Type': 'application/json'
-// 			},
-// 			body: JSON.stringify({
-// 				data: data
-// 			})
-// 		})
-//         .then((res) => res.json())
-//         .then((payload) => {
-//             if (payload.error) {
-//                 console.error(payload.error);
-//             } else {
-//                 dispatch({ type: 'HOLD_FAVORITES', payload });
-//             }
-//         });
-//     }
-// }
-
-export const deleteFavorite = (user, vin) => {
-    console.log(vin)
+export const deleteFavorite = (user, id) => {
+    console.log(id)
     console.log(user);
     return dispatch => {
         dispatch({ type: 'DELETING_FAVORITE' })
         return fetch(`${LOCALHOST}/favorites`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: user,
-                vin: vin
-            })
-        })
-        .then(res => res.json())
-        .then((payload) => {
-            console.log(payload)
-            dispatch({ type: 'REMOVE_FAVORITE_CAR', payload });
-        })
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				user_id: user,
+				car_id: id
+			})
+		})
+			.then((res) => res.json())
+			.then((payload) => {
+				console.log(payload);
+                // dispatch({ type: 'REMOVE_FAVORITE_CAR', payload });
+                // .then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
+			});
     }
 }
 

@@ -14,12 +14,15 @@ export const FavoritesReducer = (
 			case 'LOADING_FAVORITES':
 				return { ...state, loading: true };
 
+			case 'DONE_LOADING_FAVORITES':
+				return { ...state, loading: false };
+
 			case 'FETCH_FAVORITES':
 				return { ...state, api_urls: action.payload, loading: false };
 
 			case 'LANDING_FAVORITES':
-				console.log(state.api_urls.map(({ vin }) => vin));
-				console.log(state.api_urls.map(({ vin }) => vin).includes(action.json.vin));
+				// console.log(state.api_urls.map(({ vin }) => vin));
+				// console.log(state.api_urls.map(({ vin }) => vin).includes(action.json.vin));
 				if (state.api_urls.map(({ vin }) => vin).includes(action.json.vin) && state.favorites.length >= state.api_urls.length) {
 					return state;
 				} else {

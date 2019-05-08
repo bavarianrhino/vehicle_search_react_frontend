@@ -11,3 +11,9 @@ export const setActiveRenderResults = (data) => {
         type: 'SET_ACTIVE_TAB', data
     }
 }
+
+export const stopLoading = () => {
+    return { 
+        type: 'DONE_LOADING_FAVORITES'
+    }
+}
