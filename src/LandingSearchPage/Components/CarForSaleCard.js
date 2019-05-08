@@ -66,21 +66,29 @@ class CarForSaleCard extends React.Component {
 		return (
 			<Card className='car_card' color='black' style={{ padding: '1em 1em', margin: '0.5em 0.75em' }}>
 				<Grid style={{ 'align-items': 'flex-start' }}>
-					<Grid style={{ padding: '0rem', 'align-items': 'flex-start' }}>
+					<Grid style={{ padding: '0rem', 'align-items': 'flex-start', 'margin-bottom': '2rem' }}>
 						<Image size='medium' alt='no image' src={buildCarObj.image === undefined ? `${TRUSTFALL.image}` : `${buildCarObj.image}`} style={{ height: 'unset' }} />
 					</Grid>
-					<Grid>
+					<Grid style={{ margin: 'auto auto auto auto' }}>
 						<Card.Content>
 							<Card.Header>{buildCarObj.heading}</Card.Header>
 							<Card.Meta>
 								<span>Miles: {buildCarObj.miles}</span>
 							</Card.Meta>
 							<Card.Description>${buildCarObj.price}.00</Card.Description>
-							<Button.Group style={{ margin: '0.95rem -0.25rem 0.95rem -0.25rem'}}>
-								<Button icon onClick={() => this.addFavorite(buildCarObj)}><Icon name='eye' /></Button>
-								<Button icon onClick={this.toggleModal}><Icon name='images' /></Button>
-								<Button icon onClick={() => window.open(mapCoords)}><Icon name='google' /></Button>
-								<Button icon onClick={() => window.open(buildCarObj.vdp_url)}><Icon name='linkify' /></Button>
+							<Button.Group style={{ margin: '0.95rem -0.25rem 0.95rem -0.25rem' }}>
+								<Button icon onClick={() => this.addFavorite(buildCarObj)}>
+									<Icon name='eye' />
+								</Button>
+								<Button icon onClick={this.toggleModal}>
+									<Icon name='images' />
+								</Button>
+								<Button icon onClick={() => window.open(mapCoords)}>
+									<Icon name='google' />
+								</Button>
+								<Button icon onClick={() => window.open(buildCarObj.vdp_url)}>
+									<Icon name='linkify' />
+								</Button>
 							</Button.Group>
 						</Card.Content>
 					</Grid>
