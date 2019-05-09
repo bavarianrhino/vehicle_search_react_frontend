@@ -59,7 +59,8 @@ export const handleAddFavorite = (data) => {
 				year: data.id,
 				api_id: data.id,
 				url: data.vdp_url,
-				vin: data.vin
+                vin: data.vin,
+                user_id: data.user_id
 			})
 		})
         .then((res) => res.json())

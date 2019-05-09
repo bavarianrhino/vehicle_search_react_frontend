@@ -23,3 +23,9 @@ export const upDateSliderListings = (val) => {
         type: 'RENDER_LISTINGS', val
     }
 }
+
+export const clearGraphData = () => {
+    return { 
+        type: 'CLEAR_DATA'
+    }
+}

@@ -13,7 +13,7 @@ import { Segment, Container, Tab } from 'semantic-ui-react';
 class Favorites extends React.Component {
 
 	state = {
-        activeIndex: null,
+        activeIndex: 0,
         fetch_load: true,
 		loading: true
     };
@@ -26,7 +26,9 @@ class Favorites extends React.Component {
 
 	handleTabChange = (e, data) => {
         console.log(data)
-		this.setState({ activeIndex: data.activeIndex, loading: !this.state.loading })
+        this.props.landFavorites(this.props.api_urls).then((res) => {
+            this.setState({ ...this.state, fetch_load: false, loading: false, activeIndex: data.activeIndex, loading: !this.state.loading });
+        });
     }
 
 	panes = [{menuItem: 'Favorite Cars', render: () => (<Tab.Pane attached={false} loading={this.state.loading}><FavCarsForSaleContainer /></Tab.Pane>)},

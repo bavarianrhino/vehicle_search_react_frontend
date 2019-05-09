@@ -112,17 +112,31 @@
 import React from 'react';
 
 import { getCarValueByVIN } from '../../Actions/CarValueActions';
-// import { distanceRadiusMiles } from '../../Data/MileRadiusDistance';
+import { distanceRadiusMiles } from '../../Data/MileRadiusDistance';
 import { connect } from 'react-redux';
 
 import { Form } from 'semantic-ui-react';
 
 
 class CarVINSearchForm extends React.Component {
-    state = {
-        vin: ''
+	state = {
+        vin: '',
+        radius_options: null,
+        radius: '200'
 	};
-    
+
+	componentDidMount() {
+		this.setState({
+			radius_options: distanceRadiusMiles
+		});
+	}
+
+	handleChangeRadius = (e) => {
+		this.setState({
+			radius: e.target.value
+		});
+	};
+
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
@@ -131,11 +145,11 @@ class CarVINSearchForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-        getCarValueByVIN(this.state.vin).then((payload) => {
-            console.log(payload)
-            // setCarValues(payload)
-        })
-        // fetchCarValues(this.state.vin).then((payload) => {
+		getCarValueByVIN(this.state.vin).then((payload) => {
+			console.log(payload);
+			// setCarValues(payload)
+		});
+		// fetchCarValues(this.state.vin).then((payload) => {
 		// getCarValueByVIN(this.state.vin).then((payload) => {
 		// 	console.log(payload);
 		// });
@@ -155,7 +169,7 @@ class CarVINSearchForm extends React.Component {
 			<div>
 				<Form onSubmit={this.handleSubmit} onReset={this.handleReset}>
 					<Form.Group widths='equal'>
-                        <Form.Select loading={this.state.radius_loading ? true : false} disabled={this.state.radius_disabled ? true : false} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius' />
+						<Form.Select loading={this.state.radius_loading ? true : false} disabled={this.state.radius_disabled ? true : false} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius_options' />
 						<Form.Input fluid label='VIN' placeholder='VIN' type='text' name='vin' onChange={this.handleChange} />
 					</Form.Group>
 					<Form.Button type='submit'>Submit</Form.Button>
@@ -168,8 +182,7 @@ class CarVINSearchForm extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		latitude: state.user.latitude,
-		longitude: state.user.longitude,
-		listings: state.vin_cars.listings
+		longitude: state.user.longitude
 	};
 };
 
