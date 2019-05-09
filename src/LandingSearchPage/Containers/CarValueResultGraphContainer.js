@@ -1,25 +1,15 @@
 import React from 'react';
 import CarValueResultGraph from '../Components/CarValueResultGraph';
+
+import { fetchValuesForCars } from '../../Actions/CarValueActions';
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
-
-
 class CarValueResultGraphContainer extends React.Component {
-
-    state = {
-        attr: null
-    }
-
-    funcName = (e) => {
-        console.log(e.target.value)
-    }
 
     render() {
         return (
             <div>
-                {this.funcName}
-                <CarValueResultGraph />
+                {this.props.begin_plot ? <CarValueResultGraph /> : null}
             </div>
         )
     }
@@ -28,12 +18,12 @@ class CarValueResultGraphContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        attr: state.attr
-    }
+		begin_plot: state.values.begin_plot
+	};
 }
-
 const mapDispatchToProps = (dispatch) => ({
-    functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+    fetchValuesForCars: (data) => fetchValuesForCars(data)(dispatch)
+    // functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarValueResultGraphContainer);

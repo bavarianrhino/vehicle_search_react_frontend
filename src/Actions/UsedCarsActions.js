@@ -14,6 +14,8 @@ import { MODEL } from '../Data/GlobalVars'
 import { TRIM } from '../Data/GlobalVars'
 // import { ZIP } from '../Dat÷a/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
+import { START } from '../Data/GlobalVars'
+import { STARTO } from '../Data/GlobalVars';
 import { ROWS_10 } from '../Data/GlobalVars'
 // import { ROWS_25 } from '../Data/GlobalVars'
 import { ROWS_50 } from '../Data/GlobalVars'
@@ -56,7 +58,7 @@ export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location)
     return dispatch => {
         dispatch({ type: 'LOADING_USED_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${USED}${ROWS_10}&facets=year|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${USED}${STARTO}${ROWS_50}&facets=year|0|60`,
         {
 			method: 'GET',
 			headers: {
@@ -72,7 +74,7 @@ export const fetchMakesForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_USED_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}&facets=make|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${STARTO}${ROWS_50}${YEAR}${data.year}&facets=make|0|60`,
         {
 			method: 'GET',
 			headers: {
@@ -88,7 +90,7 @@ export const fetchModelsForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_USED_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${STARTO}${ROWS_50}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
         {
 			method: 'GET',
 			headers: {
@@ -104,7 +106,7 @@ export const fetchTrimsForUsedCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_USED_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${USED}${STARTO}${ROWS_50}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
         {
 			method: 'GET',
 			headers: {

@@ -13,8 +13,23 @@ import '../../Stylesheets/CarForSaleCard.css';
 class CarForSaleCard extends React.Component {
 
 	state = {
-		open: false
-	};
+        open: false,
+        favorite: false
+    };
+
+    componentDidMount () {
+        this.checkFavs()
+    }
+
+    checkFavs = () => {
+        this.props.favorites.map((fav) => {
+            if (fav.vin === this.props.car.vin) {
+                this.setState({ ...this.state, favorite: true})
+            } else {
+                return null
+            }
+        })
+    }
 
 	mapImages = () => {
 		return this.props.car.media.photo_links.map((img) => {
@@ -24,15 +39,22 @@ class CarForSaleCard extends React.Component {
 
 	toggleModal = () => {
 		this.setState({
+            ...this.state,
 			open: !this.state.open
 		});
 	};
 
 	addFavorite = (buildCarObj) => {
-        console.log('Adding a Favorite', buildCarObj);
-        // console.log(buildCarObj);
-        this.props.handleAddFavorite(buildCarObj);
-        console.log('HIT!! ADDED!!')
+        if(!this.state.favorite) {
+            this.setState({ ...this.state, favorite: true });
+            console.log('Adding a Favorite', buildCarObj);
+            console.log(buildCarObj);
+            this.props.handleAddFavorite(buildCarObj);
+            console.log('HIT!! ADDED!!')
+        } else {
+            this.setState({ ...this.state, favorite: false })
+            // remove favorite
+        }
 	};
 
 	render() {
@@ -50,8 +72,8 @@ class CarForSaleCard extends React.Component {
             lat: (!!car.dealer.latitude ? car.dealer.latitude : `${TRUSTFALL.dealerInfo}`),
             long: (!!car.dealer.longitude ? car.dealer.longitude : `${TRUSTFALL.dealerInfo}`),
 			distance: (!!car.dist ? car.dist : `${TRUSTFALL.distance}`),
-			image: (!!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
-			images: (!!car.media.photo_links ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
+			image: (!!car.media.photo_links !== undefined ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
+			images: (!!car.media.photo_links  !== undefined ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`),
 			build: (!!car.build ? car.build : `${TRUSTFALL.build}`),
 			make: (!!car.build.make ? car.build.make : `${TRUSTFALL.make}`),
 			model: (!!car.build.model ? car.build.model : `${TRUSTFALL.model}`),
@@ -62,25 +84,35 @@ class CarForSaleCard extends React.Component {
         };
         
         const mapCoords = `${GOOGLE}${buildCarObj.lat},${buildCarObj.long}`;
+        // const likedLabel = { color: 'red', corner: 'left', icon: 'heart' };
+        // const needToLikLabel = { color: 'green', corner: 'left', icon: 'heart' };
 
 		return (
 			<Card className='car_card' color='black' style={{ padding: '1em 1em', margin: '0.5em 0.75em' }}>
 				<Grid style={{ 'align-items': 'flex-start' }}>
-					<Grid style={{ padding: '0rem', 'align-items': 'flex-start' }}>
+					<Grid style={{ padding: '0rem', 'align-items': 'flex-start', 'margin-bottom': '2rem' }}>
 						<Image size='medium' alt='no image' src={buildCarObj.image === undefined ? `${TRUSTFALL.image}` : `${buildCarObj.image}`} style={{ height: 'unset' }} />
 					</Grid>
-					<Grid>
+					<Grid style={{ margin: 'auto auto auto auto' }}>
 						<Card.Content>
 							<Card.Header>{buildCarObj.heading}</Card.Header>
 							<Card.Meta>
 								<span>Miles: {buildCarObj.miles}</span>
 							</Card.Meta>
 							<Card.Description>${buildCarObj.price}.00</Card.Description>
-							<Button.Group style={{ margin: '0.95rem -0.25rem 0.95rem -0.25rem'}}>
-								<Button icon onClick={() => this.addFavorite(buildCarObj)}><Icon name='eye' /></Button>
-								<Button icon onClick={this.toggleModal}><Icon name='images' /></Button>
-								<Button icon onClick={() => window.open(mapCoords)}><Icon name='google' /></Button>
-								<Button icon onClick={() => window.open(buildCarObj.vdp_url)}><Icon name='linkify' /></Button>
+							<Button.Group style={{ margin: '0.95rem -0.25rem 0.95rem -0.25rem' }}>
+								<Button icon onClick={() => this.addFavorite(buildCarObj)}>
+									{this.state.favorite ? <Icon name='heart' color='red' /> : <Icon name='heart' color='green' />}
+								</Button>
+								<Button icon onClick={this.toggleModal}>
+									<Icon name='images' />
+								</Button>
+								<Button icon onClick={() => window.open(mapCoords)}>
+									<Icon name='google' />
+								</Button>
+								<Button icon onClick={() => window.open(buildCarObj.vdp_url)}>
+									<Icon name='linkify' />
+								</Button>
 							</Button.Group>
 						</Card.Content>
 					</Grid>
@@ -94,7 +126,7 @@ class CarForSaleCard extends React.Component {
 const mapStateToProps = (state) => {
     return {
 		currentUser: state.user.currentUser,
-		favorites: state.favorites.favorites
+		favorites: state.favorites.api_urls
 	};
 }
 

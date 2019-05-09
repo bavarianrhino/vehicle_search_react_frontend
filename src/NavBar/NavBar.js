@@ -20,12 +20,11 @@ class NavBar extends React.Component {
 					<Container>
 						<Menu.Item as='' header>
 							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
-							Auto Woke
+							Auto Search
 						</Menu.Item>
 						<Link to='/' style={{ display: 'flex' }}>
 							<Menu.Item>Search</Menu.Item>
 						</Link>
-						<Menu.Item as=''>Values</Menu.Item>
 							<Link to='/favorites' style={{ display: 'flex' }}>
 								<Menu.Item style={{ display: 'flex' }}>Favorites</Menu.Item>
                             </Link>
@@ -53,3 +52,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+
+//<Menu.Item as=''>Values</Menu.Item>

@@ -196,56 +196,54 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			.then((res) => this.handleTrimLoading());
 	};
 
-	handleChangeTrim = (e, { value }) => {
-		let trim = value;
-		let data = {
-			lat: this.props.latitude,
-			long: this.props.longitude,
-			miles: this.state.radius,
-			year: this.state.year,
-			make: this.state.make,
-			model: this.state.model,
-			trim: trim
-		};
+	// handleChangeTrim = (e, { value }) => {
+	// 	let trim = value;
+	// 	let data = {
+	// 		lat: this.props.latitude,
+	// 		long: this.props.longitude,
+	// 		miles: this.state.radius,
+	// 		year: this.state.year,
+	// 		make: this.state.make,
+	// 		model: this.state.model,
+	// 		trim: trim
+	// 	};
 		// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
 		// this.handleTrimLoading();
 		// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
-		this.setState({ ...this.state, trim: trim });
-	};
+		// this.setState({ ...this.state, trim: trim });
+	// };
 
-	handleSubmit = (e) => {
-		e.preventDefault();
-		this.setState({
-			...this.state,
-			built_data: this.state,
-			button_disabled: false,
-			button_loading: true
-		});
-        this.props.fetchUsedCarsForSale(this.state.built_data);
-		e.target.reset();
-	};
+	// handleSubmit = (e) => {
+		// e.preventDefault();
+		// this.setState({
+			// ...this.state,
+			// built_data: this.state,
+			// button_disabled: false,
+			// button_loading: true
+		// });
+        // this.props.fetchUsedCarsForSale(this.state.built_data);
+		// e.target.reset();
+	// };
 
-	handleReset = () => {
-		console.warn('TRIED TO RESET IN USED CARS FORM!');
+	// handleReset = () => {
+		// console.warn('TRIED TO RESET IN USED CARS FORM!');
 		// this.setState({
 		// 	year: null,
 		// 	make: '',
 		// 	model: ''
 		// });
-	};
+	// };
 
 	render() {
 		return (
 			<div>
-				<Form onSubmit={this.handleSubmit} onReset={this.handleReset} loading={this.state.loading}>
+				<Form>
 					<Form.Group widths='equal'>
 						<Form.Select loading={this.state.radius_loading} disabled={this.state.radius_disabled} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius' />
 						<Form.Select loading={this.state.year_loading} disabled={this.state.year_disabled} onChange={this.handleChangeYear} options={this.state.year_options} label='Choose Year' placeholder='Choose Year' selection name='year' />
 						<Form.Select loading={this.state.make_loading} disabled={this.state.make_disabled} onChange={this.handleChangeMake} options={this.state.make_options} label='Choose Make' placeholder='Choose Make' selection name='make' />
 						<Form.Select loading={this.state.model_loading} disabled={this.state.model_disabled} onChange={this.handleChangeModel} options={this.state.model_options} label='Choose Model' placeholder='Choose Models' selection name='model' />
-						<Form.Select loading={this.state.trim_loading} disabled={this.state.trim_disabled} onChange={this.handleChangeTrim} options={this.state.trim_options} label='Choose Trim' placeholder='Choose Trim' selection name='trim' />
 					</Form.Group>
-					<Form.Button type='submit'>Submit</Form.Button>
 				</Form>
 			</div>
 		);
@@ -254,7 +252,7 @@ class UsedCarsForSaleSearchForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-		latitude: state.user.latitude,
+        latitude: state.user.latitude,
 		longitude: state.user.longitude,
 		listings: state.used_cars.listings,
 		facet_years: state.used_cars.facet_years,
@@ -266,7 +264,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
+        fetchUsedCarsForSale: (data) => fetchUsedCarsForSale(data)(dispatch),
         fetchYearsForUsedCarsForSale: (data) => fetchYearsForUsedCarsForSale(data)(dispatch),
         fetchMakesForUsedCarsForSale: (data) => fetchMakesForUsedCarsForSale(data)(dispatch),
         fetchModelsForUsedCarsForSale: (data) => fetchModelsForUsedCarsForSale(data)(dispatch),
@@ -275,3 +273,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UsedCarsForSaleSearchForm);
+// <Form.Select loading={this.state.trim_loading} disabled={this.state.trim_disabled} onChange={this.handleChangeTrim} options={this.state.trim_options} label='Choose Trim' placeholder='Choose Trim' selection name='trim' />
+// <Form.Button type='submit'>Submit</Form.Button>

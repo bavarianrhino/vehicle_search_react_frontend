@@ -12,6 +12,7 @@ import { MCLISTING } from '../Data/GlobalVars';
 // import { TRIM } from '../Data/GlobalVars'
 // import { ZIP } from '../Data/GlobalVars'
 // import { RADIUS } from '../Data/GlobalVars'
+// import { START } from '../Data/GlobalVars'
 // import { ROWS_10 } from '../Data/GlobalVars'
 // import { ROWS_25 } from '../Data/GlobalVars'
 // import { ROWS_50 } from '../Data/GlobalVars'
@@ -33,13 +34,12 @@ export const landFavorites = (urls) => {
 					headers: {
 						Accept: 'application/json'
 					}
-				})
-                const json = await response.json();
-                console.log(json)
-                dispatch({ type: 'LANDING_FAVORITES', json })
-                // (this.props.api_urls.map(({vin}) => vin).includes(json) ? dispatch({ type: 'LOADING_FAVORITES', json }) : dispatch({ type: 'LANDING_FAVORITES', json }))
+				});
+				const json = await response.json();
+				console.log(json)
+				dispatch({ type: 'LANDING_FAVORITES', json });
 			})
-		).then((res) => res)
+		)
     }    
 }
 
@@ -59,8 +59,7 @@ export const handleAddFavorite = (data) => {
 				year: data.id,
 				api_id: data.id,
 				url: data.vdp_url,
-				vin: data.vin,
-				user_id: data.user_id
+				vin: data.vin
 			})
 		})
         .then((res) => res.json())
@@ -74,26 +73,24 @@ export const handleAddFavorite = (data) => {
     }
 }
 
-export const deleteFavorite = (user, vin) => {
-    console.log(vin)
-    console.log(user);
+export const deleteFavorite = (user_id, car_id) => {
+    console.log(user_id)
+    console.log(car_id);
     return dispatch => {
         dispatch({ type: 'DELETING_FAVORITE' })
         return fetch(`${LOCALHOST}/favorites`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: user,
-                vin: vin
-            })
-        })
-        .then(res => res.json())
-        .then((payload) => {
-            console.log(payload)
-            dispatch({ type: 'REMOVE_FAVORITE_CAR', payload });
-        })
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				user_id: user_id,
+				car_id: car_id
+			})
+		})
+        .then((payload) => dispatch({ type: 'DONE_LOADING_FAVORITES' }))
+        // .then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
     }
 }
 
