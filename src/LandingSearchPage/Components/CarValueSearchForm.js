@@ -6,6 +6,7 @@ import { fetchYearsForValuePlot } from '../../Actions/CarValueActions';
 import { fetchMakesForValuePlot } from '../../Actions/CarValueActions';
 import { fetchModelsForValuePlot } from '../../Actions/CarValueActions';
 import { fetchValuesForCars } from '../../Actions/CarValueActions';
+import { clearGraphData } from '../../Actions/UserActions';
 
 import { Grid, Form } from 'semantic-ui-react';
 
@@ -184,7 +185,11 @@ class CarValueSearchForm extends React.Component {
         this.props.fetchValuesForCars(graphObj).then((res) => {
             console.log(res)
         })
-	};
+    };
+    
+    clearData = () => {
+        this.props.clearGraphData()
+    }
 
 	render() {
 		return (
@@ -199,6 +204,7 @@ class CarValueSearchForm extends React.Component {
 								<Form.Select loading={this.state.model_loading ? true : false} disabled={this.state.model_disabled ? true : false} onChange={this.handleChangeModel} options={this.state.model_options} label='Choose Model' placeholder='Choose Models' selection name='model' />								
 							</Form.Group>
                             <Form.Button disabled={this.state.button_disabled ? true : false} type='submit'>Submit</Form.Button>
+                            <Form.Button disabled={this.state.button_disabled ? true : false} onClick={() => this.clearData()}>Clear</Form.Button>
 						</Grid.Column>
 					</Grid>
 				</Form>
@@ -225,7 +231,8 @@ const mapDispatchToProps = (dispatch) => {
 		fetchYearsForValuePlot: (data) => fetchYearsForValuePlot(data)(dispatch),
 		fetchMakesForValuePlot: (data) => fetchMakesForValuePlot(data)(dispatch),
 		fetchModelsForValuePlot: (data) => fetchModelsForValuePlot(data)(dispatch),
-		fetchValuesForCars: (data) => fetchValuesForCars(data)(dispatch)
+		fetchValuesForCars: (data) => fetchValuesForCars(data)(dispatch),
+		clearGraphData: () => dispatch(clearGraphData())
 	};
 };
 

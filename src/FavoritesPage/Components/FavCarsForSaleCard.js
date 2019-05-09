@@ -42,7 +42,7 @@ class FavCarsForSaleCard extends React.Component {
             console.log(res)
             this.props.setCurrentUser(this.props.currentUser).then((res) => {
                 console.log(res)
-                this.props.history.push('/');
+                // this.props.history.push('/');
             })
         })
 		console.log('HIT');
