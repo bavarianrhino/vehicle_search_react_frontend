@@ -2,7 +2,12 @@ export const NewCarsReducer = (
 	state = {
         loading: false,
 		currentUser: null,
-		fetch_count: 0,
+        fetch_count: 0,
+        page_count: 1,
+        active_start: 0,
+        page_total: 1,
+        remainder_count : 0,
+        render_option: 10,
 		listings: [],
 		favorites: [],
 		facet_years: [],
@@ -19,11 +24,22 @@ export const NewCarsReducer = (
 		case 'LOADING_NEW_CARS':
 			return { ...state, loading: true, show_results: true };
 
+		case 'RENDER_OPTION':
+			return { ...state, render_option: action.val };
+
+		case 'DONE_LOADING_NEW_CARS':
+			return { ...state, loading: false };
+
 		case 'LAND_NEW_YEARS':
 			let years = action.payload.facets.year.map((obj, i) => ({ text: obj.item, value: obj.item.toLowerCase().replace(/ /g, '%20'), count: obj.count, key: i }));
 			return {
 				...state,
 				fetch_count: action.payload.num_found,
+				page_count: action.payload.activePage,
+				active_start: action.payload.activeStart,
+				page_total: Math.floor(action.payload.num_found / 50),
+				remainder_count: action.payload.num_found % 50,
+				render_option: 10,
 				listings: action.payload.listings,
 				facet_years: years,
 				facet_makes: [],
@@ -37,6 +53,10 @@ export const NewCarsReducer = (
 			return {
 				...state,
 				fetch_count: action.payload.num_found,
+				page_count: 1,
+				page_total: Math.floor(action.payload.num_found / 50),
+				remainder_count: action.payload.num_found % 50,
+				render_option: 10,
 				listings: action.payload.listings,
 				facet_makes: makes,
 				facet_models: [],
@@ -49,6 +69,10 @@ export const NewCarsReducer = (
 			return {
 				...state,
 				fetch_count: action.payload.num_found,
+				page_count: 1,
+				page_total: Math.floor(action.payload.num_found / 50),
+				remainder_count: action.payload.num_found % 50,
+				render_option: 10,
 				listings: action.payload.listings,
 				facet_models: models,
 				facet_trims: [],
@@ -60,6 +84,10 @@ export const NewCarsReducer = (
 			return {
 				...state,
 				fetch_count: action.payload.num_found,
+				page_count: 1,
+				page_total: Math.floor(action.payload.num_found / 50),
+				remainder_count: action.payload.num_found % 50,
+				render_option: 10,
 				listings: action.payload.listings,
 				facet_trims: trims,
 				loading: false

@@ -7,38 +7,60 @@ import { connect } from 'react-redux';
 class CarValueResultGraph extends React.Component {
     
     
+    mapOverCarsPlot = () => {
+        let skatplot = this.props.listings[0].map((car => {return {"x": car.miles, "y": car.price, "z": car.id}}))
+        console.log(skatplot)
+        return skatplot;
+    }
+
+    mapOverCarsMed = () => {
+        console.log(this.props.price)
+        console.log(this.props.miles);
+        let medPrice = this.props.price.median
+        let medMiles = this.props.miles.median
+        let carsMed = { "x": medMiles, "y": medPrice }
+        return carsMed
+    }
+
+    mapOverCarsMean = () => {
+        let meanPrice = this.props.price.mean
+        let meanMiles = this.props.miles.mean
+        let carsMean = { "x": meanMiles, "y": meanPrice }
+        return carsMean
+    }
+
+    mapOverCarsMin = () => {
+        let minPrice = this.props.price.min
+        let minMiles = this.props.miles.min
+        let carsMin = { "x": minMiles, "y": minPrice }
+        return carsMin
+    }
+
+    mapOverCarsMax = () => {
+        let maxPrice = this.props.price.max
+        let maxMiles = this.props.miles.max
+        let carsMax = { "x": maxMiles, "y": maxPrice }
+        return carsMax
+    }
+
+
+
     render() {
-
-        const data01 = [
-            { "x": 100, "y": 200, "z": 200 },
-            { "x": 120, "y": 100, "z": 260 },
-            { "x": 170, "y": 300, "z": 400 },
-            { "x": 140, "y": 250, "z": 280 },
-            { "x": 150, "y": 400, "z": 500 },
-            { "x": 110, "y": 280, "z": 200 }
-        ];
-
-        const data02 = [
-            {"x": 200, "y": 260, "z": 240},
-            {"x": 240, "y": 290, "z": 220},
-            {"x": 190, "y": 290, "z": 250},
-            {"x": 198, "y": 250, "z": 210},
-            {"x": 180, "y": 280, "z": 260},
-            {"x": 210, "y": 220, "z": 230}
-        ];
-
-        const jsfiddleUrl = 'https://jsfiddle.net/alidingling/uLysj0u2/';
-
+        // const data01 = [{ "x": 100, "y": 200, "z": 200 },{ "x": 120, "y": 100, "z": 260 }];
+        // const data02 = [{"x": 200, "y": 260, "z": 240},{"x": 240, "y": 290, "z": 220}];
         return (
-			<ScatterChart width={730} height={250} margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+			<ScatterChart width={930} height={450} margin={{ top: 20, right: 'auto', bottom: 20, left: 'auto' }}>
 				<CartesianGrid strokeDasharray='3 3' />
-				<XAxis dataKey='x' name='stature' unit='cm' />
-				<YAxis dataKey='y' name='weight' unit='kg' />
-				<ZAxis dataKey='z' range={[64, 144]} name='score' unit='km' />
+				<XAxis dataKey='x' name='miles' unit='mile' />
+				<YAxis dataKey='y' name='cost' unit='$1.00' />
+				<ZAxis dataKey='z' range={[64, 144]} name='id' unit='' />
 				<Tooltip cursor={{ strokeDasharray: '3 3' }} />
 				<Legend />
-				<Scatter name='A school' data={data01} fill='#8884d8' />
-				<Scatter name='B school' data={data02} fill='#82ca9d' />
+				<Scatter name='Similar Cars' data={this.mapOverCarsPlot()} fill='#C0BDA5' />
+				<Scatter name='National Average' data={this.mapOverCarsMed()} fill='#CC978E' />
+				<Scatter name='National Mean' data={this.mapOverCarsMean()} fill='#F39C6B' />
+				<Scatter name='Min' data={this.mapOverCarsMin()} fill='#FF3864' />
+				<Scatter name='Max' data={this.mapOverCarsMax()} fill='#261447' />
 			</ScatterChart>
 		);
     }
@@ -48,8 +70,10 @@ class CarValueResultGraph extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        attr: state.attr
-    }
+		listings: state.values.listings,
+		stats: state.values.stats,
+		begin_plot: state.values.begin_plot
+	};
 }
 
 const mapDispatchToProps = (dispatch) => ({

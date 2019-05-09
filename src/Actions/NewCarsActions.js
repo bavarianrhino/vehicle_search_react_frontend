@@ -14,12 +14,19 @@ import { MODEL } from '../Data/GlobalVars'
 import { TRIM } from '../Data/GlobalVars'
 // import { ZIP } from '../Data/GlobalVars'
 import { RADIUS } from '../Data/GlobalVars'
+import { START } from '../Data/GlobalVars'
 import { ROWS_10 } from '../Data/GlobalVars'
 // import { ROWS_25 } from '../Data/GlobalVars'
 import { ROWS_50 } from '../Data/GlobalVars'
 import { PHOTOS } from '../Data/GlobalVars'
 
 
+export const upDateSliderListings = (value) => {
+    return (dispatch) => {
+		dispatch({ type: 'RENDER_OPTION', value });
+		return dispatch({ type: 'DONE_LOADING_NEW_CARS' })
+	}
+}
 
 export const fetchNewCarsForSale = (query_obj) => {
 	console.log(query_obj);
@@ -38,18 +45,18 @@ export const fetchNewCarsForSale = (query_obj) => {
 
 
 export const fetchYearsForNewCarsForSale = (location) => {
-    console.log(location)
+    console.log(location.activePage)
+    console.log(location.activeStart)
     return dispatch => {
         dispatch({ type: 'LOADING_NEW_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${NEW}${ROWS_10}&facets=year|0|60`,
-        {
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${NEW}${START}${location.activeStart}${ROWS_50}&facets=year|0|60`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json'
 			}
 		})
-        .then((res) => res.json())
-        .then((payload) => dispatch({ type: 'LAND_NEW_YEARS', payload }));
+			.then((res) => res.json())
+			.then((payload) => dispatch({ type: 'LAND_NEW_YEARS', payload }));
     }
 }
 
@@ -57,7 +64,7 @@ export const fetchMakesForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_NEW_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}&facets=make|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_50}${YEAR}${data.year}&facets=make|0|60`,
         {
 			method: 'GET',
 			headers: {

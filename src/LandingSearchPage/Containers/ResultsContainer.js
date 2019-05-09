@@ -1,6 +1,6 @@
 import React from 'react';
 import CarsForSaleResultsContainer from './CarsForSaleResultsContainer';
-import CarValueResultsContainer from './CarValueResultsContainer';
+import CarValueResultGraphContainer from './CarValueResultGraphContainer';
 import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
@@ -20,7 +20,7 @@ class ResultsContainer extends React.Component {
         return (
 			<div>
 				<CarsForSaleResultsContainer />
-				<CarValueResultsContainer />
+				<CarValueResultGraphContainer />
 			</div>
 		);
     }

@@ -51,29 +51,28 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<div>
-                <Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
+				<Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
-                        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-                            <Grid.Column style={{ maxWidth: 450 }}>
-                                <Header as='h2' color='teal' textAlign='center'>
-                                    <Image src='/logo.png' /> Sign Up!
-                                </Header>
+						<Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+							<Grid.Column style={{ maxWidth: 450 }}>
+								<Header as='h2' color='teal' textAlign='center'>
+									<Image src={require(`../Images/e34reariconBlack.png`)} /> Sign Up!
+								</Header>
 
-                                <Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset}>
-                                    <Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username...' type='text' name='username' onChange={this.handleChange} />
-                                    <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password...' type='password' name='password' onChange={this.handleChange} />
-                                    <Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Confirm Password...' type='password' name='password_confirmation' onChange={this.handleChange} />
-                                    <Button color='teal' fluid size='large' type='submit'>
-                                        Sign Up!
-                                    </Button>
-                                </Form>
+								<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset}>
+									<Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username...' type='text' name='username' onChange={this.handleChange} />
+									<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password...' type='password' name='password' onChange={this.handleChange} />
+									<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Confirm Password...' type='password' name='password_confirmation' onChange={this.handleChange} />
+									<Button color='teal' fluid size='large' type='submit'>
+										Sign Up!
+									</Button>
+								</Form>
 
-                                {this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
-
-                            </Grid.Column>
-                        </Grid>
-                    </Container>
-                </Segment>
+								{this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
+							</Grid.Column>
+						</Grid>
+					</Container>
+				</Segment>
 			</div>
 		);
 	}

@@ -17,3 +17,9 @@ export const stopLoading = () => {
         type: 'DONE_LOADING_FAVORITES'
     }
 }
+
+export const upDateSliderListings = (val) => {
+    return { 
+        type: 'RENDER_LISTINGS', val
+    }
+}
