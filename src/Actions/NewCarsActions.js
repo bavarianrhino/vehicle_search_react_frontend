@@ -80,7 +80,7 @@ export const fetchModelsForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_NEW_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_50}${YEAR}${data.year}${MAKE}${data.make}&facets=model|0|60`,
         {
 			method: 'GET',
 			headers: {
@@ -96,7 +96,7 @@ export const fetchTrimsForNewCarsForSale = (data) => {
     console.log(data)
     return dispatch => {
         dispatch({ type: 'LOADING_NEW_CARS' });
-        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_10}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
+        return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${data.long}${LAT}${data.lat}${RADIUS}${data.miles}${NEW}${ROWS_50}${YEAR}${data.year}${MAKE}${data.make}${MODEL}${data.model}&facets=trim|0|60`,
         {
             method: 'GET',
 			headers: {

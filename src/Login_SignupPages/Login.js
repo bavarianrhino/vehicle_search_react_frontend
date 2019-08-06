@@ -55,18 +55,18 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<Segment vertical style={{ margin: '4.4em 0em 0em', padding: '5em 0em' }}>
+				<Segment vertical style={{ margin: '11.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<Grid textAlign='center' style={{ height: '100%', verticalAlign: 'middle' }}>
 							<Grid.Column style={{ maxWidth: 450 }}>
-								<Header as='h2' color='teal' textAlign='center'>
-									<Image src={require(`../Images/e34reariconBlack.png`)} /> Log In ...
+								<Header as='h2' color='black' textAlign='center'>
+									<Image src={require(`../Images/e34reariconBlack.png`)} /> Auto Pasture Log In
 								</Header>
 
 								<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset}>
-									<Form.Input fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
+									<Form.Input color='white' fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
 									<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
-									<Button color='teal' fluid size='large' type='submit'>
+									<Button color='green' fluid size='large' type='submit'>
 										Login
 									</Button>
 								</Form>

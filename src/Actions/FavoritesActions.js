@@ -35,9 +35,19 @@ export const landFavorites = (urls) => {
 						Accept: 'application/json'
 					}
 				});
-				const json = await response.json();
-				console.log(json)
-				dispatch({ type: 'LANDING_FAVORITES', json });
+                const json = await response.json();
+                if(json.fault) {
+                    let errorObj = {
+						error: json.fault.detail.errorcode,
+						api: api.id
+					};
+                    dispatch({ type: 'ABORT_FAVORITE', errorObj });
+                    console.error(json.fault.detail.errorcode, api.id, " - API Call was not successful")
+                    // console.error(json.fault.faultstring, ' - More Info on API call');
+                }else{
+                    dispatch({ type: 'LANDING_FAVORITES', json });
+                    console.error(json, ' - This API Call was GOOD!');
+                }
 			})
 		)
     }    
@@ -56,7 +66,7 @@ export const handleAddFavorite = (data) => {
 			body: JSON.stringify({
 				make: data.make,
 				model: data.model,
-				year: data.id,
+				year: data.year,
 				api_id: data.id,
 				url: data.vdp_url,
                 vin: data.vin,
@@ -74,9 +84,7 @@ export const handleAddFavorite = (data) => {
     }
 }
 
-export const deleteFavorite = (user_id, car_id) => {
-    console.log(user_id)
-    console.log(car_id);
+export const handleRemoveFavorite = (car_user_obj) => {
     return dispatch => {
         dispatch({ type: 'DELETING_FAVORITE' })
         return fetch(`${LOCALHOST}/favorites`, {
@@ -86,11 +94,13 @@ export const deleteFavorite = (user_id, car_id) => {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				user_id: user_id,
-				car_id: car_id
+				user_id: car_user_obj.user_id,
+				car_id: car_user_obj.car_id
 			})
 		})
-        .then((payload) => dispatch({ type: 'DONE_LOADING_FAVORITES' }))
+			.then((payload) => console.log(payload, 'Does deleting respond with anything?'))
+			// .then((payload) => console.log(payload, user_id, car_id, vin))
+			.then((payload) => dispatch({ type: 'PICK_OUT_DELETED_FAVORITE', car_user_obj }));
         // .then((payload) => dispatch({ type: 'FETCH_FAVORITES', payload: payload.user.favorites }));
     }
 }

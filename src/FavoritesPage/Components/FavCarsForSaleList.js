@@ -17,6 +17,7 @@ class FavCarsForSaleList extends React.Component {
 
     mapFavCars = (props) => {
             return this.props.favCars.map((car) => {
+                // console.log(car)
                 let buildCarObj = {
                     id: (!!car.id ? car.id : `${TRUSTFALL.id}`),
                     car_id: (!!car.car_id ? car.car_id : car.vin),

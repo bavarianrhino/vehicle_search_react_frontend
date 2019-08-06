@@ -13,15 +13,19 @@ import { Segment, Container, Tab } from 'semantic-ui-react';
 class Favorites extends React.Component {
 
 	state = {
-        activeIndex: 0,
+        activeIndex: null,
         fetch_load: true,
 		loading: true
     };
 
     componentDidMount(){
-        this.props.landFavorites(this.props.api_urls).then((res) => {
-			this.setState({ ...this.state, fetch_load: false, loading: false });
-		});
+        if (this.props.api_urls.length === (this.props.favorites.length+this.props.failed.length)) {
+            this.setState({ ...this.state, fetch_load: false, loading: false });
+        }else{
+            this.props.landFavorites(this.props.api_urls).then((res) => {
+                this.setState({ ...this.state, fetch_load: false, loading: false });
+            });
+        }
     }
 
 	handleTabChange = (e, data) => {
@@ -52,9 +56,10 @@ class Favorites extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        api_urls: state.favorites.api_urls,
-        favorites: state.favorites.favorites
-    }
+		api_urls: state.favorites.api_urls,
+		favorites: state.favorites.favorites,
+		failed: state.favorites.missed
+	};
 }
 
 const mapDispatchToProps = dispatch => {

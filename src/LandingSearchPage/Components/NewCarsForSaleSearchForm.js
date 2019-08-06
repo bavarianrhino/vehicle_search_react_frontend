@@ -7,7 +7,7 @@ import { fetchYearsForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchMakesForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { fetchModelsForNewCarsForSale } from '../../Actions/NewCarsActions';
 import { upDateSliderListings } from '../../Actions/UserActions';
-// import { fetchTrimsForNewCarsForSale } from '../../Actions/NewCarsActions';
+import { fetchTrimsForNewCarsForSale } from '../../Actions/NewCarsActions';
 
 import { Dropdown, Grid, Form, Pagination, Segment, Input } from 'semantic-ui-react';
 
@@ -251,37 +251,38 @@ class NewCarsForSaleSearchForm extends React.Component {
 			totalPages: data.totalPages,
 			render_option: data.render_option
 		});
-		// this.handleTrimLoading();
-		// this.props
-			// .fetchTrimsForNewCarsForSale(data)
-			// .then((res) => {
-				// this.setState({
-				// 	...this.state,
-				// 	last_form_group: 5,
-				// 	trim_disabled: false,
-				// 	trim_options: this.props.facet_trims,
-				// 	model: model,
-				// 	trim: '',
-				// 	activePage: this.props.activePage,
-				// 	boundaryRange: this.props.boundaryRange,
-				// 	siblingRange: this.props.siblingRange,
-				// 	totalPages: this.props.totalPages
-				// });
-			// })
-			// .then((res) => this.handleTrimLoading());
+		this.handleTrimLoading();
+		this.props
+			.fetchTrimsForNewCarsForSale(data)
+			.then((res) => {
+				this.setState({
+					...this.state,
+					last_form_group: 5,
+					trim_disabled: false,
+					trim_options: this.props.facet_trims,
+					model: model,
+					trim: '',
+					activePage: this.props.activePage,
+					boundaryRange: this.props.boundaryRange,
+					siblingRange: this.props.siblingRange,
+					totalPages: this.props.totalPages
+				});
+			})
+			.then((res) => this.handleTrimLoading());
 	};
 
-	// handleChangeTrim = (e, { value }) => {
-	// 	let trim = value;
-	// 	let data = {
-	// 		lat: this.props.latitude,
-	// 		long: this.props.longitude,
-	// 		miles: this.state.radius,
-	// 		year: this.state.year,
-	// 		make: this.state.make,
-	// 		model: this.state.model,
-	// 		trim: trim
-	// };
+	handleChangeTrim = (e, { value }) => {
+		let trim = value;
+		let data = {
+			lat: this.props.latitude,
+			long: this.props.longitude,
+			miles: this.state.radius,
+			year: this.state.year,
+			make: this.state.make,
+			model: this.state.model,
+			trim: trim
+        }
+    }
 	// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
 	// this.handleTrimLoading();
 	// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
@@ -396,8 +397,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchYearsForNewCarsForSale: (data) => fetchYearsForNewCarsForSale(data)(dispatch),
         fetchMakesForNewCarsForSale: (data) => fetchMakesForNewCarsForSale(data)(dispatch),
         fetchModelsForNewCarsForSale: (data) => fetchModelsForNewCarsForSale(data)(dispatch),
-        upDateSliderListings: (data) => upDateSliderListings(data)(dispatch)
-        // // fetchTrimsForNewCarsForSale: (data) => fetchTrimsForNewCarsForSale(data)(dispatch)
+        upDateSliderListings: (data) => upDateSliderListings(data)(dispatch),
+        fetchTrimsForNewCarsForSale: (data) => fetchTrimsForNewCarsForSale(data)(dispatch)
 	};
 };
 

@@ -3,7 +3,7 @@ import ViewCarSaleModal from '../../LandingSearchPage/Components/ViewCarSaleModa
 import { landFavorites } from '../../Actions/FavoritesActions';
 import { connect } from 'react-redux';
 
-import { deleteFavorite } from '../../Actions/FavoritesActions'
+import { handleRemoveFavorite } from '../../Actions/FavoritesActions'
 import { setCurrentUser } from '../../Actions/LoginSignUpActions'
 import { showDetails } from '../../Actions/FavoritesActions'
 import { TRUSTFALL } from '../../Data/GlobalVars'
@@ -33,20 +33,21 @@ class FavCarsForSaleCard extends React.Component {
 		});
 	};
 
-	handleClickRemoveFavorite = (car) => {
-		let user_id = this.props.currentUser;
-		let vin = car.vin;
-		let car_id = car.car_id;
-		console.log('DELETE', `User ${user_id} with car VIN: ${vin} - Car_ID: ${car_id}`);
-		this.props.deleteFavorite(user_id, car_id).then((res) => {
-            console.log(res)
-            this.props.setCurrentUser(this.props.currentUser).then((res) => {
-                console.log(res)
-                // this.props.history.push('/');
-            })
-        })
-		console.log('HIT');
-	};
+	removeFavorite = (car) => {
+		let car_user_obj = {
+            car_id: car.car_id,
+            user_id: this.props.currentUser,
+            vin: car.vin
+        }
+		console.log('DELETE', `Car_ID: ${car.car_id}`);
+        this.props.handleRemoveFavorite(car_user_obj).then((res) => console.log(res, 'Something happened!'));
+			// this.props.setCurrentUser(this.props.currentUser).then((res) => {
+				// console.log(res);
+				// this.props.history.push('/');
+			// });
+		};
+		// console.log('HIT');
+	// };
 
 	showDetails = (buildCarObj) => {
 		console.log('Show Favorite Details', `${buildCarObj.id}: ${buildCarObj.user_id}`);
@@ -73,7 +74,7 @@ class FavCarsForSaleCard extends React.Component {
 								<Button onClick={this.toggleModal}>Images<Icon style={{ margin: '0px 0px 0px 5px' }} color='black' name='images' /></Button>
 								<Button onClick={() => {this.fetchDetails(car)}}>Specs<Icon style={{ margin: '0px 0px 0px 5px' }} color='black' name='cog' /></Button>
 								<Button onClick={() => window.open(car.vdp_url)}>Dealer Info<Icon style={{ margin: '0px 0px 0px 5px' }} color='black' name='building' /></Button>
-								<Button small inverted color='red' onClick={() => this.handleClickRemoveFavorite(car)}>Remove<Icon style={{ margin: '0px 0px 0px 5px' }} name='delete' /></Button>
+								<Button small inverted color='red' onClick={() => this.removeFavorite(car)}>Remove<Icon style={{ margin: '0px 0px 0px 5px' }} name='delete' /></Button>
 							</Button.Group>
 						</Card.Content>
 					</Grid.Column>
@@ -95,7 +96,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 		landFavorites: (data) => landFavorites(data)(dispatch),
-		deleteFavorite: (user_id, car_id) => deleteFavorite(user_id, car_id)(dispatch),
+		handleRemoveFavorite: (user_id, car_id) => handleRemoveFavorite(user_id, car_id)(dispatch),
         showDetails: (buildCarObj) => showDetails(buildCarObj)(dispatch),
         setCurrentUser: (data) => setCurrentUser(data)(dispatch)
 	};

@@ -46,10 +46,10 @@ class CarsForSaleResultList extends React.Component {
 		return (
 			<div>
 				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
-					{this.props.activeIndex <= 1 && this.props.new_cars ? this.mapNewCars() : null}
+					{this.props.activeIndex === 0 && this.props.new_cars ? this.mapNewCars() : null}
 				</Card.Group>
 				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
-					{this.props.activeIndex <= 1 && this.props.used_cars ? this.mapUsedCars() : null}
+					{this.props.activeIndex === 1 && this.props.used_cars ? this.mapUsedCars() : null}
 				</Card.Group>
 			</div>
 		);

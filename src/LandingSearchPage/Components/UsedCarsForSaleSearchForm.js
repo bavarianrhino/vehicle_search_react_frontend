@@ -179,21 +179,20 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			miles: this.state.radius,
 			year: this.state.year,
 			make: this.state.make,
-			model: this.state.model
+			model: model
 		};
-		this.handleTrimLoading();
-		this.props
-			.fetchTrimsForUsedCarsForSale(data)
+		// this.handleTrimLoading();
+		this.props.fetchTrimsForUsedCarsForSale(data)
 			.then((res) => {
 				this.setState({
 					...this.state,
-					trim_options: this.props.facet_trims,
-					trim_disabled: false,
-					model: model,
-					trim: ''
+					// trim_options: this.props.facet_trims,
+					// trim_disabled: false,
+					model: model
+					// trim: ''
 				});
 			})
-			.then((res) => this.handleTrimLoading());
+			// .then((res) => this.handleTrimLoading());
 	};
 
 	// handleChangeTrim = (e, { value }) => {

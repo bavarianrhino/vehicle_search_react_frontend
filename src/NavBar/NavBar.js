@@ -20,7 +20,7 @@ class NavBar extends React.Component {
 					<Container>
 						<Menu.Item as='' header>
 							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
-							Auto Search
+							Auto Pasture
 						</Menu.Item>
 						<Link to='/' style={{ display: 'flex' }}>
 							<Menu.Item>Search</Menu.Item>
