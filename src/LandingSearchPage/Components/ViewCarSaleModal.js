@@ -8,15 +8,15 @@ import '../../Stylesheets/CarForSaleCard.css';
 
 
 const ViewCarSaleModal = (props) => {
-
-    console.log(props.car)
     
     return (
 		<Modal open={props.open}>
+
 			<Modal.Header>
 				{props.buildCarObj.heading}
 				<span style={{ float: 'right' }}>${props.buildCarObj.price}.00</span>
 			</Modal.Header>
+
 			<Modal.Content>
 				<Modal.Description>
 					<Carousel showArrows={true} showIndicators={false} showThumbs={true} width='98%'>
@@ -24,9 +24,11 @@ const ViewCarSaleModal = (props) => {
 					</Carousel>
 				</Modal.Description>
 			</Modal.Content>
+
 			<Modal.Actions>
 				<Button icon color='red' labelPosition='right' onClick={() => props.toggleModal()}>CLOSE<Icon name='right arrow' /></Button>
 			</Modal.Actions>
+
 		</Modal>
 	);
 }

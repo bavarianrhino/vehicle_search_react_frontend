@@ -11,6 +11,8 @@ import { Container, Segment } from 'semantic-ui-react';
 class LandingSearchPage extends React.Component {
 
     componentDidMount (){
+
+        // Try to implement with a 1 second delayed api call 
         // this.props.landFavorites(this.props.api_urls)
     }
 

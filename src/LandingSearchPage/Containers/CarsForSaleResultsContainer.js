@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // import { } from 'semantic-ui-react';
 
-
+/////// HERE FOR FUTURE SCALABILITY ///////
 class CarsForSaleResultsContainer extends React.Component {
 
     state = {

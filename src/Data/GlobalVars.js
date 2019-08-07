@@ -5,7 +5,7 @@ export const LOCALHOST = 'http://localhost:3000';
 
 // ------------- API KEYS FROM .ENV ------------- //
 export const MCAPIKEY = process.env.REACT_APP_MARKETCHECK_API_KEY;
-console.log('API KEY', MCAPIKEY);
+// console.log('API KEY', MCAPIKEY);
 
 
 // ------------- Google Map EndPoints ------------- //

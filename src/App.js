@@ -9,9 +9,6 @@ import { setPosition } from './Actions/UserActions';
 
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
-import { Segment, Dimmer, Loader} from "semantic-ui-react"
-
-
 class App extends Component {
 
     componentDidMount () {

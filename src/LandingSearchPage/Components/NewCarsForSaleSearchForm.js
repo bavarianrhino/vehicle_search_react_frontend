@@ -272,16 +272,16 @@ class NewCarsForSaleSearchForm extends React.Component {
 	};
 
 	handleChangeTrim = (e, { value }) => {
-		let trim = value;
-		let data = {
-			lat: this.props.latitude,
-			long: this.props.longitude,
-			miles: this.state.radius,
-			year: this.state.year,
-			make: this.state.make,
-			model: this.state.model,
-			trim: trim
-        }
+		// let trim = value;
+		// let data = {
+		// 	lat: this.props.latitude,
+		// 	long: this.props.longitude,
+		// 	miles: this.state.radius,
+		// 	year: this.state.year,
+		// 	make: this.state.make,
+		// 	model: this.state.model,
+		// 	trim: trim
+        // }
     }
 	// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
 	// this.handleTrimLoading();
@@ -313,10 +313,10 @@ class NewCarsForSaleSearchForm extends React.Component {
             newActiveStart-=50
         }
         this.setState({...this.state, activePage: newActivePage, activeStart: newActiveStart });
-        console.log(newActivePage);
+        // console.log(newActivePage);
         if(this.state.last_form_group === 2){
             let obj = {'value': this.state.radius}
-            console.log(obj)
+            // console.log(obj)
             this.handleChangeRadius(obj)
         } else if (this.state.last_form_group === 3) {
             let obj = {'value': this.state.year}
@@ -403,60 +403,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCarsForSaleSearchForm);
-
-/* <Segment secondary>
-    <div>Car Count: {render_option}</div>
-    <Input min={10} max={50} onChange={this.handleInputChange} step={10} type='range' value={render_option} name='render_option' />
-</Segment> */
-
-
-
-
-// 	state = {
-// 		isFetching: false,
-// 		search: true,
-// 		value: [],
-// 		options: getOptions()
-// 	};
-
-// 	handleChange = (e, { value }) => this.setState({ value });
-
-// 	fetchOptions = () => {
-// 		this.setState({ isFetching: true });
-
-// 		setTimeout(() => {
-// 			this.setState({ isFetching: false, options: getOptions() });
-// 			this.selectRandom();
-// 		}, 500);
-// 	};
-
-// 	render() {
-// 		return (
-// 			<div>
-// 				<Grid>
-// 					<Grid.Column width={4}>
-// 						<Dropdown loading={this.state.radius_loading ? true : false} disabled={this.state.radius_disabled ? true : false} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius' />
-// 					</Grid.Column>
-// 					<Grid.Column width={4}>
-// 						<Dropdown loading={this.state.year_loading ? true : false} disabled={this.state.year_disabled ? true : false} onChange={this.handleChangeYear} options={this.state.year_options} label='Choose Year' placeholder='Choose Year' selection name='year' />
-// 					</Grid.Column>
-// 					<Grid.Column width={4}>
-// 						<Dropdown loading={this.state.make_loading ? true : false} disabled={this.state.make_disabled ? true : false} onChange={this.handleChangeMake} options={this.state.make_options} label='Choose Make' placeholder='Choose Make' selection name='make' />
-// 					</Grid.Column>
-// 					<Grid.Column width={4}>
-// 						<Dropdown
-// 							fluid
-// 							selection
-// 							options={this.state.model_options}
-// 							value={value}
-// 							placeholder='Choose Model..'
-// 							onChange={this.handleChange}
-// 							disabled={isFetching}
-// 							loading={isFetching}
-//                             />
-// 					</Grid.Column>
-// 				</Grid>
-// 			</div>
-// 		);
-// 	}
-// }

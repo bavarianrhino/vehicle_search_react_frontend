@@ -45,6 +45,7 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			long: this.props.longitude,
 			miles: '200'
 		};
+
 		this.props.fetchYearsForUsedCarsForSale(location).then((res) => {
 			this.setState({
 				...this.state,
@@ -55,9 +56,6 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			});
 		});
 	}
-	// .then((res) => {
-	//     this.props.toggleResultsBasedOnIndexedTab()
-	// })
 
 	handleFormLoading = () => {
 		this.setState({ ...this.state, form_loading: !this.state.form_loading });
@@ -74,21 +72,6 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	handleTrimLoading = () => {
 		this.setState({ ...this.state, trim_loading: !this.state.trim_loading });
 	};
-	// toggleFormDisabled = () => {
-	// 	this.setState({ ...this.state, form_disabled: !this.state.form_disabled });
-	// };
-	// toggleYearDisabled = () => {
-	// 	this.setState({ ...this.state, year_disabled: !this.state.year_disabled });
-	// };
-	// toggleMakeDisabled = () => {
-	// 	this.setState({ ...this.state, make_disabled: !this.state.make_disabled });
-	// };
-	// toggleModelDisabled = () => {
-	// 	this.setState({ ...this.state, model_disabled: !this.state.model_disabled });
-	// };
-	// toggleTrimDisabled = () => {
-	// 	this.setState({ ...this.state, trim_disabled: !this.state.trim_disabled });
-	// };
 
 	handleChangeRadius = (e, { value }) => {
 		let str = value;
@@ -171,6 +154,7 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			.then((res) => this.handleModelLoading());
 	};
 
+	// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
 	handleChangeModel = (e, { value }) => {
 		let model = value;
 		let data = {
@@ -182,17 +166,16 @@ class UsedCarsForSaleSearchForm extends React.Component {
 			model: model
 		};
 		// this.handleTrimLoading();
-		this.props.fetchTrimsForUsedCarsForSale(data)
-			.then((res) => {
-				this.setState({
-					...this.state,
-					// trim_options: this.props.facet_trims,
-					// trim_disabled: false,
-					model: model
-					// trim: ''
-				});
-			})
-			// .then((res) => this.handleTrimLoading());
+		this.props.fetchTrimsForUsedCarsForSale(data).then((res) => {
+			this.setState({
+				...this.state,
+				// trim_options: this.props.facet_trims,
+				// trim_disabled: false,
+				model: model
+				// trim: ''
+			});
+		});
+		// .then((res) => this.handleTrimLoading());
 	};
 
 	// handleChangeTrim = (e, { value }) => {
@@ -206,31 +189,31 @@ class UsedCarsForSaleSearchForm extends React.Component {
 	// 		model: this.state.model,
 	// 		trim: trim
 	// 	};
-		// ==== LEAVE FUNCTIONS BELOW TO IMPLEMENT MORE FILTERS ==== //
-		// this.handleTrimLoading();
-		// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
-		// this.setState({ ...this.state, trim: trim });
+
+	// this.handleTrimLoading();
+	// this.props.fetchUsedForUsedCarsForSale(data).then((res) => {
+	// this.setState({ ...this.state, trim: trim });
 	// };
 
 	// handleSubmit = (e) => {
-		// e.preventDefault();
-		// this.setState({
-			// ...this.state,
-			// built_data: this.state,
-			// button_disabled: false,
-			// button_loading: true
-		// });
-        // this.props.fetchUsedCarsForSale(this.state.built_data);
-		// e.target.reset();
+	// e.preventDefault();
+	// this.setState({
+	// ...this.state,
+	// built_data: this.state,
+	// button_disabled: false,
+	// button_loading: true
+	// });
+	// this.props.fetchUsedCarsForSale(this.state.built_data);
+	// e.target.reset();
 	// };
 
 	// handleReset = () => {
-		// console.warn('TRIED TO RESET IN USED CARS FORM!');
-		// this.setState({
-		// 	year: null,
-		// 	make: '',
-		// 	model: ''
-		// });
+	// console.warn('TRIED TO RESET IN USED CARS FORM!');
+	// this.setState({
+	// 	year: null,
+	// 	make: '',
+	// 	model: ''
+	// });
 	// };
 
 	render() {
@@ -272,5 +255,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(UsedCarsForSaleSearchForm);
-// <Form.Select loading={this.state.trim_loading} disabled={this.state.trim_disabled} onChange={this.handleChangeTrim} options={this.state.trim_options} label='Choose Trim' placeholder='Choose Trim' selection name='trim' />
-// <Form.Button type='submit'>Submit</Form.Button>

@@ -1,10 +1,8 @@
 import React from 'react';
 import CarForSaleCard from './CarForSaleCard';
-// import ViewCarSaleModal from './ViewCarSaleModal';
 import { connect } from 'react-redux';
 
 import { Card } from 'semantic-ui-react';
-
 
 class CarsForSaleResultList extends React.Component {
     
@@ -16,7 +14,7 @@ class CarsForSaleResultList extends React.Component {
         let i = this.props.render_option
         let arr = this.props.new_cars
         let newArr = (arr.slice(0, i))
-        console.log(newArr)
+        // console.log(newArr)
 		return newArr.map((car) => {
             return <CarForSaleCard key={car.id} car={car} />;
 		});
@@ -29,20 +27,7 @@ class CarsForSaleResultList extends React.Component {
 		});
 	};
 
-	// mapCarModal = (props) => {
-	// 	return this.props.cars.map((car) => {
-	// 		return <ViewCarSaleModal key={car.id} car={car} toggleModal={this.toggleModal} />;
-	// 	});
-	// };
-
-	// toggleModal = () => {
-	// 	this.setState({
-	// 		open: !this.state.open
-	// 	});
-	// };
-
 	render() {
-        console.log(this.props.new_cars);
 		return (
 			<div>
 				<Card.Group textAlign='center' itemsPerRow={5} style={{ display: 'flex', margin: '1.125em auto' }}>
@@ -55,9 +40,6 @@ class CarsForSaleResultList extends React.Component {
 		);
 	}
 }
-/* <CarForSaleCard />; */
-// {this.state.open ? <ViewCarSaleModal key={car.id} car={car} toggleModal={this.toggleModal} /> : null}
-
 
 const mapStateToProps = (state) => {
     return {

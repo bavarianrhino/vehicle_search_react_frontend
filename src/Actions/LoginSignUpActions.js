@@ -2,7 +2,7 @@ import { LOCALHOST } from '../Data/GlobalVars';
 
 
 export const setCurrentUser = (data) => {
-    console.log(data)
+    // console.log(data)
     return (dispatch) => {
 		dispatch({ type: 'SET_CURRENT_USER', data });
 		return fetch(`${LOCALHOST}/profile`, {
@@ -18,7 +18,7 @@ export const setCurrentUser = (data) => {
 
 
 export const getAuthToken = (loginData) => {
-    console.log(loginData);
+    // console.log(loginData);
 	return fetch(`${LOCALHOST}/login`, {
 		method: 'POST',
 		headers: {
@@ -31,7 +31,7 @@ export const getAuthToken = (loginData) => {
 }
 
 export const signUpNewUser = (loginData) => {
-	console.log(loginData);
+	// console.log(loginData);
 	return fetch(`${LOCALHOST}/users`, {
 		method: 'POST',
 		headers: {

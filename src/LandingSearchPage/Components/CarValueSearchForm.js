@@ -182,9 +182,8 @@ class CarValueSearchForm extends React.Component {
         });
         let graphObj = { radius: this.state.radius, year: this.state.year, make: this.state.make, model: this.state.model, lat: this.state.latitude, long: this.state.longitude };
         this.setState({...this.state, built_data: graphObj})
-        this.props.fetchValuesForCars(graphObj).then((res) => {
-            console.log(res)
-        })
+        this.props.fetchValuesForCars(graphObj)
+        // .then((res) => {console.log(res)})
     };
     
     clearData = () => {

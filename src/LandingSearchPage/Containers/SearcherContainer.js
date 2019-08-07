@@ -16,7 +16,9 @@ class Searcher extends React.Component {
     }
 
     handleTabChange = (e, { activeIndex }) => {
-        this.setState({ activeIndex }, console.log(activeIndex))
+        this.setState({ activeIndex }
+            // , console.log(activeIndex)
+            )
         this.props.setActiveRenderResults(activeIndex)
     }
     
@@ -31,7 +33,10 @@ class Searcher extends React.Component {
 
         return (
 			<div>
-                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} activeIndex={this.activeIndex} onTabChange={this.handleTabChange} panes={panes} />
+                <Tab menu={{ color: 'teal', secondary: true, pointing: true }} 
+                    activeIndex={this.activeIndex} 
+                    onTabChange={this.handleTabChange} 
+                    panes={panes} />
 			</div>
 		);
     }

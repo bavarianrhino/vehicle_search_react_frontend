@@ -9,7 +9,7 @@ class CarValueResultGraph extends React.Component {
     
     mapOverCarsPlot = () => {
         let skatplot = this.props.listings[0].map((car => {return {"x": car.miles, "y": car.price, "z": car.id}}))
-        console.log(skatplot)
+        // console.log(skatplot)
         return skatplot;
     }
 
@@ -17,7 +17,7 @@ class CarValueResultGraph extends React.Component {
         let medPrice = this.props.price.map((x) => x.median)
         let medMiles = this.props.miles.map((x) => x.median)
         let carsMed = [{ "x": medMiles[0], "y": medPrice[0]}]
-        console.log(carsMed);
+        // console.log(carsMed);
         return carsMed
     }
 
@@ -25,7 +25,7 @@ class CarValueResultGraph extends React.Component {
         let meanPrice = this.props.price.map((x) => x.mean);
         let meanMiles = this.props.miles.map((x) => x.mean);
         let carsMean = [{ "x": meanMiles[0], "y": meanPrice[0] }]
-        console.log(carsMean);
+        // console.log(carsMean);
         return carsMean
     }
 
@@ -33,7 +33,7 @@ class CarValueResultGraph extends React.Component {
         let minPrice = this.props.price.map((x) => x.min);
         let minMiles = this.props.miles.map((x) => x.min);
         let carsMin = [{ "x": minMiles[0], "y": minPrice[0] }]
-        console.log(carsMin);
+        // console.log(carsMin);
         return carsMin
     }
 
@@ -41,7 +41,7 @@ class CarValueResultGraph extends React.Component {
         let maxPrice = this.props.price.map((x) => x.max);
         let maxMiles = this.props.miles.map((x) => x.max);
         let carsMax = [{ "x": maxMiles[0], "y": maxPrice[0] }]
-        console.log(carsMax);
+        // console.log(carsMax);
         return carsMax
     }
 

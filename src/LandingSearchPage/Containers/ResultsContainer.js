@@ -3,9 +3,8 @@ import CarsForSaleResultsContainer from './CarsForSaleResultsContainer';
 import CarValueResultGraphContainer from './CarValueResultGraphContainer';
 import { connect } from 'react-redux';
 
-// import { } from 'semantic-ui-react';
 
-
+/////// HERE FOR FUTURE SCALABILITY ///////
 class ResultsContainer extends React.Component {
 
     state = {
@@ -25,8 +24,6 @@ class ResultsContainer extends React.Component {
 		);
     }
 }
-
-/* <CarValueResultsContainer /> */
 
 const mapStateToProps = (state) => {
     return {

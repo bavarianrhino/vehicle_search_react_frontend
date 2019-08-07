@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 
 class CarValueResultGraphContainer extends React.Component {
 
+    // Add state to remove graph when clear button is clicked
+
     render() {
         return (
             <div>
@@ -23,7 +25,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => ({
     fetchValuesForCars: (data) => fetchValuesForCars(data)(dispatch)
-    // functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarValueResultGraphContainer);

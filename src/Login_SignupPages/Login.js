@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { getAuthToken } from '../Actions/LoginSignUpActions';
 import { setCurrentUser } from '../Actions/LoginSignUpActions';
 
-
 import { Segment, Container, Button, Form, Grid, Header, Image, Message, Loader, Dimmer } from 'semantic-ui-react';
 
-
-
 class Login extends React.Component {
+
 	state = {
 		username: '',
 		password: '',
@@ -27,18 +25,19 @@ class Login extends React.Component {
 		e.preventDefault();
 
 		getAuthToken({ user: { username: this.state.username, password: this.state.password } }).then((payload) => {
-			console.log(payload);
+			// console.log(payload);
 			if (payload.user) {
 				localStorage.setItem('token', payload.jwt);
 				this.props.history.push('/');
-				this.props.setCurrentUser(payload.user.id).then(console.log);
+                this.props.setCurrentUser(payload.user.id)
+                    // .then(console.log);
 			} else {
 				this.setState({ error: payload.error });
 			}
-		});
+        });
+        
 		// Use below dispatch if above setCurrentUser gets bugs
 		// .then((res) => {this.props.fetchFavorites(res).then(console.log)})
-
 		e.target.reset();
 	};
 
@@ -53,11 +52,12 @@ class Login extends React.Component {
 	render() {
         return (
 			<div>
-            {this.props.geo_loading ? <Dimmer active> <Loader size='big'>Finding Location</Loader></Dimmer> : null}
+                {this.props.geo_loading ? <Dimmer active> <Loader size='big'>Finding Location</Loader></Dimmer> : null}
 				<Segment vertical style={{ margin: '11.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<Grid textAlign='center' style={{ height: '100%', verticalAlign: 'middle' }}>
 							<Grid.Column style={{ maxWidth: 450 }}>
+
 								<Header as='h2' color='black' textAlign='center'>
 									<Image src={require(`../Images/e34reariconBlack.png`)} /> Auto Pasture Log In
 								</Header>
@@ -75,6 +75,7 @@ class Login extends React.Component {
 								<Message>
 									Need An Account? <a href='/signup'>Sign Up</a>
 								</Message>
+                                
 							</Grid.Column>
 						</Grid>
 					</Container>

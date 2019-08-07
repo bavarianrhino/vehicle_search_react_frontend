@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Container, Image, Menu } from 'semantic-ui-react';
+
 class NavBar extends React.Component {
+
 	state = {
 		attr: null
 	};
@@ -52,5 +54,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
-
-//<Menu.Item as=''>Values</Menu.Item>

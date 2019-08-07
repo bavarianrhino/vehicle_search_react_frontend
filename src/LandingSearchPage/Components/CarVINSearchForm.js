@@ -120,9 +120,11 @@ import { Form } from 'semantic-ui-react';
 
 class CarVINSearchForm extends React.Component {
 	state = {
-        vin: '',
-        radius_options: null,
-        radius: '200'
+		vin: '',
+		radius_options: null,
+		radius_disabled: true,
+		vin_disabled: true,
+		radius: '200'
 	};
 
 	componentDidMount() {
@@ -170,7 +172,7 @@ class CarVINSearchForm extends React.Component {
 				<Form onSubmit={this.handleSubmit} onReset={this.handleReset}>
 					<Form.Group widths='equal'>
 						<Form.Select loading={this.state.radius_loading ? true : false} disabled={this.state.radius_disabled ? true : false} onChange={this.handleChangeRadius} options={this.state.radius_options} label='Mile Radius' placeholder='Choose Distance' selection name='radius_options' />
-						<Form.Input fluid label='VIN' placeholder='VIN' type='text' name='vin' onChange={this.handleChange} />
+						<Form.Input disabled={this.state.vin_disabled ? true : false} fluid label='VIN' placeholder='VIN' type='text' name='vin' onChange={this.handleChange} />
 					</Form.Group>
 					<Form.Button type='submit'>Submit</Form.Button>
 				</Form>

@@ -27,7 +27,7 @@ class SignUp extends React.Component {
 
         signUpNewUser({ user: { username: this.state.username, password: this.state.password, password_confirmation: this.state.password_confirmation } })
             .then((payload) => {
-                console.log(payload)
+                // console.log(payload)
                 if (payload.user) {
                     localStorage.setItem('token', payload.jwt);
                     this.props.history.push('/');
@@ -55,6 +55,7 @@ class SignUp extends React.Component {
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
 							<Grid.Column style={{ maxWidth: 450 }}>
+
 								<Header as='h2' color='teal' textAlign='center'>
 									<Image src={require(`../Images/e34reariconBlack.png`)} /> Sign Up!
 								</Header>
@@ -68,7 +69,8 @@ class SignUp extends React.Component {
 									</Button>
 								</Form>
 
-								{this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
+                                {this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
+                                
 							</Grid.Column>
 						</Grid>
 					</Container>
