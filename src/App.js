@@ -9,6 +9,8 @@ import { setPosition } from './Actions/UserActions';
 
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
+import { Segment, Dimmer, Loader} from "semantic-ui-react"
+
 
 class App extends Component {
 
@@ -37,17 +39,17 @@ class App extends Component {
     render() {
         window.localStorage.clear()
         return (
-            <div id='app-container'>
-                <Router>
+			<div id='app-container'>
+				<Router>
                     <Switch>
-                        <Route exact path='/' render={(props) => localStorage.getItem('token') ? <LandingSearchPage {...props} /> : <Redirect to='/login' /> } />
-                        <Route exact path='/favorites' render={(props) => localStorage.getItem('token') ? <Favorites {...props} /> : <Redirect to='/login' /> } />
-                        <Route exact path='/login' render={(props) => !localStorage.getItem('token') ? <Login {...props} /> : <Redirect to='/' /> }/>
-                        <Route exact path='/signup' render={(props) => !localStorage.getItem('token') ? <SignUp {...props} /> : <Redirect to='/' /> }/>
+                        <Route exact path='/' render={(props) => (localStorage.getItem('token') ? <LandingSearchPage {...props} /> : <Redirect to='/login' />)} />
+                        <Route exact path='/favorites' render={(props) => (localStorage.getItem('token') ? <Favorites {...props} /> : <Redirect to='/login' />)} />
+                        <Route exact path='/login' render={(props) => (!localStorage.getItem('token') ? <Login {...props} /> : <Redirect to='/' />)} />
+                        <Route exact path='/signup' render={(props) => (!localStorage.getItem('token') ? <SignUp {...props} /> : <Redirect to='/' />)} />
                     </Switch>
-                </Router>
-            </div>
-        );
+				</Router>
+			</div>
+		);
     }
 }
 

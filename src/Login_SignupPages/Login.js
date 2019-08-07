@@ -5,56 +5,55 @@ import { getAuthToken } from '../Actions/LoginSignUpActions';
 import { setCurrentUser } from '../Actions/LoginSignUpActions';
 
 
-import { Segment, Container, Button, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
+import { Segment, Container, Button, Form, Grid, Header, Image, Message, Loader, Dimmer } from 'semantic-ui-react';
 
 
 
 class Login extends React.Component {
-    
 	state = {
 		username: '',
-        password: '',
-        error: null
+		password: '',
+		error: null
 	};
 
 	handleChange = (e) => {
-        // console.log(e.target.value)
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    };
-    
-    handleSubmit = (e) => {
-        e.preventDefault();
+		// console.log(e.target.value)
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
 
-        getAuthToken({ user: { username: this.state.username, password: this.state.password } })
-			.then((payload) => {
-				console.log(payload)
-				if (payload.user) {
-                    localStorage.setItem('token', payload.jwt);
-                    this.props.history.push('/');
-                    this.props.setCurrentUser(payload.user.id).then(console.log)
-				} else {
-					this.setState({ error: payload.error });
-				}
-            })
-            // Use below dispatch if above setCurrentUser gets bugs
-            // .then((res) => {this.props.fetchFavorites(res).then(console.log)})
-            
-        e.target.reset()
-    }
+	handleSubmit = (e) => {
+		e.preventDefault();
 
-    handleReset = () => {
-        this.setState({
+		getAuthToken({ user: { username: this.state.username, password: this.state.password } }).then((payload) => {
+			console.log(payload);
+			if (payload.user) {
+				localStorage.setItem('token', payload.jwt);
+				this.props.history.push('/');
+				this.props.setCurrentUser(payload.user.id).then(console.log);
+			} else {
+				this.setState({ error: payload.error });
+			}
+		});
+		// Use below dispatch if above setCurrentUser gets bugs
+		// .then((res) => {this.props.fetchFavorites(res).then(console.log)})
+
+		e.target.reset();
+	};
+
+	handleReset = () => {
+		this.setState({
 			username: '',
 			password: '',
 			error: null
 		});
-    }
+	};
 
 	render() {
-		return (
+        return (
 			<div>
+            {this.props.geo_loading ? <Dimmer active> <Loader size='big'>Finding Location</Loader></Dimmer> : null}
 				<Segment vertical style={{ margin: '11.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<Grid textAlign='center' style={{ height: '100%', verticalAlign: 'middle' }}>
@@ -87,7 +86,8 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		api_urls: state.favorites.api_urls
+        api_urls: state.favorites.api_urls,
+        geo_loading: state.user.loading
 	};
 };
 
