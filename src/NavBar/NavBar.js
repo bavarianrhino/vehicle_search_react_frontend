@@ -8,11 +8,11 @@ import { Container, Image, Menu } from 'semantic-ui-react';
 class NavBar extends React.Component {
 
 	state = {
-		attr: null
+		activePage: 0
 	};
 
-	funcName = (e) => {
-		console.log(e.target.value);
+	changeActiveTab = (e) => {
+        console.log(e.target.value);
 	};
 
 	render() {
@@ -24,12 +24,12 @@ class NavBar extends React.Component {
 							<Image size='tiny' src={require(`../Images/e34RearIconWhite.png`)} style={{ marginRight: '1.5em' }} />
 							Auto Pasture
 						</Menu.Item>
-						<Link to='/' style={{ display: 'flex' }}>
+						<Link to='/' onClick={() => this.props.handleActiveTab(this.state.activePage)} style={{ display: 'flex' }}>
 							<Menu.Item>Search</Menu.Item>
 						</Link>
-							<Link to='/favorites' style={{ display: 'flex' }}>
-								<Menu.Item style={{ display: 'flex' }}>Favorites</Menu.Item>
-                            </Link>
+						<Link to='/favorites' style={{ display: 'flex' }}>
+							<Menu.Item style={{ display: 'flex' }}>Favorites</Menu.Item>
+						</Link>
 
 						<Menu.Menu position='right'>
 							<Link to='/login' onClick={() => localStorage.clear()} style={{ display: 'flex' }}>
@@ -45,12 +45,26 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		attr: state.attr
+        activeTab: state.user.activeTab
 	};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	functionName: (param) => dispatch({ type: 'ACTION_NAME', param })
+    handleActiveTab: (data) => dispatch({ type: 'CHANGE_ACTIVE_PAGE', data })
 });
+// import { fetchNewCarsForSale } from '../../Actions/NewCarsActions';
+// fetchNewCarsForSale: (data) => fetchNewCarsForSale(data)(dispatch),
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+
+
+
+// changeActivePage
+// activePage: 0,
+// let location = {
+// lat: this.props.latitude,
+// long: this.props.longitude,
+// activeStart: this.state.activeStart,
+// render_option: this.state.render_option,
+// miles: '200'
+// activePage: state.new_cars.page_count,

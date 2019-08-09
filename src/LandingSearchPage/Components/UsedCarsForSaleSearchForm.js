@@ -234,13 +234,13 @@ class UsedCarsForSaleSearchForm extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        latitude: state.user.latitude,
+		latitude: state.user.latitude,
 		longitude: state.user.longitude,
 		listings: state.used_cars.listings,
 		facet_years: state.used_cars.facet_years,
-        facet_makes: state.used_cars.facet_makes,
-        facet_models: state.used_cars.facet_models,
-        facet_trims: state.used_cars.facet_trims
+		facet_makes: state.used_cars.facet_makes,
+		facet_models: state.used_cars.facet_models,
+		facet_trims: state.used_cars.facet_trims
 	};
 };
 

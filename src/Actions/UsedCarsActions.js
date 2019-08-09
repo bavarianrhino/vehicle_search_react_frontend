@@ -56,6 +56,8 @@ export const fetchUsedCarsForSale = (query_obj) => {
 
 export const fetchYearsForUsedCarsForSale = (location) => {
     console.log(location)
+    console.log(location.activePage);
+	console.log(location.activeStart);
     return dispatch => {
         dispatch({ type: 'LOADING_USED_CARS' });
         return fetch(`${COORS}${MCSEARCH}${MCAPIKEY}${LONG}${location.long}${LAT}${location.lat}${RADIUS}${location.miles}${USED}${STARTO}${ROWS_50}&facets=year|0|60`,

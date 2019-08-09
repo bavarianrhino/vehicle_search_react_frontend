@@ -107,6 +107,9 @@ export const fetchTrimsForNewCarsForSale = (data) => {
         .then((payload) => dispatch({ type: 'LAND_NEW_TRIMS', payload }))
     }
 }
+
+
+
                                 // export const fetchCarsForSale = (data) => {
                                 //     console.log(data);
                                 //     return dispatch => {
