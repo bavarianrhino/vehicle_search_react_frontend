@@ -1,12 +1,18 @@
-<a href="https://www.autopasture.com"><img src="/src/Images/e34greylogoReadMe.png" title="AutoPasture" alt="AutoPasture"></a>
-
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
-
-***INSERT GRAPHIC HERE (include hyperlink in image)***
-
 # Auto Pasture React Frontend
 
-> Find new or used cars near you!
+<a href="https://www.autopasture.com"><img src="/src/Images/e34greylogoReadMe.png" title="AutoPasture" alt="AutoPasture"></a>
+
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
+
+> Search for new and used cars being sold near you! Use filters to narrow down desired vehicle by distance, year, make and model. Built with React, Redux and Semantic UI. Built on top of a Ruby on Rails back end. Go [Here](https://github.com/bavarianrhino/vehicle_search_rails_backend) if you wish to view the repository for the Rails back end.
+
+![Recordit GIF](https://recordit.co/eqfPPP3cXW)
+![Recordit GIF](https://recordit.co/eqfPPP3cXW.gif)
+
+<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
+<!-- ***INSERT GRAPHIC HERE (include hyperlink in image)*** -->
+
+
 
 <!-- > include terms/tags that can be searched -->
 
@@ -23,49 +29,49 @@
 - license
 - etc. -->
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
+<!-- [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)  -->
 <!-- [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger)  -->
 <!-- [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)  -->
 <!-- [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger)  -->
 <!-- [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues)  -->
 <!-- [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls)  -->
 <!-- [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger)  -->
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
+<!-- [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)  -->
 <!-- [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger) -->
 
 <!-- - For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>. -->
 
 <!-- ***INSERT ANOTHER GRAPHIC HERE*** -->
 
-<a href="https://www.autopasture.com"><img src="/src/Images/login_search_view.gif" title="AutoPasturLogin" alt="AutoPasturLogin"></a>
-<a href="https://www.autopasture.com"><img src="https://recordit.co/eqfPPP3cXW" title="AutoPasturLogin" alt="AutoPasturLogin"></a>
+<!-- <a href="https://www.autopasture.com"><img src="/src/Images/login_search_view.gif" title="AutoPasturLogin" alt="AutoPasturLogin"></a> -->
+<!-- <a href="https://www.autopasture.com"><img src="https://recordit.co/eqfPPP3cXW" title="AutoPasturLogin" alt="AutoPasturLogin"></a> -->
 
 <!-- [![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]() -->
 <!-- login_search_view.gif -->
 
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
+<!-- - Most people will glance at your `README`, *maybe* star it, and leave -->
+<!-- - Ergo, people should understand instantly what your project is about based on your repo -->
 
-> Tips
+<!-- > Tips -->
 
-- HAVE WHITE SPACE
-- MAKE IT PRETTY
-- GIFS ARE REALLY COOL
+<!-- - HAVE WHITE SPACE -->
+<!-- - MAKE IT PRETTY -->
+<!-- - GIFS ARE REALLY COOL -->
 
-> GIF Tools
+<!-- > GIF Tools -->
 
-- Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s.
-- For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s.
+<!-- - Use <a href="http://recordit.co/" target="_blank">**Recordit**</a> to create quicks screencasts of your desktop and export them as `GIF`s. -->
+<!-- - For terminal sessions, there's <a href="https://github.com/chjj/ttystudio" target="_blank">**ttystudio**</a> which also supports exporting `GIF`s. -->
 
-**Recordit**
+<!-- **Recordit** -->
+<!--  -->
+<!-- ![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif) -->
 
-![Recordit GIF](http://g.recordit.co/iLN6A0vSD8.gif)
+<!-- **ttystudio** -->
 
-**ttystudio**
+<!-- ![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif) -->
 
-![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)
-
----
+<!-- ---
 
 ## Table of Contents (Optional)
 
@@ -95,9 +101,9 @@ let generateProject = project => {
 };
 ```
 
----
+--- -->
 
-## Installation
+<!-- ## Installation
 
 - All the `code` required to get started
 - Images of what it should look like
@@ -205,4 +211,4 @@ Reach out to me at one of the following places!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>. -->
