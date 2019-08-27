@@ -4,15 +4,13 @@
 
 ***INSERT GRAPHIC HERE (include hyperlink in image)***
 
-# Repository Title Goes Here
+# Auto Pasture React Frontend
 
-> Subtitle or Short Description Goes Here
+> Find new or used cars near you!
 
-> ideally one sentence
+<!-- > include terms/tags that can be searched -->
 
-> include terms/tags that can be searched
-
-**Badges will go here**
+<!-- **Badges will go here**
 
 - build status
 - issues (waffle.io maybe)
@@ -23,15 +21,27 @@
 - downloads
 - gitter chat
 - license
-- etc.
+- etc. -->
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger) [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls) [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
+<!-- [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger)  -->
+<!-- [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)  -->
+<!-- [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger)  -->
+<!-- [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues)  -->
+<!-- [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls)  -->
+<!-- [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger)  -->
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
+<!-- [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger) -->
 
-- For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
+<!-- - For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>. -->
 
-***INSERT ANOTHER GRAPHIC HERE***
+<!-- ***INSERT ANOTHER GRAPHIC HERE*** -->
 
-[![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
+<a href="https://www.autopasture.com"><img src="/src/Images/login_search_view.gif" title="AutoPasturLogin" alt="AutoPasturLogin"></a>
+<a href="https://www.autopasture.com"><img src="https://recordit.co/eqfPPP3cXW" title="AutoPasturLogin" alt="AutoPasturLogin"></a>
+
+<!-- [![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]() -->
+<!-- login_search_view.gif -->
 
 - Most people will glance at your `README`, *maybe* star it, and leave
 - Ergo, people should understand instantly what your project is about based on your repo
