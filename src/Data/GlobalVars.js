@@ -1,6 +1,6 @@
 
 // ------------- LocalHost URL ------------- //
-export const LOCALHOST = 'http://localhost:3000';
+export const LOCALHOST = 'https://autopasture.herokuapp.com/';
 
 
 // ------------- API KEYS FROM .ENV ------------- //
