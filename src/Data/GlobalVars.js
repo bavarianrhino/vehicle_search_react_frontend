@@ -47,7 +47,12 @@ export const TRUSTFALL = {
     distance: 'Distance Missing',
     image: 'https://img00.deviantart.net/69d9/i/2009/219/c/f/missing_car_by_dreamofyou.jpg',
     images: 'Images Missing',
-    build: 'Build Missing',
+    build: {
+        make: "Vehicle Make Missing",
+        model: "Vehicle Model Missing",
+        trim: "Vehicle Trim Missing",
+        year: "Vehicle Year Missing"
+    },
     make: 'Make Missing',
     model: 'Model Missing',
     trim: 'Trim Missing',

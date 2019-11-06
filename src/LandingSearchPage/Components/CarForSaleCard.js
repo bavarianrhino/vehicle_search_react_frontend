@@ -92,10 +92,14 @@ class CarForSaleCard extends React.Component {
 			image: !!car.media.photo_links !== undefined ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`,
 			images: !!car.media.photo_links !== undefined ? (car.media.photo_links.length >= 2 ? car.media.photo_links[1] : `${TRUSTFALL.image}`) : `${TRUSTFALL.image}`,
 			build: !!car.build ? car.build : `${TRUSTFALL.build}`,
-			make: !!car.build.make ? car.build.make : `${TRUSTFALL.make}`,
-			model: !!car.build.model ? car.build.model : `${TRUSTFALL.model}`,
-			trim: !!car.build.trim ? car.build.trim : `${TRUSTFALL.trim}`,
-			year: !!car.build.year ? car.build.year : `${TRUSTFALL.year}`,
+			make: !!car.build ? (!!car.build.make ? `${TRUSTFALL.make}` : `${TRUSTFALL.make}`) : `${TRUSTFALL.make}`,
+			model: !!car.build ? (!!car.build.model ? `${TRUSTFALL.model}` : `${TRUSTFALL.model}`) : `${TRUSTFALL.model}`,
+			trim: !!car.build ? (!!car.build.trim ? `${TRUSTFALL.trim}` : `${TRUSTFALL.trim}`) : `${TRUSTFALL.trim}`,
+			year: !!car.build ? (!!car.build.year ? `${TRUSTFALL.year}` : `${TRUSTFALL.year}`) : `${TRUSTFALL.year}`,
+			// make: !!car.build.make ? car.build.make : `${TRUSTFALL.make}`,
+			// model: !!car.build.model ? car.build.model : `${TRUSTFALL.model}`,
+			// trim: !!car.build.trim ? car.build.trim : `${TRUSTFALL.trim}`,
+			// year: !!car.build.year ? car.build.year : `${TRUSTFALL.year}`,
 			vdp_url: !!car.vdp_url ? car.vdp_url : `${TRUSTFALL.vdp_url}`,
 			vin: !!car.vin ? car.vin : `${TRUSTFALL.vin}`
 		};

@@ -1,12 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Tab } from 'semantic-ui-react';
+import { setActiveRenderResults } from '../../Actions/UserActions';
+import CarValueSearchForm from '../Components/CarValueSearchForm';
+import CarVINSearchForm from '../Components/CarVINSearchForm.js';
 import NewCarsForSaleSearchForm from '../Components/NewCarsForSaleSearchForm';
 import UsedCarsForSaleSearchForm from '../Components/UsedCarsForSaleSearchForm';
-import CarVINSearchForm from '../Components/CarVINSearchForm.js';
-import CarValueSearchForm from '../Components/CarValueSearchForm';
 
-import { connect } from 'react-redux';
-import { setActiveRenderResults } from '../../Actions/UserActions'
-import { Tab } from 'semantic-ui-react';
 
 
 class Searcher extends React.Component {
