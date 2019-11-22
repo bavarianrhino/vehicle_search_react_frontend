@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/vehicle_search_react_frontend/static/css/main.a222fb17.chunk.css",
+    "main.js": "/vehicle_search_react_frontend/static/js/main.fe8d5cbb.chunk.js",
+    "main.js.map": "/vehicle_search_react_frontend/static/js/main.fe8d5cbb.chunk.js.map",
+    "runtime~main.js": "/vehicle_search_react_frontend/static/js/runtime~main.90457916.js",
+    "runtime~main.js.map": "/vehicle_search_react_frontend/static/js/runtime~main.90457916.js.map",
+    "static/css/2.12e9c4ad.chunk.css": "/vehicle_search_react_frontend/static/css/2.12e9c4ad.chunk.css",
+    "static/js/2.3abf6037.chunk.js": "/vehicle_search_react_frontend/static/js/2.3abf6037.chunk.js",
+    "static/js/2.3abf6037.chunk.js.map": "/vehicle_search_react_frontend/static/js/2.3abf6037.chunk.js.map",
+    "index.html": "/vehicle_search_react_frontend/index.html",
+    "precache-manifest.5eb7b9e973cc1ca454b67b4417195f88.js": "/vehicle_search_react_frontend/precache-manifest.5eb7b9e973cc1ca454b67b4417195f88.js",
+    "service-worker.js": "/vehicle_search_react_frontend/service-worker.js",
+    "static/css/2.12e9c4ad.chunk.css.map": "/vehicle_search_react_frontend/static/css/2.12e9c4ad.chunk.css.map",
+    "static/css/main.a222fb17.chunk.css.map": "/vehicle_search_react_frontend/static/css/main.a222fb17.chunk.css.map",
+    "static/media/semantic.min.css": "/vehicle_search_react_frontend/static/media/outline-icons.ef60a4f6.woff"
+  }
+}
