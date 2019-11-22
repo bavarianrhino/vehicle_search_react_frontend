@@ -63,8 +63,8 @@ class Login extends React.Component {
 								</Header>
 
 								<Form size='large' onSubmit={this.handleSubmit} onReset={this.handleReset}>
-									<Form.Input color='white' fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username' type='text' name='username' onChange={this.handleChange} />
-									<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password' type='password' name='password' onChange={this.handleChange} />
+									<Form.Input color='white' fluid icon='user' iconPosition='left' autoComplete='off' placeholder='Username = guest' type='text' name='username' onChange={this.handleChange} />
+									<Form.Input fluid icon='lock' iconPosition='left' autoComplete='off' placeholder='Password = 1234' type='password' name='password' onChange={this.handleChange} />
 									<Button color='green' fluid size='large' type='submit'>
 										Login
 									</Button>
@@ -73,7 +73,7 @@ class Login extends React.Component {
 								{this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
 
 								<Message>
-									Need An Account? <a href='/signup'>Sign Up</a>
+									Need An Account? <a href='https://bavarianrhino.github.io/vehicle_search_react_frontend/#/signup'>Sign Up</a>
 								</Message>
                                 
 							</Grid.Column>

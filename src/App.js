@@ -7,7 +7,9 @@ import Favorites from './FavoritesPage/Containers/Favorites';
 import { connect } from 'react-redux';
 import { setPosition } from './Actions/UserActions';
 
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+// https://bavarianrhino.github.io/vehicle_search_react_frontend/
 
 class App extends Component {
 

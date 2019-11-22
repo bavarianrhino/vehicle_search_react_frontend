@@ -69,7 +69,11 @@ class SignUp extends React.Component {
 									</Button>
 								</Form>
 
-                                {this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
+								{this.state.error ? <Message attached error header='There was an error with your submission:' list={this.state.error} /> : null}
+								
+								<Message>
+									Already Have An Account? <a href='https://bavarianrhino.github.io/vehicle_search_react_frontend/#/login'>Login</a>
+								</Message>
                                 
 							</Grid.Column>
 						</Grid>
