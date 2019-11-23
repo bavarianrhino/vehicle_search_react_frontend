@@ -1,4 +1,130 @@
-# Auto Pasture React Frontend
+# Auto Pasture
+
+> Auto Pasture is a fullstack web application that connects buyers to vehicles that are otherwise not listed on other mainstream marketplaces. Auto Pasture gives back the power to users with easy and simplified vehicle searches that connects them to sellers based on their own custom search parameters. This application includes a full gamut of features including everything from authentication, geolocation services, heavy usage of custom API queries and error handing of inconsistent data.
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
+
+<div align="center">
+  <a href="https://bavarianrhino.github.io/vehicle_search_react_frontend/"><img src="/src/Images/e34greylogoReadMe.png" title="AutoPasture" alt="AutoPasture"></a>
+</div>
+
+## 🌎 Motivation
+>Full-Stack Web application that profiles advanced features of React, Redux, and Ruby on Rails API with its perspective [Github Repository](https://github.com/bavarianrhino/vehicle_search_rails_backend) if you desire to see the code. RESTfully persists user data with postgreSQL database via Active Record implementing a has-many-through model relationship along with full CRUD actions.
+
+## 🎬 Demo
+![Recordit GIF](https://recordit.co/eqfPPP3cXW.gif)
+<div align="center">
+    <p>Login provided using Bcrypt and JWT authentication.</p>
+</div>
+
+## 🔬 Learning Objectives
+* Architectural considerations of building a full stack app
+* Connect a front-end <b>Create-React-App</b> server to a <b>Ruby on Rails backend</b>
+* Communicate data via <b>RESTful API</b> from the <b>PostgreSQL</b> database to the Client React Application
+* Understand how to route user requests on the front end with <b>React Router</b> and on the backend with <b>Active Record</b>
+* Enhance authentication flows in the app with the Ruby gems <b>Bcrypt & JWT for Authentication</b>
+<!-- * Build reusable user inputs with <b>Redux Form</b>, complete with navigation -->
+<!-- * Handle credit cards and receive payments from users with <b>Stripe</b> -->
+<!-- * Engage users with automated <b>emails</b> -->
+<!-- * Separate production and development resources with advanced <b>API key handling techniques</b> -->
+<!-- * Educate users on how to use the app with custom build landing pages -->
+
+## 🛠 Tech/Framework Stack
+🌖<b>Front-End</b>
+- React.js, React-Redux, React-Router-Dom
+- Redux, Redux-Form, Redux-Thunk
+- JavaScript, ES6
+- Semantic-UI-React
+- ****ADD HERE****
+
+🌘<b>Back-End</b>
+- PostgreSQL Database
+- Served by Puma
+- Active Record "Has-Many-Through" Schema
+- Ruby, Ruby on Rails
+- Rack CORS for handling Cross-Origin Resource Sharing (CORS) and AJAX
+- Byebug and Pry-Rails used in Debugging Development
+- Spring and Spring-Watcher-Listen used to speed-up Development
+
+☁️<b>API</b>
+- [MarketCheck Automotive API](https://www.marketcheck.com/automotive)
+  
+🚀<b>Deployment</b>
+- Ruby on Rails API hosted on [Heroku](https://autopasture.herokuapp.com/users)
+- React hosted on [Github Pages](https://bavarianrhino.github.io/vehicle_search_react_frontend/#/login)
+
+## 💻 Local Env Installation
+
+🔨 <b>Install</b>
+```zsh
+  $ git clone git@github.com:bavarianrhino/vehicle_search_rails_backend.git
+  $ cd vehicle_search_rails_backend
+  [server]$ bundle install
+  [server]$ rails db:create
+  [server]$ rails db:migrate
+  [server]$ rails db:seed
+  [server]$ rails s
+```
+```zsh
+  $ git clone git@github.com:bavarianrhino/vehicle_search_react_frontend.git
+  $ cd vehicle_search_react_frontend
+  [server]$ yarn install
+```
+🔨 <b>Development Configuration</b>
+- Sign up with [MarketCheck Automotive API](https://www.marketcheck.com/automotive) and save your api key in a newly created '.env' file at the root level of the client-react directory.
+```javascript
+  REACT_APP_MARKETCHECK_API_KEY=your_api_key_goes_here_with_no_quotes
+```
+
+🔨 <b>Run the application</b>
+
+- To start the application run the following command.
+```zsh
+  $ yarn start
+```
+
+## 🚧 TODO
+- Error Handling
+- Vin Check
+- Clear Vehicle Milage/Cost Graph
+
+
+<!-- ## 🛠 Tech Stack
+
+- [GatsbyJS](https://www.gatsbyjs.org/) - Static site generation built on React and GraphQL
+- [Emotion](https://emotion.sh/docs/introduction) - CSS in JS
+- [FontAwesome](https://fontawesome.com/) - Social link icons
+- [Netlify](https://www.netlify.com/) - Hosting and continuous deployment
+
+## 🗺 Site Map
+
+    /
+    /landing
+
+1. [Home](https:///)
+1. [Login](https://) -->
+
+
+
+
+<!-- Search for new and used cars being sold near you! Use filters to narrow down desired vehicle by distance, year, make and model. Built with React, Redux and Semantic UI. Built on top of a Ruby on Rails back end. Go [Here](https://github.com/bavarianrhino/vehicle_search_rails_backend) if you wish to view the repository for the Rails back end.
+>A large feedback-collection app. This mega app includes the full gamut of features, including everything from authentication to email handling. The app can be used to send mass emails to a big list of users for the purpose of collecting feedback. -->
+
+
+<!-- <div align="center">
+    <img width="640px" src="client/src/media/imgs/readme_workflow1.gif">
+    <p>Add and purchase credits through secure Stripe Gateway</p>
+</div>
+<div align="center">
+    <img width="640px" src="client/src/media/imgs/readme_workflow2.gif">
+    <p>Send survey with form validation and persist response via webhooks</p>
+</div> -->
+
+
+
+
+
+
+<!-- # Auto Pasture React Frontend
 
 <a href="https://www.autopasture.com"><img src="/src/Images/e34greylogoReadMe.png" title="AutoPasture" alt="AutoPasture"></a>
 
@@ -7,7 +133,7 @@
 > Search for new and used cars being sold near you! Use filters to narrow down desired vehicle by distance, year, make and model. Built with React, Redux and Semantic UI. Built on top of a Ruby on Rails back end. Go [Here](https://github.com/bavarianrhino/vehicle_search_rails_backend) if you wish to view the repository for the Rails back end.
 
 ![Recordit GIF](https://recordit.co/eqfPPP3cXW)
-![Recordit GIF](https://recordit.co/eqfPPP3cXW.gif)
+![Recordit GIF](https://recordit.co/eqfPPP3cXW.gif) -->
 
 <!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
 <!-- ***INSERT GRAPHIC HERE (include hyperlink in image)*** -->
