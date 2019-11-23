@@ -1,20 +1,24 @@
 # Auto Pasture
 
 > Auto Pasture is a fullstack web application that connects buyers to vehicles that are otherwise not listed on other mainstream marketplaces. Auto Pasture gives back the power to users with easy and simplified vehicle searches that connects them to sellers based on their own custom search parameters. This application includes a full gamut of features including everything from authentication, geolocation services, heavy usage of custom API queries and error handing of inconsistent data.
+
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
 <div align="center">
+  <p>USERNAME: guest | PASSWORD: 1234</p>
   <a href="https://bavarianrhino.github.io/vehicle_search_react_frontend/"><img src="/src/Images/e34greylogoReadMe.png" title="AutoPasture" alt="AutoPasture"></a>
 </div>
 
 ## 🌎 Motivation
 >Full-Stack Web application that profiles advanced features of React, Redux, and Ruby on Rails API with its perspective [Github Repository](https://github.com/bavarianrhino/vehicle_search_rails_backend) if you desire to see the code. RESTfully persists user data with postgreSQL database via Active Record implementing a has-many-through model relationship along with full CRUD actions.
 
+
 ## 🎬 Demo
 ![Recordit GIF](https://recordit.co/eqfPPP3cXW.gif)
 <div align="center">
     <p>Login provided using Bcrypt and JWT authentication.</p>
 </div>
+
 
 ## 🔬 Learning Objectives
 * Architectural considerations of building a full stack app
@@ -27,6 +31,7 @@
 <!-- * Engage users with automated <b>emails</b> -->
 <!-- * Separate production and development resources with advanced <b>API key handling techniques</b> -->
 <!-- * Educate users on how to use the app with custom build landing pages -->
+
 
 ## 🛠 Tech/Framework Stack
 🌖<b>Front-End</b>
@@ -52,9 +57,10 @@
 - Ruby on Rails API hosted on [Heroku](https://autopasture.herokuapp.com/users)
 - React hosted on [Github Pages](https://bavarianrhino.github.io/vehicle_search_react_frontend/#/login)
 
+
 ## 💻 Local Env Installation
 
-🔨 <b>Install</b>
+🔨 <b>Installation</b>
 ```zsh
   $ git clone git@github.com:bavarianrhino/vehicle_search_rails_backend.git
   $ cd vehicle_search_rails_backend
@@ -62,7 +68,6 @@
   [server]$ rails db:create
   [server]$ rails db:migrate
   [server]$ rails db:seed
-  [server]$ rails s
 ```
 ```zsh
   $ git clone git@github.com:bavarianrhino/vehicle_search_react_frontend.git
@@ -75,11 +80,13 @@
   REACT_APP_MARKETCHECK_API_KEY=your_api_key_goes_here_with_no_quotes
 ```
 
-🔨 <b>Run the application</b>
+🔨 <b>Running the application</b>
 
-- To start the application run the following command.
+- To serve the Ruby on Rails API navigate to the backend directory and execute the server command as seen below.
+- To start the client side of the application, navigate to the react frontend directory and execute the client command as seen below.
 ```zsh
-  $ yarn start
+  [server]$ rails s
+  [client]$ yarn start
 ```
 
 ## 🚧 TODO
