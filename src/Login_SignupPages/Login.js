@@ -11,7 +11,8 @@ class Login extends React.Component {
 	state = {
 		username: '',
 		password: '',
-		error: null
+        error: null,
+        loadingRuby: false
 	};
 
 	handleChange = (e) => {
@@ -22,7 +23,8 @@ class Login extends React.Component {
 	};
 
 	handleSubmit = (e) => {
-		e.preventDefault();
+        e.preventDefault();
+        this.setState({ loadingRuby: true })
 
 		getAuthToken({ user: { username: this.state.username, password: this.state.password } }).then((payload) => {
 			// console.log(payload);
@@ -32,13 +34,14 @@ class Login extends React.Component {
                 this.props.setCurrentUser(payload.user.id)
                     // .then(console.log);
 			} else {
-				this.setState({ error: payload.error });
+				this.setState({ error: payload.error, loadingRuby: false });
 			}
         });
         
 		// Use below dispatch if above setCurrentUser gets bugs
-		// .then((res) => {this.props.fetchFavorites(res).then(console.log)})
-		e.target.reset();
+        // .then((res) => {this.props.fetchFavorites(res).then(console.log)})
+        
+		// e.target.reset();
 	};
 
 	handleReset = () => {
@@ -53,6 +56,7 @@ class Login extends React.Component {
         return (
 			<div>
                 {this.props.geo_loading ? <Dimmer active> <Loader size='big'>Finding Location</Loader></Dimmer> : null}
+                {this.state.loadingRuby ? <Dimmer active> <Loader size='big'>Waking Heroku Server...Sometimes takes around 20 seconds</Loader></Dimmer> : null}
 				<Segment vertical style={{ margin: '11.4em 0em 0em', padding: '5em 0em' }}>
 					<Container textAlign='center' style={{ background: 'url(../../Images/vwBusDesert.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'contain' }}>
 						<Grid textAlign='center' style={{ height: '100%', verticalAlign: 'middle' }}>

@@ -14,6 +14,7 @@ import { HashRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 class App extends Component {
 
     componentDidMount () {
+        this.warmUpHeroku()
         this.getLocation()
     }
 
@@ -33,6 +34,22 @@ class App extends Component {
         console.log("Users Location:", `Longitude - ${location.long}`)
         console.log('               ', `Latitude - ${location.lat}`);
         this.props.setPosition(location)
+    }
+
+    warmUpHeroku = () => {
+        const Http = new XMLHttpRequest();
+        const apiurl = 'https://autopasture.herokuapp.com/users'
+
+        Http.onreadystatechange = (e) => {
+            if(this.readyState === 4 && this.status === 200){
+                console.log(Http.responseText)
+            } else {
+                console.log("Warming up Heroku Backend")
+            }
+        }
+
+        Http.open("GET", apiurl)
+        Http.send();
     }
 
     render() {
