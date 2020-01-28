@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd9ddea6f140b20de51a8c50bbf6288e",
+    "revision": "cd5295e3465d0674387c695286f0b6a6",
     "url": "/vehicle_search_react_frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vehicle_search_react_frontend/static/css/2.12e9c4ad.chunk.css"
   },
   {
-    "revision": "efd6dc819040e7447b83",
+    "revision": "c7edfa5779c46f7caaba",
     "url": "/vehicle_search_react_frontend/static/css/main.a222fb17.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vehicle_search_react_frontend/static/js/2.c072bad7.chunk.js"
   },
   {
-    "revision": "efd6dc819040e7447b83",
-    "url": "/vehicle_search_react_frontend/static/js/main.a119a842.chunk.js"
+    "revision": "c7edfa5779c46f7caaba",
+    "url": "/vehicle_search_react_frontend/static/js/main.37243a8e.chunk.js"
   },
   {
     "revision": "4329bac5994c5f335488",
