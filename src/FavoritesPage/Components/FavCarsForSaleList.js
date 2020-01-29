@@ -44,7 +44,8 @@ class FavCarsForSaleList extends React.Component {
     render() {
         return (
 			<Card.Group textAlign='center' itemsPerRow={1} style={{ display: 'flex', margin: '0.125em auto' }}>
-				{(this.props.favCars.length === this.props.api_urls.length) ? this.mapFavCars() : null}
+				{/* {(this.props.favCars.length === this.props.api_urls.length) ? this.mapFavCars() : null} */}
+				{this.mapFavCars()}
 			</Card.Group>
 		);
     }

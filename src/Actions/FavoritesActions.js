@@ -36,17 +36,26 @@ export const landFavorites = (urls) => {
 					}
 				});
                 const json = await response.json();
-                if(json.fault) {
+                if(json.code) {
                     let errorObj = {
-						error: json.fault.detail.errorcode,
-						api: api.id
+						errorcode: json.code,
+						message: json.message
 					};
                     dispatch({ type: 'ABORT_FAVORITE', errorObj });
-                    console.error(json.fault.detail.errorcode, api.id, " - API Call was not successful")
+                    console.error(` - API Call to ${api.api_id} was not successful because ${errorObj.message}`)
+                    // console.error(json.fault.faultstring, ' - More Info on API call');
+                }else if(json.fault) {
+                    let faultObj = {
+						faultString: json.fault.faultstring,
+						errorcode: json.fault.detail.errorcode
+					};
+                    dispatch({ type: 'RATE_LIMIT_FAVORITE', faultObj });
+                    console.error(`SPIKE ARREST VIOLATION on ${api.api_id}`)
                     // console.error(json.fault.faultstring, ' - More Info on API call');
                 }else{
+                    console.warn(json, ' - JSON Before Dispatched');
                     dispatch({ type: 'LANDING_FAVORITES', json });
-                    console.error(json, ' - This API Call was GOOD!');
+                    console.log(json, ' - This API Call was GOOD!');
                 }
 			})
 		)

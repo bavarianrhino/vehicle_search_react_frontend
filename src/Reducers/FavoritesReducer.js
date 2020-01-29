@@ -6,7 +6,8 @@ export const FavoritesReducer = (
         api_urls: [],
         favorites: [],
         errors: [],
-        missed: []
+        missed: [],
+        rateLimit: []
 	}, action) => {
 
         switch (action.type) {
@@ -29,10 +30,15 @@ export const FavoritesReducer = (
                 // return {...state, loading: false}
             // } else {
                 let car_id_obj = state.api_urls.find(({ vin }) => action.json.vin === vin);
-                // console.log(car_id_obj);
-                let object2 = { ...action.json, car_id: car_id_obj.id };
-                // console.log(object2);
-                return { ...state, favorites: [...state.favorites, object2], loading: false };
+                console.log(car_id_obj);
+                if (car_id_obj === undefined) {
+                    // create object that shows missing car to delete
+                    return { ...state, favorites: [...state.favorites], loading: false };
+                } else {
+                    let object2 = { ...action.json, car_id: car_id_obj.id };
+                    // console.log(object2);
+                    return { ...state, favorites: [...state.favorites, object2], loading: false };
+                }
             // }
 
 			case 'LAND_FAVORITE_CAR':
@@ -60,8 +66,10 @@ export const FavoritesReducer = (
 				return { ...state, loading: true };
 
 			case 'ABORT_FAVORITE':
-                return { ...state, errors: [...state.errors, action.errorObj], missed: [...state.missed, action.errorObj.api], loading: false };
+                return { ...state, errors: [...state.errors, action.errorObj], missed: [...state.missed, action.errorObj.message], loading: false };
 
+            case 'RATE_LIMIT_FAVORITE':
+                return { ...state, rateLimit: [...state.rateLimit, action.faultObj], loading: false };
 			default:
 				return state;
 		}
